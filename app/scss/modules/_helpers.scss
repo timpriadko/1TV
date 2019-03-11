@@ -1,0 +1,56 @@
+// Background-colors
+.bg-light-blue {
+    background-color: #EFF0F5;
+}
+
+.white-btn {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #3350B2;
+    background-color: white;
+    color: #3350B2;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+        background-color: #3350B2;
+        color: white;
+    }
+}
+
+.blue-btn {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #3350B2;
+    background-color: #3350B2;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #3350B2;
+    }
+}
+
+// Top icon block styles
+.bloger-page-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    p {
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+    div {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        img {
+            width: 64px;
+            height: 64px;
+        }
+        h2 {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+    }
+}

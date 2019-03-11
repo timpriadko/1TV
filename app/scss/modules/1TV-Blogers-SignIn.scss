@@ -1,0 +1,37 @@
+.auth-bloger {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #444;
+    margin-top: 15px;
+    margin-bottom: 65px;
+    input,
+    button {
+        margin-bottom: 15px;
+    }
+     ::-webkit-input-placeholder,
+    input,
+    textarea,
+    button {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input {
+        height: 40px;
+        border: 1px solid #D8D8D8;
+        padding: 15px;
+    }
+    form {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        p {
+            color: #888;
+            margin-bottom: 25px;
+        }
+    }
+}

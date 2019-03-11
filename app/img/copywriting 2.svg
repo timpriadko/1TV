@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64">
+	<defs>
+		<clipPath id="clip_0">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_0)">
+		<path fill="rgb(0,0,0)" stroke="none" d="M3.75 39.5C3.75 40.5356 2.91064 41.375 1.875 41.375C0.839356 41.375 0 40.5356 0 39.5L0 32C0 30.9644 0.839356 30.125 1.875 30.125C2.91064 30.125 3.75 30.9644 3.75 32L3.75 33.875L11.375 33.875L11.375 1.875C11.375 0.839356 12.2144 0 13.25 0L39.5 0C40.0044 0 40.4819 0.205078 40.8262 0.549316L52.0757 11.7988C52.4341 12.1572 52.625 12.6392 52.625 13.125L52.625 33.875L60.25 33.875L60.25 32C60.25 30.9644 61.0894 30.125 62.125 30.125C63.1606 30.125 64 30.9644 64 32L64 39.5C64 40.5356 63.1606 41.375 62.125 41.375C61.0894 41.375 60.25 40.5356 60.25 39.5L60.25 37.625L56.9014 37.625L59.957 49.8472C60.0684 50.2935 60.125 50.752 60.125 51.2114L60.125 58.375C60.125 61.4766 57.6016 64 54.5 64L9.5 64C6.39844 64 3.875 61.4766 3.875 58.375L3.875 51.2114C3.875 50.7524 3.93164 50.2935 4.04297 49.8477L7.09863 37.625L3.75 37.625L3.75 39.5ZM15.125 3.75L37.625 3.75L37.625 13.125C37.625 14.1606 38.4644 15 39.5 15L48.875 15L48.875 33.875L15.125 33.875L15.125 3.75ZM46.2231 11.25L41.375 6.40186L41.375 11.25L46.2231 11.25ZM7.68115 50.7568C7.64404 50.9053 7.625 51.0586 7.625 51.2114L7.625 58.375C7.625 59.4087 8.46631 60.25 9.5 60.25L54.5 60.25C55.5337 60.25 56.375 59.4087 56.375 58.375L56.375 51.2114C56.375 51.0586 56.356 50.9053 56.3188 50.7568L53.0361 37.625L10.9639 37.625L7.68115 50.7568Z" fill-rule="evenodd"/>
+	</g>
+	<defs>
+		<clipPath id="clip_1">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_1)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(15.1216 41.375)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_2">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_2)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(22.6216 41.375)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_3">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_3)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(30.1216 41.375)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_4">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_4)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(37.6216 41.375)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_5">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_5)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(15.1216 48.875)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_6">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_6)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(22.6216 48.875)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_7">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_7)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(30.1216 48.875)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_8">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_8)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(37.6216 48.875)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_9">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_9)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(45.1216 41.375)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_10">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_10)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(45.1216 48.875)" d="M3.75 1.875C3.75 2.91064 2.91016 3.75 1.875 3.75C0.839356 3.75 0 2.91064 0 1.875C0 0.839356 0.839356 0 1.875 0C2.91016 0 3.75 0.839356 3.75 1.875Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_11">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_11)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(18.875 26.25)" d="M24.375 0L1.875 0C0.839356 0 0 0.839356 0 1.875C0 2.91064 0.839356 3.75 1.875 3.75L24.375 3.75C25.4106 3.75 26.25 2.91064 26.25 1.875C26.25 0.839356 25.4106 0 24.375 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_12">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_12)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(18.875 18.75)" d="M1.875 3.75L24.375 3.75C25.4106 3.75 26.25 2.91064 26.25 1.875C26.25 0.839356 25.4106 0 24.375 0L1.875 0C0.839356 0 0 0.839356 0 1.875C0 2.91064 0.839356 3.75 1.875 3.75Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_13">
+			<rect x="-688" y="-231" width="1440" height="1041" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_13)">
+		<path fill="rgb(0,0,0)" stroke="none" transform="translate(18.875 11.25)" d="M1.875 3.75L13.125 3.75C14.1606 3.75 15 2.91064 15 1.875C15 0.839356 14.1606 0 13.125 0L1.875 0C0.839356 0 0 0.839356 0 1.875C0 2.91064 0.839356 3.75 1.875 3.75Z"/>
+	</g>
+
+</svg>

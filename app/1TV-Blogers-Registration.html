@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content=width=device-width height=device-height user-scalable=no>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Register Bloger -->
+    <section class="register-bloger">
+        <div class="container">
+            <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <img src="img/resume.svg" alt="Resume icon">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h2>Реєстрація блогера</h2>
+                </div>
+            </div>
+            <form class="col-md-10 col-lg-6">
+                <div class="bloger-data flex-wrap flex-column d-flex flex-md-row justify-content-center">
+                    <div class="d-flex flex-wrap flex-column col-md-8">
+                        <input type="text" placeholder="Ім’я">
+                        <input type="text" placeholder="Прізвище">
+                        <input type="tel" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ" maxlength="9">
+                        <input type="email" placeholder="Електронна пошта">
+                    </div>
+                    <div class="bloger-photo d-flex col-md-4">
+                        <label for="bloger-photo">
+                            <img src="img/camera-solid.svg" alt="Photo">
+                            <p>Завантажити фото</p>
+                        </label>
+                        <input type="file" name="bloger-photo" id="bloger-photo">
+                    </div>
+                </div>
+                <div class="about col-12">
+                    <textarea placeholder="Про себе"></textarea>
+                </div>
+                <div class="blog-rules col-12">
+                    <h4>Правила ведення блогів</h4>
+                    <ul>
+                        <li>Мінімальний обсяг 1000 знаків</li>
+                        <li>У статтях забороняється використовувати нецензурну лексику, заклики до сепаратизму, а також розпалювання релігійної, міжнаціональної та будь-якої іншої ворожнечі.</li>
+                        <li>У матеріалах авторів забороняється будь-яка політична агітація.</li>
+                        <li>Автор блогу не має права публікувати чужі матеріали, видаючи за власні.</li>
+                        <li>За опублікований матеріал відповідальність несе автор блогу.</li>
+                        <li>Погоджуючись з правилами при реєстрації, ви автоматично підтверджуєте згоду з ними під час кожної публікації.</li>
+                    </ul>
+                </div>
+                <div class="check col-12">
+                    <label class="checkbox-container">Я згоден з правилами і зобов'язуюся виконувати їх.
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="sms-block">
+                    <div class="d-flex flex-sm-row flex-wrap flex-column justify-content-center">
+                        <div class="col-xs-12 col-sm-8 d-flex flex-wrap flex-column">
+                            <input type="number" placeholder="Код з SMS">
+                            <p>На вказаний телефон: +380ХХ-ХХХ-ХХ-ХХ було відправлено одноразовий код підтвердження</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <button type="button" class="white-btn">Надіслати Код</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit col-12 d-flex justify-content-center">
+                    <button type="submit" class="blue-btn">Зареєструватися</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- <a href="https://fontawesome.com/license">Font Awesome license</a> -->
+</body>
+
+</html>

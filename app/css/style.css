@@ -1,0 +1,529 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.bg-light-blue {
+  background-color: #EFF0F5; }
+
+.white-btn {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #3350B2;
+  background-color: white;
+  color: #3350B2;
+  text-transform: uppercase;
+  cursor: pointer; }
+  .white-btn:hover {
+    background-color: #3350B2;
+    color: white; }
+
+.blue-btn {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #3350B2;
+  background-color: #3350B2;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer; }
+  .blue-btn:hover {
+    background-color: white;
+    color: #3350B2; }
+
+.bloger-page-title {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center; }
+  .bloger-page-title p {
+    margin-top: 10px;
+    margin-bottom: 40px; }
+  .bloger-page-title div {
+    margin-top: 15px;
+    margin-bottom: 15px; }
+    .bloger-page-title div img {
+      width: 64px;
+      height: 64px; }
+    .bloger-page-title div h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333; }
+
+.register-bloger {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444;
+  margin-top: 15px;
+  margin-bottom: 65px; }
+  .register-bloger form {
+    margin-left: auto;
+    margin-right: auto; }
+    .register-bloger form input,
+    .register-bloger form textarea {
+      height: 40px;
+      border: 1px solid #D8D8D8;
+      padding: 15px; }
+    .register-bloger form ::-webkit-input-placeholder,
+    .register-bloger form input,
+    .register-bloger form textarea,
+    .register-bloger form button {
+      font-family: 'Source Sans Pro', sans-serif; }
+    .register-bloger form input[type=number]::-webkit-inner-spin-button,
+    .register-bloger form input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .register-bloger form .bloger-data input {
+      margin-bottom: 15px; }
+    .register-bloger form .bloger-data .bloger-photo {
+      margin-bottom: 15px; }
+      .register-bloger form .bloger-data .bloger-photo input {
+        display: none; }
+      .register-bloger form .bloger-data .bloger-photo label {
+        width: 100%;
+        border: 1px solid #D8D8D8;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        color: #888;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        cursor: pointer; }
+        .register-bloger form .bloger-data .bloger-photo label img {
+          width: 18px;
+          margin-bottom: 10px; }
+    .register-bloger form .about textarea {
+      width: 100%;
+      height: 128px;
+      resize: none; }
+    .register-bloger form .blog-rules {
+      margin-top: 5px; }
+      .register-bloger form .blog-rules h4 {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      .register-bloger form .blog-rules ul {
+        border: 1px solid #D8D8D8;
+        list-style: disc;
+        padding: 10px;
+        line-height: 1.4;
+        list-style-position: inside;
+        height: 130px;
+        overflow-y: scroll; }
+    .register-bloger form .check {
+      margin: 25px 0 25px 0;
+      /* Hide the browser's default checkbox */
+      /* Create a custom checkbox */
+      /* On mouse-over, add a grey background color */
+      /* When the checkbox is checked, add a blue background */
+      /* Create the checkmark/indicator (hidden when not checked) */
+      /* Show the checkmark when checked */
+      /* Style the checkmark/indicator */ }
+      .register-bloger form .check input {
+        height: 13px; }
+      .register-bloger form .check .checkbox-container {
+        display: block;
+        position: relative;
+        padding-left: 23px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; }
+      .register-bloger form .check .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0; }
+      .register-bloger form .check .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 14px;
+        width: 14px;
+        background-color: #8d8d8d;
+        border-radius: 3px; }
+      .register-bloger form .check .checkbox-container:hover input ~ .checkmark {
+        background-color: #ccc; }
+      .register-bloger form .check .checkbox-container input:checked ~ .checkmark {
+        background-color: #2196F3; }
+      .register-bloger form .check .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none; }
+      .register-bloger form .check .checkbox-container input:checked ~ .checkmark:after {
+        display: block; }
+      .register-bloger form .check .checkbox-container .checkmark:after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5); }
+    .register-bloger form .sms-block input {
+      width: 100%; }
+    .register-bloger form .sms-block div {
+      margin-bottom: 10px; }
+    .register-bloger form .sms-block p {
+      color: #888;
+      margin-top: 10px;
+      line-height: 1.3; }
+    .register-bloger form .submit {
+      margin-top: 15px; }
+
+.auth-bloger {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444;
+  margin-top: 15px;
+  margin-bottom: 65px; }
+  .auth-bloger input,
+  .auth-bloger button {
+    margin-bottom: 15px; }
+  .auth-bloger ::-webkit-input-placeholder,
+  .auth-bloger input,
+  .auth-bloger textarea,
+  .auth-bloger button {
+    font-family: 'Source Sans Pro', sans-serif; }
+  .auth-bloger input[type=number]::-webkit-inner-spin-button,
+  .auth-bloger input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  .auth-bloger input {
+    height: 40px;
+    border: 1px solid #D8D8D8;
+    padding: 15px; }
+  .auth-bloger form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px; }
+    .auth-bloger form p {
+      color: #888;
+      margin-bottom: 25px; }
+
+.bloger-page {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444; }
+  .bloger-page .bloge-page-title-block .posts-title-block {
+    margin-top: 40px;
+    margin-bottom: 25px; }
+    .bloger-page .bloge-page-title-block .posts-title-block .posts-title {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 5px; }
+    .bloger-page .bloge-page-title-block .posts-title-block .total-posts {
+      color: #777; }
+  .bloger-page .bloge-page-title-block .write-article {
+    margin-top: 40px;
+    margin-bottom: 25px; }
+    .bloger-page .bloge-page-title-block .write-article a {
+      color: white;
+      background-color: #3350B2;
+      text-decoration: none;
+      padding: 13px 25px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 16px;
+      text-transform: uppercase; }
+      .bloger-page .bloge-page-title-block .write-article a img {
+        margin-right: 10px; }
+      .bloger-page .bloge-page-title-block .write-article a:hover {
+        background-color: #6881d4; }
+  .bloger-page .posts-table-block .table-header {
+    width: 100%;
+    font-size: 16px; }
+    .bloger-page .posts-table-block .table-header div + div {
+      margin-left: 2px; }
+    .bloger-page .posts-table-block .table-header div {
+      background-color: #EFF0F5;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 40px; }
+      .bloger-page .posts-table-block .table-header div img {
+        height: 14px;
+        padding-left: 3px; }
+    .bloger-page .posts-table-block .table-header .arrows-wrap {
+      position: relative; }
+      .bloger-page .posts-table-block .table-header .arrows-wrap .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-bottom: 7px solid black;
+        position: absolute;
+        top: -7px; }
+      .bloger-page .posts-table-block .table-header .arrows-wrap .down-up {
+        width: 0;
+        height: 0;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 7px solid black;
+        position: absolute;
+        top: 3px; }
+  .bloger-page .posts-table-block .post-row {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #E3E3E3; }
+    .bloger-page .posts-table-block .post-row div {
+      padding: 15px 7px 15px 15px; }
+    .bloger-page .posts-table-block .post-row .post-create-date {
+      font-size: 14px;
+      color: #888; }
+    .bloger-page .posts-table-block .post-row .post-name {
+      color: #273E8C;
+      font-size: 16px; }
+    .bloger-page .posts-table-block .post-row .post-status {
+      color: #3B3B46;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .bloger-page .posts-table-block .post-row .post-status span + span {
+        margin-left: 8px; }
+      .bloger-page .posts-table-block .post-row .post-status .edited {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: #EFF0F5;
+        padding: 4px 6px;
+        border-radius: 7px; }
+        .bloger-page .posts-table-block .post-row .post-status .edited img {
+          width: 14px;
+          margin-right: 6px; }
+    .bloger-page .posts-table-block .post-row .unpublished {
+      color: #3B3B46; }
+    .bloger-page .posts-table-block .post-row .draft {
+      color: #888; }
+    .bloger-page .posts-table-block .post-row .published {
+      color: #273E8C; }
+    .bloger-page .posts-table-block .post-row .post-publish-date {
+      font-size: 14px;
+      color: #888; }
+    .bloger-page .posts-table-block .post-row .post-actions {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: distribute;
+      justify-content: space-around; }
+      .bloger-page .posts-table-block .post-row .post-actions a {
+        text-decoration: none; }
+        .bloger-page .posts-table-block .post-row .post-actions a img {
+          opacity: 0.7; }
+          .bloger-page .posts-table-block .post-row .post-actions a img:hover {
+            opacity: 1; }
+  .bloger-page .posts-table-block .unpublished-by-reduction {
+    background-color: #FFF2F4; }
+    .bloger-page .posts-table-block .unpublished-by-reduction .post-status {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .bloger-page .posts-table-block .unpublished-by-reduction .post-status .unpublish-status {
+        color: #C8193C;
+        padding-bottom: 10px; }
+  .bloger-page .bloger-page-bottom-nav {
+    margin-top: 32px;
+    margin-bottom: 56px; }
+    .bloger-page .bloger-page-bottom-nav a + a {
+      margin-left: 2px; }
+    .bloger-page .bloger-page-bottom-nav a {
+      position: relative;
+      height: 40px;
+      width: 40px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border: 1px solid #E3E3E3;
+      text-decoration: none;
+      color: #444; }
+      .bloger-page .bloger-page-bottom-nav a:hover {
+        background-color: #c8cad6; }
+      .bloger-page .bloger-page-bottom-nav a span {
+        position: absolute;
+        border-top: 2px solid #888;
+        border-right: 2px solid #888;
+        width: 10px;
+        height: 10px;
+        left: 16px; }
+      .bloger-page .bloger-page-bottom-nav a .prev-arrow {
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg); }
+      .bloger-page .bloger-page-bottom-nav a .next-arrow {
+        left: 13px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg); }
+    .bloger-page .bloger-page-bottom-nav .active-posts-page {
+      background-color: #3350B2;
+      color: #fff;
+      font-weight: bold; }
+      .bloger-page .bloger-page-bottom-nav .active-posts-page:hover {
+        color: #444;
+        background-color: #c8cad6; }
+
+/*# sourceMappingURL=style.css.map */

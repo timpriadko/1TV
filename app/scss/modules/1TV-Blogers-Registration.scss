@@ -1,0 +1,163 @@
+.register-bloger {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #444;
+    margin-top: 15px;
+    margin-bottom: 65px;
+    form {
+        margin-left: auto;
+        margin-right: auto;
+        input,
+        textarea {
+            height: 40px;
+            border: 1px solid #D8D8D8;
+            padding: 15px;
+        }
+         ::-webkit-input-placeholder,
+        input,
+        textarea,
+        button {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .bloger-data {
+            input {
+                margin-bottom: 15px;
+            }
+            .bloger-photo {
+                margin-bottom: 15px;
+                input {
+                    display: none;
+                }
+                label {
+                    width: 100%;
+                    border: 1px solid #D8D8D8;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    color: #888;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    cursor: pointer;
+                    img {
+                        width: 18px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        .about {
+            textarea {
+                width: 100%;
+                height: 128px;
+                resize: none;
+            }
+        }
+        .blog-rules {
+            margin-top: 5px;
+            h4 {
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            ul {
+                border: 1px solid #D8D8D8;
+                list-style: disc;
+                padding: 10px;
+                line-height: 1.4;
+                list-style-position: inside;
+                height: 130px;
+                overflow-y: scroll;
+            }
+        }
+        // Checkbox
+        .check {
+            margin: 25px 0 25px 0;
+            input {
+                height: 13px;
+            }
+            .checkbox-container {
+                display: block;
+                position: relative;
+                padding-left: 23px;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            /* Hide the browser's default checkbox */
+            .checkbox-container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+            /* Create a custom checkbox */
+            .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 14px;
+                width: 14px;
+                background-color: #8d8d8d;
+                border-radius: 3px;
+            }
+            /* On mouse-over, add a grey background color */
+            .checkbox-container:hover input~.checkmark {
+                background-color: #ccc;
+            }
+            /* When the checkbox is checked, add a blue background */
+            .checkbox-container input:checked~.checkmark {
+                background-color: #2196F3;
+            }
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+            /* Show the checkmark when checked */
+            .checkbox-container input:checked~.checkmark:after {
+                display: block;
+            }
+            /* Style the checkmark/indicator */
+            .checkbox-container .checkmark:after {
+                left: 5px;
+                top: 1px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+            }
+        }
+        .sms-block {
+            input {
+                width: 100%;
+            }
+            div {
+                margin-bottom: 10px;
+            }
+            p {
+                color: #888;
+                margin-top: 10px;
+                line-height: 1.3;
+            }
+        }
+        .submit {
+            margin-top: 15px;
+        }
+    }
+}
