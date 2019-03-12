@@ -120,66 +120,51 @@
         </div>
     </header>
     <main>
-        <!-- Register Bloger -->
-        <section class="register-bloger">
+        <section class="article">
             <div class="container">
-                <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
-                    <div class="d-flex justify-content-center">
-                        <img src="static/img/resume.svg" alt="Resume icon">
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h2>Реєстрація блогера</h2>
-                    </div>
+                <!-- New posts title -->
+                <div>
+                    <p class="article-page-title d-flex justify-content-start">Нова стаття</p>
                 </div>
-                <form class="col-md-10 col-lg-6">
-                    <div class="bloger-data flex-wrap flex-column d-flex flex-md-row justify-content-center">
-                        <div class="d-flex flex-wrap flex-column col-md-8">
-                            <input type="text" placeholder="Ім’я">
-                            <input type="text" placeholder="Прізвище">
-                            <input type="tel" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ" maxlength="9">
-                            <input type="email" placeholder="Електронна пошта">
-                        </div>
-                        <div class="bloger-photo d-flex col-md-4">
-                            <label for="bloger-photo">
-                                    <img src="static/img/camera-solid.svg" alt="Photo">
-                                    <p>Завантажити фото</p>
-                                </label>
-                            <input type="file" name="bloger-photo" id="bloger-photo">
-                        </div>
+                <!-- New article form -->
+                <form>
+                    <div class="article-title d-flex flex-column">
+                        <label for="article-title">Заголовок статті</label>
+                        <input type="text" name="new-article-title" placeholder="Заголовок">
                     </div>
-                    <div class="about col-12">
-                        <textarea placeholder="Про себе"></textarea>
+                    <!-- Content -->
+                    <div class="article-content">
+                        <div class="article-content-toolbar"></div>
+                        <textarea name="" id="" rows="18">Що відбувалось із курсом гривні? У понеділок і вже не так яскраво виражено, але і у вівторок, відбувались досить помітні коливання на валютному ринку. Ті, хто піддався паніці побігли скуповувати іноземну валюту. Звичайно, цим скористалися спекулянти, задравши курс у "обмінках". Однак обсяги продажів на готівковому ринку все одно залишалися мінімальними.
+
+                        У вівторок ситуація великою мірою заспокоїлась, курс продажу готівкового долара з космічних 29,5 грн. впав до 28,5 лише за кілька годин. Міжбанківський курс, який і визначає ціни на товари, які імпортуються в Україну, зріс за два дні лише на 30 копійок, то й то на фоні щомісячної виплати відшкодування ПДВ.
+                        </textarea>
                     </div>
-                    <div class="blog-rules col-12">
-                        <h4>Правила ведення блогів</h4>
-                        <ul>
-                            <li>Мінімальний обсяг 1000 знаків</li>
-                            <li>У статтях забороняється використовувати нецензурну лексику, заклики до сепаратизму, а також розпалювання релігійної, міжнаціональної та будь-якої іншої ворожнечі.</li>
-                            <li>У матеріалах авторів забороняється будь-яка політична агітація.</li>
-                            <li>Автор блогу не має права публікувати чужі матеріали, видаючи за власні.</li>
-                            <li>За опублікований матеріал відповідальність несе автор блогу.</li>
-                            <li>Погоджуючись з правилами при реєстрації, ви автоматично підтверджуєте згоду з ними під час кожної публікації.</li>
-                        </ul>
+                    <!-- Tags -->
+                    <div class="article-tags d-flex flex-column">
+                        <label for="article-tags">Теги:</label>
+                        <input type="text" name="article-tags" placeholder="Почніть кожен новий тег з символу #">
                     </div>
-                    <div class="check col-12">
-                        <label class="checkbox-container">Я згоден з правилами і зобов'язуюся виконувати їх.
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                            </label>
-                    </div>
-                    <div class="sms-block">
-                        <div class="d-flex flex-sm-row flex-wrap flex-column justify-content-center">
-                            <div class="col-xs-12 col-sm-8 d-flex flex-wrap flex-column">
-                                <input type="number" placeholder="Код з SMS">
-                                <p>На вказаний телефон: +380ХХ-ХХХ-ХХ-ХХ було відправлено одноразовий код підтвердження</p>
+                    <!-- Form bottom -->
+                    <div class="article-form-bottom d-flex justify-content-between">
+                        <div class="article-form-bottom-inputs d-flex flex-row">
+                            <div class="article-author d-flex flex-column">
+                                <label for="article-author">Автор:</label>
+                                <input type="text" name="article-author" placeholder="Ім’я Прізвище">
                             </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <button type="button" class="white-btn">Надіслати Код</button>
+                            <div class="delay-article-post d-flex flex-column">
+                                <label for="delay-article-post">Відкласти публікацію</label>
+                                <input type="date" name="delay-article-post">
                             </div>
                         </div>
-                    </div>
-                    <div class="submit col-12 d-flex justify-content-center">
-                        <button type="submit" class="blue-btn">Зареєструватися</button>
+                        <div class="article-form-bottom-btns d-flex flex-row">
+                            <div class="save-article">
+                                <button type="button">Зберегти як чернетку</button>
+                            </div>
+                            <div class="publish-article">
+                                <button type="submit"><img src="static/img/Icon-notification-filled.svg">Опублікувати</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

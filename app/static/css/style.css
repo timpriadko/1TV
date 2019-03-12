@@ -615,9 +615,12 @@ table {
     font-weight: bold;
     text-transform: uppercase; }
   .article form {
-    margin-top: 30px; }
+    margin-top: 30px;
+    margin-bottom: 65px; }
     .article form input {
-      height: 40px; }
+      height: 40px;
+      font-family: 'Source Sans Pro', sans-serif;
+      border-color: 1px solid #D8D8D8; }
     .article form label {
       color: #444;
       padding-bottom: 5px; }
@@ -627,6 +630,45 @@ table {
         padding: 15px; }
     .article form .article-content textarea {
       width: 100%;
-      resize: none; }
+      resize: none;
+      padding: 60px 15px 15px 15px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px; }
+    .article form .article-tags {
+      padding-top: 25px; }
+      .article form .article-tags input {
+        padding: 15px; }
+    .article form .article-form-bottom {
+      padding-top: 25px; }
+      .article form .article-form-bottom div + div {
+        padding-left: 25px; }
+      .article form .article-form-bottom .article-author input {
+        padding: 15px;
+        background-color: #EFF0F5;
+        border: 1px solid #D8D8D8; }
+      .article form .article-form-bottom .article-form-bottom-btns {
+        margin-right: -15px; }
+        .article form .article-form-bottom .article-form-bottom-btns button {
+          height: 40px;
+          font-size: 14px;
+          width: 100%;
+          cursor: pointer;
+          text-transform: uppercase; }
+        .article form .article-form-bottom .article-form-bottom-btns .save-article button {
+          background-color: #fff;
+          color: #3350B2;
+          border: 1px solid #3350B2; }
+          .article form .article-form-bottom .article-form-bottom-btns .save-article button:hover {
+            background-color: #3350B2;
+            color: #fff; }
+        .article form .article-form-bottom .article-form-bottom-btns .publish-article button {
+          background-color: #3350B2;
+          color: #fff; }
+          .article form .article-form-bottom .article-form-bottom-btns .publish-article button:hover {
+            background-color: #fff;
+            color: #3350B2;
+            border: 1px solid #3350B2; }
+          .article form .article-form-bottom .article-form-bottom-btns .publish-article button img {
+            margin-right: 10px; }
 
 /*# sourceMappingURL=style.css.map */

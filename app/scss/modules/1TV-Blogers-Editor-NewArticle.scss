@@ -11,8 +11,11 @@
     // Form
     form {
         margin-top: 30px;
+        margin-bottom: 65px;
         input {
             height: 40px;
+            font-family: 'Source Sans Pro', sans-serif;
+            border-color: 1px solid #D8D8D8;
         }
         label {
             color: #444;
@@ -28,6 +31,63 @@
             textarea {
                 width: 100%;
                 resize: none;
+                padding: 60px 15px 15px 15px;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 14px;
+            }
+        }
+        .article-tags {
+            padding-top: 25px;
+            input {
+                padding: 15px;
+            }
+        }
+        .article-form-bottom {
+            padding-top: 25px;
+            div+div {
+                padding-left: 25px;
+            }
+            .article-author {
+                input {
+                    padding: 15px;
+                    background-color: #EFF0F5;
+                    border: 1px solid #D8D8D8;
+                }
+            }
+            .article-form-bottom-btns {
+                margin-right: -15px;
+                button {
+                    height: 40px;
+                    font-size: 14px;
+                    width: 100%;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                }
+                .save-article {
+                    button {
+                        background-color: #fff;
+                        color: #3350B2;
+                        border: 1px solid #3350B2;
+                        &:hover {
+                            background-color: #3350B2;
+                            color: #fff;
+                        }
+                    }
+                }
+                .publish-article {
+                    button {
+                        background-color: #3350B2;
+                        color: #fff;
+                        &:hover {
+                            background-color: #fff;
+                            color: #3350B2;
+                            border: 1px solid #3350B2;
+                        }
+                        img {
+                            margin-right: 10px;
+                        }
+                    }
+                }
             }
         }
     }
