@@ -342,6 +342,25 @@ table {
       color: #888;
       margin-bottom: 25px; }
 
+@media (min-width: 240px) {
+  .bloge-page-title-block {
+    margin-top: 60px; } }
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .bloger-page {
+    padding-left: 30px; }
+  footer {
+    padding-left: 50px; } }
+
+@media (min-width: 1200px) {
+  .bloge-page-title-block {
+    margin-top: 0; } }
+
+@media (min-width: 1500px) {
+  .main-content-wraper {
+    margin-left: -15px;
+    margin-right: -15px; } }
+
 .bloger-page {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
@@ -377,6 +396,8 @@ table {
     width: 100%;
     font-size: 16px; }
     .bloger-page .posts-table-block .table-header div + div {
+      margin-left: 2px; }
+    .bloger-page .posts-table-block .table-header div:first-child {
       margin-left: 2px; }
     .bloger-page .posts-table-block .table-header div {
       background-color: #EFF0F5;
@@ -434,19 +455,6 @@ table {
       align-items: center; }
       .bloger-page .posts-table-block .post-row .post-status span + span {
         margin-left: 8px; }
-      .bloger-page .posts-table-block .post-row .post-status .edited {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        background-color: #EFF0F5;
-        padding: 4px 6px;
-        border-radius: 7px; }
-        .bloger-page .posts-table-block .post-row .post-status .edited img {
-          width: 14px;
-          margin-right: 6px; }
     .bloger-page .posts-table-block .post-row .unpublished {
       color: #3B3B46; }
     .bloger-page .posts-table-block .post-row .draft {
@@ -525,5 +533,100 @@ table {
       .bloger-page .bloger-page-bottom-nav .active-posts-page:hover {
         color: #444;
         background-color: #c8cad6; }
+
+.edited {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #EFF0F5;
+  padding: 4px 6px;
+  border-radius: 7px; }
+  .edited img {
+    width: 14px;
+    margin-right: 6px; }
+
+.explain-section {
+  padding-top: 20%;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #e5e5e5;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #000; }
+  .explain-section ul + ul {
+    margin-top: 50px; }
+  .explain-section li + li {
+    margin-top: 20px; }
+  .explain-section li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .explain-section li img,
+    .explain-section li .edited {
+      margin-right: 15px; }
+    .explain-section li p {
+      margin-left: 8px; }
+
+@media (min-width: 1px) {
+  .col-md-012 {
+    -webkit-box-flex: 0;
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px; } }
+
+@media (min-width: 992px) {
+  .col-md-012 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 12.5%;
+    flex: 0 0 12.5%;
+    max-width: 12.5%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px; }
+  .arrows-wrap {
+    display: block; } }
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .admin-page {
+    padding-left: 0px; }
+  .arrows-wrap {
+    display: none; } }
+
+.article {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  color: #444; }
+  .article .article-page-title {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .article form {
+    margin-top: 30px; }
+    .article form input {
+      height: 40px; }
+    .article form label {
+      color: #444;
+      padding-bottom: 5px; }
+    .article form .article-title {
+      padding-bottom: 15px; }
+      .article form .article-title input {
+        padding: 15px; }
+    .article form .article-content textarea {
+      width: 100%;
+      resize: none; }
 
 /*# sourceMappingURL=style.css.map */

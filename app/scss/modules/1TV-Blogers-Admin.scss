@@ -1,0 +1,39 @@
+@media (min-width: 1px) {
+    .col-md-012 {
+        -webkit-box-flex: 0;
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-012 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 12.5%;
+        flex: 0 0 12.5%;
+        max-width: 12.5%;
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .arrows-wrap {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .admin-page {
+        padding-left: 0px;
+    }
+    .arrows-wrap {
+        display: none;
+    }
+}

@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style/perfect-scrollbar.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/nice-select.css" />
+  <link rel="stylesheet" href="/static/style/style.css">
+  <!--link href="http://1tv.kr.ua/news.rss" rel="alternate" title="RSS" type="application/rss+xml" /-->
+  <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/static/img/apple-touch-icon-144.png">
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <link rel="icon" href="/static/img/favicon.png">
+
+  <meta property="fb:app_id" content="204387270490071" />
+  <meta property="fb:pages" content="1056583734365790" />
+  <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
+  <link rel="stylesheet" href="/static/style/nice-select.css">
+  
+  <title>Повiдомити новину | Перший мiський</title>
+
+</head>
+<body>
+
+  <!-- preloader -->
+  <div class="preloader">
+    <img src="data:image/gif;base64,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" alt="" />
+  </div>
+  <style type="text/css">
+    .preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #fff;
+      color: #fff;
+      z-index: 9999;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+  </style>
+  <!-- /preloader -->
+
+  <header>
+    <div class="top-header">
+      <div class="wrap flex justify-between align-center">
+        <div class="social-network header flex align-center transition-3">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+        <ul id="block-exchange-rates" class="block-info flex"></ul>
+      </div>
+    </div>
+    <div class="block-logo">
+      <div class="wrap flex align-center justify-end">
+        <div class="toogle transition">
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+        </div>
+        <div class="logo">
+          <a class="logo-big" href="/">
+            <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+          <a class="logo-mobile" href="/">
+            <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+        </div>
+        <div class="broadcast flex align-center justify-center transition">ефір</div>
+        <div id="search-button" class="search flex align-center justify-center">
+          <span class="icon transition"></span>
+        </div>
+        <div class="block-search">
+          <div>
+            <input id="search-str" type="text" placeholder="Пошук" />
+            <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-nav">
+      <div class="wrap transition-3">
+        <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+            
+              <li>
+                <a href="/event/" class="def" >Афіша</a>
+              </li>
+            
+              <li>
+                <a href="/contacts.html" class="def" >Контакти</a>
+              </li>
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="go-top transition">
+    <span>Вгору</span>
+  </div>
+  <section class="section-broadcast">
+    <div class="block-broadcast hide">
+      <div class="close-broadcast"></div>
+      <div class="wrap flex justify-between">
+        <div class="tabs-wrap">
+          <div class="tabs flex transition-3">
+            <div class="tab-item active transition" data-content="tab-content-1">Онлайн трансляція</div>
+            <div class="tab-item transition" data-content="tab-content-2">Програма передач</div>
+            <div class="content-2-video-name flex align-center">
+              <div class="back transition flex align-center justify-center"></div>
+              <span id="program-name"></span>
+            </div>
+          </div>
+        </div>
+        <div id="tab-content-1" class="tab-content flex justify-between transition active">
+          <div class="block-video">
+            <iframe id="video" src="" frameborder="0"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <p class="block-preview-title">Останні відео</p>
+          <ul class="block-preview scroll">
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/biFpiP3klKA">
+              <div class="img">
+                <img src="releases/cover_images/000/008/204/medium/_новости.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">«Новини Кривбасу» – новини за 19 лютого 2019 року</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/se9M2HHka94">
+              <div class="img">
+                <img src="releases/cover_images/000/008/203/medium/_новости_с.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">«Новини Кривбасу» – новини за 19 лютого 2019 року (сурдопереклад)</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/eNNTT6sVHT8">
+              <div class="img">
+                <img src="releases/cover_images/000/008/207/medium/_героин1.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Спіймали банду наркодилерів</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/jFfAm7vNybU">
+              <div class="img">
+                <img src="releases/cover_images/000/008/206/medium/_ид.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Юліана Мінаєва, Вадим Казмірук</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/kZ77ZgmDQiw">
+              <div class="img">
+                <img src="releases/cover_images/000/008/205/medium/_тема.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Ігор Холодницький – лікар-нарколог Криворізького психоневрологічного диспансеру</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/9Oh_adGNo2I">
+              <div class="img">
+                <img src="releases/cover_images/000/008/202/medium/вт_президент.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Які обов’язки, на вашу думку, мають бути у президента?</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/Wi5rcDrAxGs">
+              <div class="img">
+                <img src="releases/cover_images/000/008/200/medium/вт_инвалид.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Чи комфортно людям з інвалідністю пересуватися по Кривому Рогу?</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/T_wJclKpaHc">
+              <div class="img">
+                <img src="releases/cover_images/000/008/201/medium/вт_общага.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Чи повинен навчальний заклад відповідати за стан гуртожитку, який перебуває в його підпорядкуванні?</h4>
+                <p class="date">19 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/Mip0XrdzmH4">
+              <div class="img">
+                <img src="releases/cover_images/000/008/189/medium/ид.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Арсеній Журавель – учасник дев&#39;ятого сезону шоу «Голос країни»</h4>
+                <p class="date">18 Лютня 2019</p>
+              </div>
+            </li>
+            
+            <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/WcJe6p3HSG8">
+              <div class="img">
+                <img src="releases/cover_images/000/008/193/medium/тд.jpg" alt="" />
+              </div>
+              <div class="info">
+                <h4 class="title">Вікторія Малиш-Ковш – мешканка гуртожитку при училищі Балакіна</h4>
+                <p class="date">18 Лютня 2019</p>
+              </div>
+            </li>
+            
+          </ul>
+        </div>
+        <div id="tab-content-2" class="tab-content flex transition">
+          <div class="days-list"></div>
+          <div class="day-name flex align-center">
+            <div class="back transition flex align-center justify-center"></div>
+            <span id="day-name">Назад до програми передач</span>
+          </div>
+          <div class="block-schedule flex justify-end">
+            <div class="block-video-schedule transition-3">
+              <iframe id="video-schedule" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="schedule-list-wrapper transition scroll">
+              <ul class="schedule-list transition">
+              
+              </ul>
+            </div>
+            <div class="schedule-info scroll transition-3">
+              <h2 class="block-title transition"></h2>
+              <p class="description transition"></p>
+              <p class="all-release">Попередні випуски</p>
+              <div id="schedule-block-preview" class="block-preview flex"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-result hide">
+    <div class="close-search-result"></div>
+    <div class="wrap flex justify-between">
+      <div class="section-title no-line">
+        <span>Результати пошуку</span>
+      </div>
+      <ul class="result-videos-list flex"></ul>
+      <ul class="result-news-list"></ul>
+    </div>
+  </section>
+
+  
+<div class="wrap report-page">
+  <div class="main flex">
+    <div class="block-text">
+      <p class="title">
+        <span class="icon-wrap"><img class="icon" src="/static/img/feedback.svg"></span>
+        Повідомити новину
+      </p>
+      <p class="text">
+        Маєте цікаву новину або стали свідком незвичайних подій, та хочете поділитися зі світом?
+        Напишіть нам! Ми чекаемо на дійсно важливі та цікаві новини, і з радістю відобразимо їх на нашому сайті.
+      </p>
+      <p class="text">
+        Обов’язково залиште свій контактний номер, ми зв’яжемося з вами для підтвердження вашого повідомлення.
+      </p>
+    </div>
+    <div class="block-form">
+      <form id="form-report" class="flex justify-between form-report">
+
+        <div class="input-wrap"><input type="text" name="name" placeholder="Ваше iм`я" required="" id="id_name"></div>
+
+        <div class="input-wrap"><input type="tel" name="tel" placeholder="Контактний номер" required="" id="id_tel"></div>
+
+        <div class="input-wrap"><input type="email" name="email" placeholder="Ваша електронна адреса" required="" id="id_email"></div>
+
+        <div class="input-wrap"><textarea name="description" cols="40" rows="10" placeholder="Повiдомлення" required="" id="id_description"></textarea></div>
+
+        <div class="input-wrap"><input type="text" name="videos" placeholder="Посилання на YouTube вiдео" id="id_videos"></div>
+
+        <div class="img-list flex"></div>
+
+        <div id="delete-imgs" class="button transition delete flex justify-center align-center">
+          <img src="/static/img/rubbish.svg">
+          Видалити
+          <span class="count"></span>
+        </div>
+        <div class="file-upload button transition">
+          <label class="flex justify-center align-center">
+            <input type="file" name="file" multiple="multiple" accept=".txt,image/*">
+            <img src="/static/img/photo-camera.svg">
+            <span class="transition">Завантажити медіафайл</span>
+          </label>
+        </div>
+        <button id="form-report-button" type="button" class="button submit transition">Відправити</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer">
+    <div class="footer-nav">
+      <div class="wrap flex">
+          <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+            
+              <li>
+                <a href="/event/" class="def" >Афіша</a>
+              </li>
+            
+              <li>
+                <a href="/contacts.html" class="def" >Контакти</a>
+              </li>
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li>
+                <a href="/contacts.html">Контакти</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="wrap flex justify-between align-center">
+        <div class="flex">
+          <a class="logo-footer transition" href="main.html">
+            <img src="/static/img/logo-footer.svg" />
+          </a>
+          <div class="info">
+            <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+            <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+          </div>
+        </div>
+        <div class="social-network footer flex align-center">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="wrap flex justify-between align-center">
+        
+        <div class="flex align-center developer">
+          <span>Made by</span>
+          <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/slick.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
+  
+  
+  <script type="text/javascript" src="/static/js/loader.js"></script>
+
+</html>

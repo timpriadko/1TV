@@ -1,3 +1,31 @@
+@media (min-width: 240px) {
+    .bloge-page-title-block {
+        margin-top: 60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .bloger-page {
+        padding-left: 30px;
+    }
+    footer {
+        padding-left: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bloge-page-title-block {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1500px) {
+    .main-content-wraper {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
+
 .bloger-page {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
@@ -42,6 +70,9 @@
             width: 100%;
             font-size: 16px;
             div+div {
+                margin-left: 2px;
+            }
+            div:first-child {
                 margin-left: 2px;
             }
             div {
@@ -98,17 +129,6 @@
                 align-items: center;
                 span+span {
                     margin-left: 8px;
-                }
-                .edited {
-                    display: flex;
-                    align-items: center;
-                    background-color: #EFF0F5;
-                    padding: 4px 6px;
-                    border-radius: 7px;
-                    img {
-                        width: 14px;
-                        margin-right: 6px;
-                    }
                 }
             }
             // Post status colors
@@ -195,6 +215,47 @@
                 color: #444;
                 background-color: #c8cad6;
             }
+        }
+    }
+}
+
+// Edited post status marker
+.edited {
+    display: flex;
+    align-items: center;
+    background-color: #EFF0F5;
+    padding: 4px 6px;
+    border-radius: 7px;
+    img {
+        width: 14px;
+        margin-right: 6px;
+    }
+}
+
+// Side explain section
+.explain-section {
+    padding-top: 20%;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #e5e5e5;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #000;
+    ul+ul {
+        margin-top: 50px;
+    }
+    li+li {
+        margin-top: 20px;
+    }
+    li {
+        display: flex;
+        align-items: center;
+        img,
+        .edited {
+            margin-right: 15px;
+        }
+        p {
+            margin-left: 8px;
         }
     }
 }

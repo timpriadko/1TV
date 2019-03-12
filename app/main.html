@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/nice-select.css" />
+    <link rel="stylesheet" href="/static/style/style.css">
+    <!--link href="http://1tv.kr.ua/news.rss" rel="alternate" title="RSS" type="application/rss+xml" /-->
+    <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/img/apple-touch-icon-144.png">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <link rel="icon" href="/static/img/favicon.png">
+
+    <meta property="fb:app_id" content="204387270490071" />
+    <meta property="fb:pages" content="1056583734365790" />
+    <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
+    <link rel="stylesheet" href="/static/style/nice-select.css">
+
+    <title>Головна | Перший мiський</title>
+
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader">
+        <img src="data:image/gif;base64,R0lGODlhGwHUALMKACF3qi5/r4Ozz8jd6VeYvmKew9vo8N7q8pO91f///////wAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAKACwAAAAAGwHUAAAE/zDJSau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6NIDBAAABAPpSwjt9AAI8UgD9fXw+EXs+9oR8FckYD2CRAzSQzgEYMCBDIPoM9gvogwDBdoVMIBh3r57Fv8vBqgXgOOFdQIrWhAQIICAkCYy7itgQkC9lzBHKDQxkl6AnDoN8iQJVITMejRL2KSHs+iHAz3bBThwgqVLpyIOyCxAFavXr2DDih1L1ozVpjDOkl3aDm0LtgDceo0K4CcMunbD4o2xVyxcuSv+rm0JmIXasogTK17MuLHjx28JpzjsWHDNm4/7ltDMmPMIz4otK8X8mHJNyZBTAzGtuirp1idAwxYhezYI0bZJsM7Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOAKgAQWaOCBCJIRAQAh+QQFCgAKACx9AFMAJgARAAAEZjDJSau9OGdTACiGJmpG4HlBOK5Ud3oFKyfvO7P1ea/uG++ig+kUOFwGBA9hsDu4CkYLIoeYCAIBAXAyyHmYgpd2m/QSEkPUlub1oF+BddsdPo2B5dw5cc2uE11eTH9SVIQYSEqDEQAh+QQFCgAKACyMAFQAHAAdAAAEbjDJSau9UoQgsLcCIALdZwYjEJhnurJeOJYwpnF1jhmFWBi6igE1CgCDkl4KUEBKliNnAiqSKlNN54EoChykiYOy8AWbz+j0eUAQEQZgBBThHFAB8GCbSkDeq0F/AEh7UH1BdlR5QXJLdFJsbnkRACH5BAUKAAoALJkAWwAPACMAAARoMMlJ6xQhCEsF+MDGJQEIBCNpoqMHim0Gp3Rt33iuS0bxFYaRoQQKBC0+E6DAUYKaTgAnaWJaDsRP4DA6JAvcnXicGhA+hMEI4URYBlGAmnKOEirxDz5fqTvvFHBRcxRsSm4cZmiEFBEAIfkEBQoACgAsiwBoABwAHQAABGwwyUmrvThXEYLQoCQAJPCFWVACAZqurXuN5SlbnHfvfO//wKDQYiiQCoafQVUKJHvGFaDgk5aqVoAvuqJaBgQSYXA5MEmBgwVhRZSjBXVlkAWQd+EsgVcn8fs8eVZ7O3RZdztsUm4+YGKIOxEAIfkEBQoACgAsfAB0ACYAEQAABGowpUEAIEPqzbvfiCUCyGee0jCOGXoKQSBI1WoRrimMsz3mn8AokPCJgB6hiFiz4ZCcnWim8rWgG5hME1qVPIaCpWDAUm5XjkFpCZSxLvGqAHcZ66g73iQf0fcfB2wAAQeAJgdyBYaHjRwRACH5BAUKAAoALHcAZwAdAB0AAARsMKVBACBD6s27RFYIIF7JDaKYmWaVWgRrvqJc0qHtuW+sn7jVbwNKkYYdCkyIbDqf0Ki0ZChYCgapISAKZKHWVCGKI9OiYdEYeuCGAgfpIVyIT4eCQEBwF4j4Um4WAVOCAIRSfiGAiXqMdxsRACH5BAUKAAoALHcAWgAPACMAAARkMMmZBgGADEoR/gDCVSC4UVeJEZwKti7GpSpLDfHZqeJYpRqfcEgsGn2GAqZgEBoCoEBzpCwVfDGsy1cFXUcH6CdwEB6qhfJxzW6730VBICAgCkB1oRgTGO4BfUJ3H3mCc4VsEQA7"
+            alt="" />
+    </div>
+    <style type="text/css">
+        .preloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #fff;
+            color: #fff;
+            z-index: 9999;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+    </style>
+    <!-- /preloader -->
+
+    <header>
+        <div class="top-header">
+            <div class="wrap flex justify-between align-center">
+                <div class="social-network header flex align-center transition-3">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+                </div>
+                <ul id="block-exchange-rates" class="block-info flex"></ul>
+            </div>
+        </div>
+        <div class="block-logo">
+            <div class="wrap flex align-center justify-end">
+                <div class="toogle transition">
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                </div>
+                <div class="logo">
+                    <a class="logo-big" href="/">
+                        <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                    <a class="logo-mobile" href="/">
+                        <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                </div>
+                <div class="broadcast flex align-center justify-center transition">ефір</div>
+                <div id="search-button" class="search flex align-center justify-center">
+                    <span class="icon transition"></span>
+                </div>
+                <div class="block-search">
+                    <div>
+                        <input id="search-str" type="text" placeholder="Пошук" />
+                        <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block-nav">
+            <div class="wrap transition-3">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="go-top transition">
+        <span>Вгору</span>
+    </div>
+    <section class="section-broadcast">
+        <div class="block-broadcast hide">
+            <div class="close-broadcast"></div>
+            <div class="wrap flex justify-between">
+                <div class="tabs-wrap">
+                    <div class="tabs flex transition-3">
+                        <div class="tab-item active transition" data-content="tab-content-1">Онлайн трансляція</div>
+                        <div class="tab-item transition" data-content="tab-content-2">Програма передач</div>
+                        <div class="content-2-video-name flex align-center">
+                            <div class="back transition flex align-center justify-center"></div>
+                            <span id="program-name"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-content-1" class="tab-content flex justify-between transition active">
+                    <div class="block-video">
+                        <iframe id="video" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+                    </div>
+                    <p class="block-preview-title">Останні відео</p>
+                    <ul class="block-preview scroll">
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/biFpiP3klKA">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/204/medium/_новости.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">«Новини Кривбасу» – новини за 19 лютого 2019 року</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/se9M2HHka94">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/203/medium/_новости_с.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">«Новини Кривбасу» – новини за 19 лютого 2019 року (сурдопереклад)</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/eNNTT6sVHT8">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/207/medium/_героин1.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Спіймали банду наркодилерів</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/jFfAm7vNybU">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/206/medium/_ид.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Юліана Мінаєва, Вадим Казмірук</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/kZ77ZgmDQiw">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/205/medium/_тема.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Ігор Холодницький – лікар-нарколог Криворізького психоневрологічного диспансеру</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/9Oh_adGNo2I">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/202/medium/вт_президент.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Які обов’язки, на вашу думку, мають бути у президента?</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/Wi5rcDrAxGs">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/200/medium/вт_инвалид.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Чи комфортно людям з інвалідністю пересуватися по Кривому Рогу?</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/T_wJclKpaHc">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/201/medium/вт_общага.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Чи повинен навчальний заклад відповідати за стан гуртожитку, який перебуває в його підпорядкуванні?</h4>
+                                <p class="date">19 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/Mip0XrdzmH4">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/189/medium/ид.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Арсеній Журавель – учасник дев&#39;ятого сезону шоу «Голос країни»</h4>
+                                <p class="date">18 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                        <li class="preview-item video-overlay flex transition" data-src="https://www.youtube.com/embed/WcJe6p3HSG8">
+                            <div class="img">
+                                <img src="releases/cover_images/000/008/193/medium/тд.jpg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h4 class="title">Вікторія Малиш-Ковш – мешканка гуртожитку при училищі Балакіна</h4>
+                                <p class="date">18 Лютня 2019</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div id="tab-content-2" class="tab-content flex transition">
+                    <div class="days-list"></div>
+                    <div class="day-name flex align-center">
+                        <div class="back transition flex align-center justify-center"></div>
+                        <span id="day-name">Назад до програми передач</span>
+                    </div>
+                    <div class="block-schedule flex justify-end">
+                        <div class="block-video-schedule transition-3">
+                            <iframe id="video-schedule" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="schedule-list-wrapper transition scroll">
+                            <ul class="schedule-list transition">
+
+                            </ul>
+                        </div>
+                        <div class="schedule-info scroll transition-3">
+                            <h2 class="block-title transition"></h2>
+                            <p class="description transition"></p>
+                            <p class="all-release">Попередні випуски</p>
+                            <div id="schedule-block-preview" class="block-preview flex"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-result hide">
+        <div class="close-search-result"></div>
+        <div class="wrap flex justify-between">
+            <div class="section-title no-line">
+                <span>Результати пошуку</span>
+            </div>
+            <ul class="result-videos-list flex"></ul>
+            <ul class="result-news-list"></ul>
+        </div>
+    </section>
+
+
+    <main>
+        <div class="wrap">
+            <section class="section-slider">
+                <h2 class="block-title">Головні новини</h2>
+                <div class="slider">
+
+
+                    <div class="slider-item">
+                        <a href="/news/20367.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/020/367/medium/книжка2.jpg" />
+                            </div>
+                            <div class="slider-text transition">Всем тем, кто живёт с Украиной в сердце: в Кривом Роге презентовали «Криворожский кобзарь»</div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/20366.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/020/366/medium/колбаса.jpg" />
+                            </div>
+                            <div class="slider-text transition">Бутерброд с колбасой в Украине подорожал за год на 15%, – эксперты</div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19034.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/034/medium/кран.jpg" />
+                            </div>
+                            <div class="slider-text transition">Большинство телезрителей «Первого Городского» сообщили, что у них постоянно возникают проблемы с водой из-за аварий на «Кривбассводоканале», – опрос
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19027.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/027/medium/рада.jpg" />
+                            </div>
+                            <div class="slider-text transition">Решение о разрыве договора о дружбе, сотрудничестве и партнёрстве Украины и России поддержали в Верховной Раде
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19023.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/023/medium/яма1.jpg" />
+                            </div>
+                            <div class="slider-text transition">Сотрудники «Кривбассводоканала» собираются устранять порыв в течение суток и работать всю ночь
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19007.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/007/medium/100.jpg" />
+                            </div>
+                            <div class="slider-text transition">Более 60 долгожителей проживают на Днепропетровщине
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19015.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/015/medium/лебеди.jpg" />
+                            </div>
+                            <div class="slider-text transition">Зоозащитники из Кривого Рога вместе с «Первым Городским» отвезли семью лебедей в харьковский экопарк
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19011.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/011/medium/поезд.jpg" />
+                            </div>
+                            <div class="slider-text transition">С 8 декабря из Киева начнут курсировать беспересадочные вагоны во Вроцлав
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="slider-item">
+                        <a href="/news/19000.html">
+                            <div class="img">
+                                <img class="transition" src="/news/cover_images/000/019/000/medium/президент.jpeg" />
+                            </div>
+                            <div class="slider-text transition">Объединительный Собор, который провозгласит о создании Единой автокефальной церкви, состоится 15 декабря, – Президент Порошенко
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="button mobile transition flex justify-center align-center">
+                    Всі новини
+                </div>
+            </section>
+            <div class="main flex justify-between">
+                <section id="index-left-block" class="column-1">
+                    <div id="main-infinite-scroll" class="column-1-news scroll">
+                        <div class="new-inner">
+                            <h3 class="subtitle" id="date_2019-02-20">
+
+                                20 Лютня 2019
+                            </h3>
+                            <ul class="news-list">
+
+                                <li data-id="20367" data-date="2019/02/20" class="new-item flex top">
+                                    <div class="time">21:44</div>
+                                    <a href="/news/20367.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Всем тем, кто живёт с Украиной в сердце: в Кривом Роге презентовали «Криворожский кобзарь»
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/367/medium/книжка2.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20366" data-date="2019/02/20" class="new-item flex high">
+                                    <div class="time">21:17</div>
+                                    <a href="/news/20366.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Бутерброд с колбасой в Украине подорожал за год на 15%, – эксперты
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/366/medium/колбаса.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20365" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">20:26</div>
+                                    <a href="/news/20365.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Днепропетровской области проходит конкурс бизнес-планов среди студентов
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/365/medium/конкурс.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20360" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">19:29</div>
+                                    <a href="/news/20360.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Школьники презентовали книгу в память об освободителях Долгинцевского района Кривого Рога
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/360/medium/книга.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20364" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">18:38</div>
+                                    <a href="/news/20364.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В центре Кривого Рога активисты зажгли лампадки в память о Героях Небесной Сотни
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/364/medium/митинг2.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20363" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">18:11</div>
+                                    <a href="/news/20363.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге состоялась панихида в память о погибших на Майдане и фотовыставка одного из его участников
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/363/medium/выставка4.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20362" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">17:42</div>
+                                    <a href="/news/20362.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Следствие установило отдававших приказы и 66 исполнителей убийств Небесной Сотни, – Юрий Луценко
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/362/medium/луценко.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20356" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">17:24</div>
+                                    <a href="/news/20356.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Во второй тур президентских выборов пройдут Зеленский и Порошенко, а рейтинг Тимошенко продолжает падать, – Центр Разумкова
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/356/medium/010.png">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20359" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">16:32</div>
+                                    <a href="/news/20359.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Министерстве финансов решили не продлевать льготный период растаможки «евроблях»
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/359/medium/евробляха.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20358" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">15:31</div>
+                                    <a href="/news/20358.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Лозунги, цвет и внешний вид: в Кривом Роге «Центр политической аналитики» проанализировал билборды с агитацией кандидатов в президенты
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/358/medium/коллаж2.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20357" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">14:19</div>
+                                    <a href="/news/20357.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            «Укрпочта» будет доставлять субсидии наличными весной 2019 года, – заявление
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/357/medium/почта.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20355" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">13:22</div>
+                                    <a href="/news/20355.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге мужчине, который вырвал сумку из рук женщины, грозит шесть лет тюрьмы
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/355/medium/сумка.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20325" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">12:42</div>
+                                    <a href="/news/20325.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Ко Дню экскурсовода в Кривом Роге пройдёт ярмарка и туристические походы
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/325/medium/ярмарка_екскурсии.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20354" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">11:49</div>
+                                    <a href="/news/20354.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге в квартире нашли труп мужчины
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/354/medium/труп.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20352" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">11:12</div>
+                                    <a href="/news/20352.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге полиция задержала педофила, который развращал 14-летнюю девочку и снимал это на видео
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/352/medium/педофил.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20353" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">11:05</div>
+                                    <a href="/news/20353.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            За сутки в полицию Кривого Рога обращались трижды из-за нарушения избирательного законодательства
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/353/medium/полиция_машина_надпись.JPG">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20351" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">09:51</div>
+                                    <a href="/news/20351.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Украине планируют строить только энергоэффективное жильё, – заявление
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/351/medium/20190218_123240.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20311" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">09:06</div>
+                                    <a href="/news/20311.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге состоится открытый чемпионат по теннису среди детей
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/311/medium/теннис1.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20350" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">08:17</div>
+                                    <a href="/news/20350.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Пятая годовщина расстрелов на Майдане: в Украине чтят память Героев Небесной Сотни
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/350/medium/майдан1.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20344" data-date="2019/02/20" class="new-item flex common">
+                                    <div class="time">08:03</div>
+                                    <a href="/news/20344.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            20 февраля в Кривом Роге будет пасмурный день
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/344/medium/погода.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20349" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">22:12</div>
+                                    <a href="/news/20349.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Большинство телезрителей «Первого Городского» считают, что ни в коем случае нельзя легализировать лёгкие наркотики в Украине, – опрос
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/349/medium/наркотики.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20348" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">21:29</div>
+                                    <a href="/news/20348.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            С начала 2019 года на Днепропетровщине реабилитацию прошли 118 бойцов, – Валентин Резниченко
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/348/medium/бойцы.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20347" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">20:43</div>
+                                    <a href="/news/20347.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Спортсмены из Кривого Рога заняли призовые места на чемпионате области по армрестлингу
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/347/medium/арм.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20346" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">19:52</div>
+                                    <a href="/news/20346.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Украине уменьшается количество ВИЧ-инфицированной молодёжи, – статистика
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/346/medium/кровь.JPG">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20342" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">19:04</div>
+                                    <a href="/news/20342.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Днепропетровщина вошла в тройку лидеров по олимпийским видам спорта
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/342/medium/медаль.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20345" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">18:11</div>
+                                    <a href="/news/20345.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Хвостатые комиссары: в 2018 году служебные псы Кривого Рога помогли раскрыть около сотни преступлений
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/345/medium/собаки4.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20340" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">17:17</div>
+                                    <a href="/news/20340.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Спортсмены из Кривого Рога привезли восемь медалей с чемпионата Украины по рукопашному бою
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/340/medium/соревнование.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20343" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">16:23</div>
+                                    <a href="/news/20343.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            На Днепропетровщине юрист коммунального предприятия требовал неправомерную выгоду за списание долга за отопление
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/343/medium/взятка.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20341" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">16:02</div>
+                                    <a href="/news/20341.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            70 патронов: полицейские в Кривом Роге изъяли у горожанина боеприпасы
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/341/medium/патроны.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20336" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">15:14</div>
+                                    <a href="/news/20336.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            СБУ разоблачила масштабные планы спецслужб РФ по вмешательству в выборы в Украине
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/336/medium/сбу.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20339" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">14:31</div>
+                                    <a href="/news/20339.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Пётр Порошенко закрепил стратегический курс Украины в ЕС и НАТО, подписав изменения в Конституцию
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/339/medium/порошенко.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20338" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">13:57</div>
+                                    <a href="/news/20338.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Неудачно вписался: ранним утром в Кривом Роге «ВАЗ» въехал в припаркованный грузовик
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/338/medium/авария.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20335" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">13:24</div>
+                                    <a href="/news/20335.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Под Кривым Рогом по дороге домой мужчина нашёл устаревшие боеприпасы
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/335/medium/боеприпас.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20334" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">12:33</div>
+                                    <a href="/news/20334.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            За сутки полиция Кривого Рога задокументировала одно нарушение избирательного законодательства
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/334/medium/полиция.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20333" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">12:11</div>
+                                    <a href="/news/20333.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В аварии на проходной одного из предприятий Кривого Рога пострадали четыре человека
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/333/medium/знак_дтп.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20332" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">11:54</div>
+                                    <a href="/news/20332.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге полиция задержала организатора сети онлайн-порностудий
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/332/medium/задержали3.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20331" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">10:57</div>
+                                    <a href="/news/20331.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Недалеко от Кривого Рога на пожаре погиб мужчина
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/331/medium/пожар1.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20330" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">10:03</div>
+                                    <a href="/news/20330.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Полицейские разыскивают очевидцев смертельной аварии, которая случилась на въезде в Кривой Рог
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/330/medium/photo_2019-02-08_22-05-34.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20324" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">09:39</div>
+                                    <a href="/news/20324.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Студенты Днепропетровщины могут бесплатно обучаться в Европе по обмену
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/324/medium/студенты_учеба.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20329" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">08:52</div>
+                                    <a href="/news/20329.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Спортсмены из Кривого Рога заняли первое командное место на чемпионате области по карате
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/329/medium/кубок.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20328" data-date="2019/02/19" class="new-item flex common">
+                                    <div class="time">08:03</div>
+                                    <a href="/news/20328.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            19 февраля в Кривом Роге будет солнечный день
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/328/medium/20190218_110709.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20327" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">22:41</div>
+                                    <a href="/news/20327.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Большинство телезрителей «Первого Городского» считают, что Верховная Рада правильно поступила, когда запретила российским наблюдателям участвовать в выборах Президента Украины, – опрос
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/327/medium/віборі.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20326" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">21:56</div>
+                                    <a href="/news/20326.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Под арестом проведут досудебное расследование дилеры, у которых в Кривом Роге изъяли крупную партию героина
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/326/medium/героин.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20321" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">21:04</div>
+                                    <a href="/news/20321.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Кривом Роге открылась фотовыставка «Взгляд-2018»
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/321/medium/5.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20323" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">20:21</div>
+                                    <a href="/news/20323.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Боец ММА из Кривого Рога победил на турнире в Молдове
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/323/medium/мма_катькин.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20319" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">19:43</div>
+                                    <a href="/news/20319.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            У более 11 тысяч людей на Днепропетровщине в 2018 году обнаружили онкопатологии
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/319/medium/больница.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20322" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">18:58</div>
+                                    <a href="/news/20322.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Поджог церкви в Кривом Роге организовали российские спецслужбы через подконтрольные им структуры в «ДНР», – Служба безопасности Украины
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/322/medium/церковь_обрисована.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20317" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">18:11</div>
+                                    <a href="/news/20317.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Украине упростили правила смены индивидуальных номерных знаков автомобилей
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/317/medium/номер.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20320" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">17:34</div>
+                                    <a href="/news/20320.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Стоимость борщевого набора в Украине выросла от 16% до 70%, – эксперт
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/320/medium/борщ.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20318" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">16:46</div>
+                                    <a href="/news/20318.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            На Днепропетровщине заработала одна из наибольших солнечных электростанций в Европе
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/318/medium/солнечная_электростанция.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20316" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">15:48</div>
+                                    <a href="/news/20316.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Бывший соратник Тимошенко, которого подозревают в организации убийства Екатерины Гандзюк, вернулся на работу, выйдя под залог
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/316/medium/Мангер.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20315" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">15:27</div>
+                                    <a href="/news/20315.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Зимнее первенство Кривого Рога: «Кривбасс» сыграл вничью с «Лозоваткой»
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/315/medium/3.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20314" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">14:46</div>
+                                    <a href="/news/20314.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Днепропетровщина стала рекордсменом по количеству браков в День всех влюблённых
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/314/medium/кольца_свадьба.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20313" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">14:00</div>
+                                    <a href="/news/20313.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В 2018 году мужчины в Кривом Роге чаще пытались покончить с собой, чем женщины, – статистика
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/313/medium/скорая.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20312" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">13:22</div>
+                                    <a href="/news/20312.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В регионы Украины направят вакцины против кори, паротита, полиомиелита и краснухи, – МОЗ
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/312/medium/вакцины.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20310" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">12:27</div>
+                                    <a href="/news/20310.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            Недалеко от Кривого Рога нашли тело пожилого мужчины с ножевыми ранениями, подозреваемого задержали
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/310/medium/вбивсиво.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20309" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">11:26</div>
+                                    <a href="/news/20309.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            За выходные в Кривом Роге зафиксировали пять нарушений избирательного законодательства
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/309/medium/полиция_жетон.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20308" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">11:01</div>
+                                    <a href="/news/20308.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В Украине обязательно будут устанавливать системы противодымной защиты в кинотеатрах, музеях и цирках, – Минрегион
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/308/medium/зал_кино.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20031" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">09:56</div>
+                                    <a href="/news/20031.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            В квартирах жителей Украины могут разрешить оборудовать кухни-ниши
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/031/medium/кухня.1.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20305" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">09:01</div>
+                                    <a href="/news/20305.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            На Днепропетровщине усыновили семерых сирот с начала 2019 года, – Валентин Резниченко
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/305/medium/игрушки.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li data-id="20307" data-date="2019/02/18" class="new-item flex common">
+                                    <div class="time">07:58</div>
+                                    <a href="/news/20307.html" class="new-info">
+                                        <h2 class="new-title transition">
+                                            18 февраля в Кривом Роге будет пасмурно с прояснениями
+                                        </h2>
+                                        <div class="new-img">
+                                            <img class="transition" src="news/cover_images/000/020/307/medium/ветки.jpg">
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="button mobile transition flex justify-center align-center">
+                        Новини раніше
+                    </div>
+                </section>
+                <section class="column-2">
+                    <div id="news-center-block">
+                        <ul class="news-list">
+
+                            <li class="new-item">
+                                <a href="/news/20367.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/020/367/medium/книжка2.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">Всем тем, кто живёт с Украиной в сердце: в Кривом Роге презентовали «Криворожский кобзарь»</h2>
+                                    <p class="description">20 февраля в Координационном центре помощи бойцам АТО и их семьям состоялась презентация книги капелана Юрия Илькива «Криворожский кобзарь». Это сборник стихов войне, любови и родине. Священнослужитель в качестве волонтёра
+                                        с начала российской агрессии на территории нашей страны ездил в зону ООС.</p>
+                                    <p class="date">20 Лютня 2019 21:44</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/19031.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/019/031/medium/продукты.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">Верховная Рада приняла законопроект о новых правилах маркировки и рекламы пищевых продуктов
+                                    </h2>
+                                    <p class="description">Информацию о пищевых продуктах будут маркировать по новым правилам. Также украинское законодательство приведут в соответствие с нормами Евросоюза. Верховная Рада приняла соответствующий законопроект. Решение поддержали
+                                        231 депутат.
+                                    </p>
+                                    <p class="date">6 Грудня 2018 21:23</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/19017.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/019/017/medium/похорон2.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">В Кривом Роге провели в последний путь бойца Вооружённых Сил Украины, погибшего в зоне ООС
+                                    </h2>
+                                    <p class="description">6 декабря в Кривом Роге простились с погибшим бойцом Богданом Хливным. Он был стрелком-помощником гранатометчика в зоне проведения ООС. Военнослужащего похоронят на Алее славы Центрального кладбища.
+                                    </p>
+                                    <p class="date">6 Грудня 2018 11:15</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/19018.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/019/018/medium/суд_молоток.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">В Кривом Роге водителя, который сбил пешехода и скрылся с места аварии, приговорили к трём годам лишения свободы
+                                    </h2>
+                                    <p class="description">В Саксаганском районном суде огласили приговор мужчине, который насмерть сбил пешехода. 33-летнему горожанину присудили три года лишения свободы. Об этом сообщили в пресс-службе прокуратуры Днепропетровской области.
+                                    </p>
+                                    <p class="date">6 Грудня 2018 11:09</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/19002.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/019/002/medium/мебель.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">В Кривом Роге женщина с сомнительными документами пыталась присвоить мебель и вынести её из магазина
+                                    </h2>
+                                    <p class="description">5 декабря на улице Лисового женщина с сомнительными документами вошла в мебельный магазин. Она заявила, что часть товара принадлежит ей. Сопровождавшие её люди стали выносить мебель. В ответ хозяйка магазина вызвала
+                                        правоохранителей.
+                                    </p>
+                                    <p class="date">5 Грудня 2018 13:26</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/19000.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/019/000/medium/президент.jpeg">
+                                    </div>
+                                    <h2 class="new-title transition">Объединительный Собор, который провозгласит о создании Единой автокефальной церкви, состоится 15 декабря, – Президент Порошенко
+                                    </h2>
+                                    <p class="description">15 декабря в Софийском соборе в Киеве пройдёт объединительный Собор. На нём должны провозгласить о создании автокефальной поместной православной церкви. Об этом сообщил Пётр Порошенко во время выступления на Форуме
+                                        местного самоуправления.
+                                    </p>
+                                    <p class="date">5 Грудня 2018 12:12</p>
+                                </a>
+                            </li>
+
+                            <li class="new-item">
+                                <a href="/news/12142.html" class="new-info">
+                                    <div class="new-img">
+                                        <img class="transition" src="news/cover_images/000/012/142/medium/баскетбол.jpg">
+                                    </div>
+                                    <h2 class="new-title transition">Баскетбольная команда из Кривого Рога привезла две победы из Николаева
+                                    </h2>
+                                    <p class="description">18 и 19 ноября в Николаеве прошли поединки третьего тура Первой лиги Украины по баскетболу. Криворожский «КГПУ» сразился со второй командой местного одноимённого клуба. Два матча остались за нашими земляками – 51:89
+                                        и 91:95.
+                                    </p>
+                                    <p class="date">22 Листопада 2017 09:10</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <a href="/news/" class="button transition flex justify-center align-center">
+            Всі новини
+          </a>
+                    </div>
+                </section>
+                <div class="column-3">
+
+
+                    <section>
+                        <div class="section-title flex justify-between">
+                            <span>Блоги</span>
+                            <a class="transition" href="/blog/">ВСІ ПУБЛІКАЦІЇ</a>
+                        </div>
+                        <ul class="blog-list">
+
+
+                            <li class="blog-item">
+                                <a class="flex" href="/blog/2.html">
+                                    <div class="blog-logo">
+                                        <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+                                    </div>
+                                    <div class="blog-info">
+                                        <p class="name"> </p>
+                                        <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="blog-item">
+                                <a class="flex" href="/blog/3.html">
+                                    <div class="blog-logo">
+                                        <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+                                    </div>
+                                    <div class="blog-info">
+                                        <p class="name"> </p>
+                                        <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="blog-item">
+                                <a class="flex" href="/blog/1.html">
+                                    <div class="blog-logo">
+                                        <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+                                    </div>
+                                    <div class="blog-info">
+                                        <p class="name"> </p>
+                                        <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </section>
+
+                    <section class="home-video-block">
+                        <div class="section-title flex justify-between">
+                            <span>Відео</span>
+                            <a class="transition" href="/episode/">всі відео</a>
+                        </div>
+                        <ul class="video-list">
+
+                            <li class="video-item">
+                                <a href="/episode/8204.html">
+                                    <div class="img">
+                                        <img src="/releases/cover_images/000/008/204/medium/_новости.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <h4 class="title transition">Новини Кривбасу</h4>
+                                        <p class="date">19 Лютня 2019</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="video-item">
+                                <a href="/episode/8203.html">
+                                    <div class="img">
+                                        <img src="/releases/cover_images/000/008/203/medium/_новости_с.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <h4 class="title transition">Новини Кривбасу з сурдоперекладом</h4>
+                                        <p class="date">19 Лютня 2019</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="video-item">
+                                <a href="/episode/8207.html">
+                                    <div class="img">
+                                        <img src="/releases/cover_images/000/008/207/medium/_героин1.jpg" alt="" />
+                                    </div>
+                                    <div>
+                                        <h4 class="title transition">Спецрепортаж</h4>
+                                        <p class="date">19 Лютня 2019</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <a href="/episode/" class="button transition flex justify-center align-center">
+    Більше відео
+  </a>
+                    </section>
+                    <section>
+                        <div class="section-title flex justify-between">
+                            <span>Facebook</span>
+                        </div>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1tv.kr.ua%2F&tabs=event&width=284&height=197&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="284" height="197"
+                            style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media">
+          </iframe>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <div class="wrap flex">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="wrap flex justify-between align-center">
+                <div class="flex">
+                    <a class="logo-footer transition" href="main.html">
+                        <img src="/static/img/logo-footer.svg" />
+                    </a>
+                    <div class="info">
+                        <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+                        <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+                    </div>
+                </div>
+                <div class="social-network footer flex align-center">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="wrap flex justify-between align-center">
+
+                <div class="flex align-center developer">
+                    <span>Made by</span>
+                    <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
+
+
+<script type="text/javascript" src="/static/js/loader.js"></script>
+
+</html>

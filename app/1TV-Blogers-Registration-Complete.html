@@ -6,26 +6,222 @@
     <title></title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content=width=device-width height=device-height user-scalable=no>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/static/style/nice-select.css" />
+    <link rel="stylesheet" href="/static/style/style.css">
+    <!--link href="http://1tv.kr.ua/news.rss" rel="alternate" title="RSS" type="application/rss+xml" /-->
+    <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/img/apple-touch-icon-144.png">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <link rel="icon" href="/static/img/favicon.png">
+
+    <meta property="fb:app_id" content="204387270490071" />
+    <meta property="fb:pages" content="1056583734365790" />
+    <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
+    <link rel="stylesheet" href="/static/style/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <!-- Bloger styles -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
 </head>
 
 <body>
-    <section class="auth-bloger">
-        <div class="container">
-            <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <img src="img/badge.svg" alt="Resume icon">
+    <header>
+        <div class="top-header">
+            <div class="wrap flex justify-between align-center">
+                <div class="social-network header flex align-center transition-3">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <h2>Вітаємо!</h2>
-                </div>
-                <p>Ви стали блогером на порталі новин «Перший Міський»</p>
-                <a href="#">До сторінки  блогера</a>
+                <ul id="block-exchange-rates" class="block-info flex"></ul>
             </div>
         </div>
-    </section>
+        <div class="block-logo">
+            <div class="wrap flex align-center justify-end">
+                <div class="toogle transition">
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                </div>
+                <div class="logo">
+                    <a class="logo-big" href="/">
+                        <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                    <a class="logo-mobile" href="/">
+                        <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                </div>
+                <div class="broadcast flex align-center justify-center transition">ефір</div>
+                <div id="search-button" class="search flex align-center justify-center">
+                    <span class="icon transition"></span>
+                </div>
+                <div class="block-search">
+                    <div>
+                        <input id="search-str" type="text" placeholder="Пошук" />
+                        <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block-nav">
+            <div class="wrap transition-3">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="auth-bloger">
+            <div class="container">
+                <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="static/img/badge.svg" alt="Resume icon">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h2>Вітаємо!</h2>
+                    </div>
+                    <p>Ви стали блогером на порталі новин «Перший Міський»</p>
+                    <a href="#">До сторінки  блогера</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <div class="wrap flex">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="wrap flex justify-between align-center">
+                <div class="flex">
+                    <a class="logo-footer transition" href="main.html">
+                        <img src="/static/img/logo-footer.svg" />
+                    </a>
+                    <div class="info">
+                        <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+                        <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+                    </div>
+                </div>
+                <div class="social-network footer flex align-center">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="wrap flex justify-between align-center">
+
+                <div class="flex align-center developer">
+                    <span>Made by</span>
+                    <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
+
+
+<script type="text/javascript" src="/static/js/loader.js"></script>
 
 </html>
