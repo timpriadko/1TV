@@ -19,7 +19,7 @@ function BlogService() {
 
         // Delete blog
         deleteBlog: function() {
-            var token = 'Bearer' + ' ' + localStorage.getItem("token");
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.open('OPTIONS', env.apiUrl + 'blog/delete/1/');
             xhr.setRequestHeader("Authorization", token);
@@ -35,7 +35,7 @@ function BlogService() {
             publish_in,
             published
         }) {
-            var token = 'Bearer' + ' ' + localStorage.getItem("token");
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.open('OPTIONS', env.apiUrl + 'blog/update/1/');
             xhr.setRequestHeader("Authorization", token);

@@ -13,7 +13,10 @@ function AuthService() {
         sendOtp: function(tel, password) {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'login/');
-            return xhr.send(JSON.stringify({ tel, password }));
+            xhr.onload = function() {
+                console.log(JSON.parse(this.responseText));
+            };
+            xhr.send(JSON.stringify({ tel, password }));
         },
 
 
@@ -26,18 +29,22 @@ function AuthService() {
         login: function(tel, password, otp) {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'login/');
-            return xhr.send(JSON.stringify({ tel, password, otp }));
+            xhr.onload = function() {
+                var response = JSON.parse(this.responseText);
+                sessionStorage.setItem('token', response.token);
+                console.log(response);
+            };
+            xhr.send(JSON.stringify({ tel, password, otp }));
         },
 
         /**
          * @description Выход из аккаунта
          */
         logout: function() {
-            var token = 'Bearer' + ' ' + localStorage.getItem("token");;
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.setRequestHeader("Authorization", token);
             xhr.open('GET', env.apiUrl + 'logout/');
-            console.log(token);
             return xhr.send();
         }
     }
@@ -69,6 +76,10 @@ function loginHandler(e) {
     e.preventDefault();
 
     auth.login(phoneInput.value, passwordInput.value, otpInput.value);
+
+    if (sessionStorage.getItem("token")) {
+        window.location = "1TV-Blogers-BlogerPage.html";
+    };
 }
 
 form.addEventListener("submit", loginHandler);
