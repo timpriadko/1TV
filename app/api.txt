@@ -1,0 +1,107 @@
+https://api.1tvkr-demo.syntech.info/api/
+
+//
+mail - test.2@syntech.info
+password - yU2F5DHh
+tel - +380123456789
+
+//
+mail - timpriadko@gmail.com
+password - bCNVNzIf
+tel - +380987654321
+
+// Login
+https://api.1tvkr-demo.syntech.info/api/login/
+
+- send otp:
+body:
+{
+"tel": "0972183715",
+"password": "BPiTQkf5"
+}
+
+> answer:
+{
+"login": "otp sent"
+}
+
+- login
+body:
+{
+"tel": "0972183715",
+"password": "BPiTQkF5",
+"otp": "21686821"
+}
+
+> answer:
+{
+"token": "fgnhfghkghwetrsert54trh3254bbfgfsd"
+}
+
+
+// Create blog
+https://api.1tvkr-demo.syntech.info/api/blog/create/
+
+body:
+{
+"title": "fghjf",
+"description": "dfegfdshggd",
+"content": "gfdhjfgjkg",
+"tags": [],
+"publish_in": "2019-03-18T15:00:00+02:00",
+"published": false
+}
+
+> answer:
+{
+"create": "ok",
+"id": 1
+}
+
+
+// Update blog 
+https://api.1tvkr-demo.syntech.info/api/blog/update/1/
+
+body:
+{
+"title": "fghjf",
+"description": "dfegfdshggd",
+"content": "gfdhjfgjkg",
+"tags": [],
+"publish_in": "2019-03-18T15:00:00+02:00",
+"published": false
+}
+
+> answer:
+{
+"update": "ok"
+}
+
+
+// Blog list
+https://api.1tvkr-demo.syntech.info/api/blog/list/
+
+body:
+{
+"title": "fghjf",
+"description": "dfegfdshggd",
+"content": "gfdhjfgjkg",
+"status": "draft",
+"tags": [],
+"created_in": "2019-03-18"
+"publish_in": "2019-03-18T15:00:00+02:00",
+}
+
+> answer:
+{
+"update": "ok"
+}
+
+
+// Delete blog
+https://api.1tvkr-demo.syntech.info/api/blog/delete/1/
+
+> answer:
+{
+"delete": "ok"
+}

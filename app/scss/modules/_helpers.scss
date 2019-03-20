@@ -1,3 +1,9 @@
+// Header user avatar
+#user-avatar {
+    margin-left: 30px;
+    cursor: pointer;
+}
+
 // Background-colors
 .bg-light-blue {
     background-color: #EFF0F5;
@@ -53,4 +59,56 @@
             color: #333;
         }
     }
+}
+
+// Datetime picker
+.delay-article-post {
+    position: relative;
+    &:after {
+        content: url(../../static/img/icon-calendar.svg);
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 30px;
+        right: 15px;
+        z-index: -1;
+        opacity: 0.7;
+    }
+    input {
+        padding: 15px 35px 15px 15px;
+        background-color: transparent;
+        border: 1px solid #D8D8D8;
+    }
+}
+
+@media (max-width: 992px) {
+    .delay-article-post {
+        &:after {
+            top: 45px;
+        }
+    }
+}
+
+// CKeditor
+.cke_inner .cke_top {
+    border-bottom: none;
+}
+
+// Validation blog message
+.validation-message {
+    color: #C8193C;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.is-invalid {
+    color: #C8193C;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.is-invalid:after {
+    content: "Це поле не може бути пустим";
 }

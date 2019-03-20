@@ -1,0 +1,44 @@
+.block-user-options {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: none;
+    width: auto;
+    height: auto;
+    background: #fff;
+    position: absolute;
+    right: 0px;
+    bottom: -120px;
+    ;
+    z-index: 10;
+    -webkit-box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.12), 0 6px 30px 5px rgba(0, 0, 0, 0.08), 0 16px 24px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.12), 0 6px 30px 5px rgba(0, 0, 0, 0.08), 0 16px 24px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.12), 0 6px 30px 5px rgba(0, 0, 0, 0.08), 0 16px 24px 2px rgba(0, 0, 0, 0.08);
+    div {
+        button {
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            background-color: #fff;
+            color: #273E8C;
+        }
+        a {
+            color: #273E8C;
+        }
+        div,
+        button {
+            padding: 13px 15px;
+            &:hover {
+                background-color: #e4e4ef;
+            }
+            img {
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .block-user-options {
+        right: -80px;
+        bottom: -95px;
+    }
+}

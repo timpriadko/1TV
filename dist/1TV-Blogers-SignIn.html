@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="/static/style/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <!-- Bloger styles -->
-    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -70,6 +70,20 @@
                         <button type="button" class="header-search-button flex align-center justify-center transition"></button>
                     </div>
                 </div>
+                <!-- user-avatar -->
+                <div id="user-avatar">
+                    <img src="/static/img/icon-user-circle.svg" alt="User avatar">
+                </div>
+                <div class="block-user-options">
+                    <div>
+                        <div class="user-name">Ім’я Прізвище</div>
+                        <div class="user-options">
+                            <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
+                        </div>
+                        <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
+                    </div>
+                </div>
+                <!-- /user-avatar -->
             </div>
         </div>
         <div class="block-nav">
@@ -130,13 +144,14 @@
                         <h2>Авторизація блогера</h2>
                     </div>
                 </div>
-                <form class="col-sm-8 col-md-6 col-lg-4">
+                <!-- Auth form -->
+                <form name="loginForm" class="col-sm-8 col-md-6 col-lg-4">
                     <div class="flex-wrap flex-column d-flex justify-content-center">
                         <div class="d-flex flex-wrap flex-column">
-                            <input type="tel" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ" maxlength="9">
-                            <input type="password" placeholder="Пароль">
-                            <button type="button" class="white-btn">Надіслати Код</button>
-                            <input type="number" placeholder="Код з SMS">
+                            <input type="tel" name="phoneInput" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ">
+                            <input type="password" name="passwordInput" placeholder="Пароль">
+                            <button type="button" id="sendOtpBtn" class="white-btn">Надіслати Код</button>
+                            <input type="number" name="otpInput" placeholder="Код з SMS">
                             <p>На вказаний телефон: +380ХХ-ХХХ-ХХ-ХХ було відправлено одноразовий код підтвердження</p>
                             <button type="submit" class="blue-btn">Увійти</button>
                         </div>
@@ -230,8 +245,11 @@
 <script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/slick.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
-
-
 <script type="text/javascript" src="/static/js/loader.js"></script>
+<!-- login/logout -->
+<script type="text/javascript" src="static/js/bloger/login.js"></script>
+<!-- user-avatar -->
+<script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
+
 
 </html>

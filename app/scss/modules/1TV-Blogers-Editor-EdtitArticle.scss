@@ -1,0 +1,48 @@
+.article {
+    .article-page-title {
+        margin-right: 8px;
+    }
+    .unpublished-alert-message-block {
+        margin-top: 15px;
+        border: 1px solid #C8193C;
+        background-color: #FFF2F4;
+        padding: 10px 15px;
+        .unpublish-status {
+            color: #C8193C;
+            padding-bottom: 8px;
+        }
+        .unpublish-summary {
+            color: #3B3B46;
+        }
+    }
+    // Bottom buttons
+    .article-form-bottom-btns {
+        .delete-article {
+            button {
+                background-color: #fff;
+                color: #C8193C;
+                border: 1px solid #E11E44;
+                &:hover {
+                    background-color: #E11E44;
+                    color: #fff;
+                }
+            }
+        }
+        .unpublish-article {
+            button {
+                background-color: #fff;
+                color: #3350B2;
+                border: 1px solid #3350B2;
+                &:hover {
+                    background-color: #3350B2;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+// Unpublish by Admin
+.delay-article-post-by-admin {
+    margin-left: 0;
+}

@@ -8,8 +8,10 @@
     .bloger-page {
         padding-left: 30px;
     }
-    footer {
-        padding-left: 50px;
+    .main-content-wraper {
+        footer {
+            padding-left: 50px;
+        }
     }
 }
 
@@ -226,9 +228,13 @@
     background-color: #EFF0F5;
     padding: 4px 6px;
     border-radius: 7px;
+    .edited-time {
+        color: #888;
+    }
     img {
         width: 14px;
         margin-right: 6px;
+        opacity: 0.7;
     }
 }
 
@@ -241,6 +247,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     color: #000;
+    box-shadow: inset 16px 0 32px rgba(0, 0, 0, 0.1);
     ul+ul {
         margin-top: 50px;
     }
