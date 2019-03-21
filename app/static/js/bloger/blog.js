@@ -3,39 +3,6 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
-// Logout service
-function AuthService() {
-    return {
-        /**
-         * @description Выход из аккаунта
-         */
-        logout: function() {
-            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
-            var xhr = new XMLHttpRequest();
-            xhr.setRequestHeader("Authorization", token);
-            xhr.open('GET', env.apiUrl + 'logout/');
-            console.log(token);
-            return xhr.send();
-        }
-    }
-
-}
-
-// InitAuthService
-const auth = AuthService();
-
-// Logout UI
-const logoutBtn = document.getElementById('logout');
-
-// Logout handler
-function logoutHandler(e) {
-    e.preventDefault();
-
-    auth.logout();
-}
-
-logoutBtn.addEventListener("click", logoutHandler);
-
 // Blog service
 function BlogService() {
     return {
@@ -85,7 +52,7 @@ var draftBtn = document.querySelector('.save-article button')
 // New blog UI
 var newBlogform = document.forms["newBlog"];
 var titleInput = document.querySelector('.article-title input');
-var contentInput = document.getElementById('ckeditor');
+// var contentInput = document.getElementById('ckeditor');
 var tagsInput = document.querySelector('.article-tags input');
 var publishDate = document.getElementById('datetimepicker');
 var publishBtn = document.querySelector('.publish-article button');
@@ -95,6 +62,9 @@ var publishBtn = document.querySelector('.publish-article button');
 // Publish new blog handler
 function publishNewBlog(e) {
     e.preventDefault();
+
+    // Get content data from ckeditor    
+    var contentInput = CKEDITOR.instances.ckeditor.getData();
 
     // Make 'tags' string to array
     var tagsArr;
@@ -109,7 +79,7 @@ function publishNewBlog(e) {
     var newBlogData = {
         title: titleInput.value,
         description: "create",
-        content: contentInput.value,
+        content: contentInput,
         tags: [],
         publish_in: publishDate.value,
         published: true
@@ -124,6 +94,9 @@ publishBtn.addEventListener("click", publishNewBlog);
 function saveBlogAsNewDraft(e) {
     e.preventDefault();
 
+    // Get content data from ckeditor    
+    var contentInput = CKEDITOR.instances.ckeditor.getData();
+
     // Make 'tags' string to array
     var tagsArr;
 
@@ -137,7 +110,7 @@ function saveBlogAsNewDraft(e) {
     var saveBlogAsDraft = {
         title: titleInput.value,
         description: "create",
-        content: contentInput.value,
+        content: contentInput,
         tags: [],
         publish_in: publishDate.value,
         published: false

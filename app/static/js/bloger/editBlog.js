@@ -3,6 +3,33 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
+
+// Blog UI
+var newBlogform = document.forms["newBlog"];
+var titleInput = document.querySelector('.article-title input');
+var contentInput = document.getElementById('ckeditor');
+var tagsInput = document.querySelector('.article-tags input');
+var publishDate = document.getElementById('datetimepicker');
+
+// Edit UI
+var deleteBtn = document.querySelector('.delete-article button')
+var unpublishDescription = document.getElementById('unpublish-description');
+var unpublishPreModalBtn = document.querySelector('.unpublish-article button');
+var unpublisBtn = document.querySelector('.modal-unpublish-btn');
+
+// Set current blog data to the inputs
+var blogData;
+
+function setBlogValue() {
+    blogData = JSON.parse(sessionStorage.getItem('currentBlog'));
+    console.log(blogData);
+    titleInput.value = blogData.title;
+    contentInput.value = blogData.content;
+    publishDate.value = blogData.publish_in;
+}
+
+window.onload = setBlogValue();
+
 // Blog service
 function BlogService() {
     return {
@@ -13,8 +40,7 @@ function BlogService() {
         /      * @param {string} content - контент блога из формы
         /      * @param {Array} tags - теги из инпута формы
         /      * @param {string} publish_in - дата публикации
-        /      * @param {boolean} published - true/false 
-        /      * @param {string} status - published/unpublished/draft/removed_by_admin/removed_by_author
+        /      * @param {boolean} published - true/false
         /      */
 
         // Delete blog
@@ -54,18 +80,6 @@ function BlogService() {
 // Init Blog service
 var blog = BlogService();
 
-// Blog UI
-var newBlogform = document.forms["newBlog"];
-var titleInput = document.querySelector('.article-title input');
-var contentInput = document.getElementById('ckeditor');
-var tagsInput = document.querySelector('.article-tags input');
-var publishDate = document.getElementById('datetimepicker');
-
-// Edit UI
-var deleteBtn = document.querySelector('.delete-article button')
-var unpublishDescription = document.getElementById('unpublish-description');
-var unpublishPreModalBtn = document.querySelector('.unpublish-article button');
-var unpublisBtn = document.querySelector('.modal-unpublish-btn');
 
 // Delete blog by Editor handler
 function deleteBlog(e) {

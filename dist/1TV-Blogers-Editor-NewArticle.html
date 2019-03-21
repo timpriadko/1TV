@@ -147,14 +147,14 @@
                     <div class="article-title d-flex flex-column">
                         <label for="article-title">Заголовок статті</label>
                         <input type="text" name="new-article-title" placeholder="Заголовок">
+                        <div class="validation-message-wrapper"></div>
                     </div>
                     <!-- Content -->
                     <div class="article-content">
                         <div class="article-content-toolbar"></div>
-                        <textarea name="ckeditor" id="ckeditor" rows="18" class="ckeditor">Що відбувалось із курсом гривні? У понеділок і вже не так яскраво виражено, але і у вівторок, відбувались досить помітні коливання на валютному ринку. Ті, хто піддався паніці побігли скуповувати іноземну валюту. Звичайно, цим скористалися спекулянти, задравши курс у "обмінках". Однак обсяги продажів на готівковому ринку все одно залишалися мінімальними.
-
-                        У вівторок ситуація великою мірою заспокоїлась, курс продажу готівкового долара з космічних 29,5 грн. впав до 28,5 лише за кілька годин. Міжбанківський курс, який і визначає ціни на товари, які імпортуються в Україну, зріс за два дні лише на 30 копійок, то й то на фоні щомісячної виплати відшкодування ПДВ.
+                        <textarea name="ckeditor" id="ckeditor" rows="18" class="ckeditor">
                         </textarea>
+                        <div class="validation-message-wrapper"></div>
                     </div>
                     <!-- Tags -->
                     <div class="article-tags d-flex flex-column">
@@ -171,6 +171,7 @@
                             <div class="delay-article-post d-flex flex-column">
                                 <label for="delay-article-post">Відкласти публікацію</label>
                                 <input type="text" name="delay-article-post" id="datetimepicker" autocomplete="off" placeholder="Дата публікаціі">
+                                <div class="validation-message-wrapper"></div>
                             </div>
                         </div>
                         <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">

@@ -27,10 +27,8 @@
     <link rel="stylesheet" href="/static/style/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <!-- Bloger styles -->
-    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
-    <!-- Datetimepicker -->
-    <link rel="stylesheet" href="static/css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -72,6 +70,7 @@
                         <button type="button" class="header-search-button flex align-center justify-center transition"></button>
                     </div>
                 </div>
+                <!-- user-avatar -->
                 <div id="user-avatar">
                     <img src="/static/img/icon-user-circle.svg" alt="User avatar">
                 </div>
@@ -81,9 +80,10 @@
                         <div class="user-options">
                             <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
                         </div>
-                        <button id="signout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="Signout">Вийти</button>
+                        <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
                     </div>
                 </div>
+                <!-- /user-avatar -->
             </div>
         </div>
         <div class="block-nav">
@@ -134,50 +134,26 @@
         </div>
     </header>
     <main>
-        <section class="article">
+        <section class="auth-bloger">
             <div class="container">
-                <!-- New posts title -->
-                <div>
-                    <p class="article-page-title d-flex justify-content-start">Нова стаття</p>
+                <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="static/img/copywriting 2.svg" alt="Resume icon">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h2>Авторизація блогера</h2>
+                    </div>
                 </div>
-                <!-- New article form -->
-                <form class="blog" name="newBlog">
-                    <div class="article-title d-flex flex-column">
-                        <label for="article-title">Заголовок статті</label>
-                        <input type="text" name="new-article-title" placeholder="Заголовок">
-                    </div>
-                    <!-- Content -->
-                    <div class="article-content">
-                        <div class="article-content-toolbar"></div>
-                        <textarea name="ckeditor" id="ckeditor" rows="18" class="ckeditor">Що відбувалось із курсом гривні? У понеділок і вже не так яскраво виражено, але і у вівторок, відбувались досить помітні коливання на валютному ринку. Ті, хто піддався паніці побігли скуповувати іноземну валюту. Звичайно, цим скористалися спекулянти, задравши курс у "обмінках". Однак обсяги продажів на готівковому ринку все одно залишалися мінімальними.
-
-                        У вівторок ситуація великою мірою заспокоїлась, курс продажу готівкового долара з космічних 29,5 грн. впав до 28,5 лише за кілька годин. Міжбанківський курс, який і визначає ціни на товари, які імпортуються в Україну, зріс за два дні лише на 30 копійок, то й то на фоні щомісячної виплати відшкодування ПДВ.
-                        </textarea>
-                    </div>
-                    <!-- Tags -->
-                    <div class="article-tags d-flex flex-column">
-                        <label for="article-tags">Теги:</label>
-                        <input type="text" name="article-tags" placeholder="Почніть кожен новий тег з символу #">
-                    </div>
-                    <!-- Form bottom -->
-                    <div class="article-form-bottom d-flex justify-content-between flex-column flex-lg-row">
-                        <div class="article-form-bottom-inputs d-flex flex-column flex-sm-row  justify-content-between justify-content-lg-start">
-                            <div class="article-author d-flex flex-column">
-                                <label for="article-author">Автор:</label>
-                                <input type="text" class="article-author" name="article-author" placeholder="Ім’я Прізвище">
-                            </div>
-                            <div class="delay-article-post d-flex flex-column">
-                                <label for="delay-article-post">Відкласти публікацію</label>
-                                <input type="text" name="delay-article-post" id="datetimepicker" autocomplete="off" placeholder="Дата публікаціі">
-                            </div>
-                        </div>
-                        <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">
-                            <div class="save-article col-md-6">
-                                <button type="button">Зберегти як чернетку</button>
-                            </div>
-                            <div class="publish-article col-md-6">
-                                <button type="button" class="d-flex align-items-center justify-content-center"><img src="static/img/Icon-notification-filled.svg">Опублікувати</button>
-                            </div>
+                <!-- Auth form -->
+                <form name="loginForm" class="col-sm-8 col-md-6 col-lg-4">
+                    <div class="flex-wrap flex-column d-flex justify-content-center">
+                        <div class="d-flex flex-wrap flex-column">
+                            <input type="tel" name="phoneInput" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ">
+                            <input type="password" name="passwordInput" placeholder="Пароль">
+                            <button type="button" id="sendOtpBtn" class="white-btn">Надіслати Код</button>
+                            <input type="number" name="otpInput" placeholder="Код з SMS">
+                            <p>На вказаний телефон: +380ХХ-ХХХ-ХХ-ХХ було відправлено одноразовий код підтвердження</p>
+                            <button type="submit" class="blue-btn">Увійти</button>
                         </div>
                     </div>
                 </form>
@@ -264,20 +240,16 @@
         </div>
     </footer>
 </body>
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>
-<script type="text/javascript" src="static/js/perfect-scrollbar.jquery.min.js"></script>
-<script type="text/javascript" src="static/js/slick.min.js"></script>
-<script type="text/javascript" src="static/js/jquery.nice-select.js"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
 <script type="text/javascript" src="/static/js/loader.js"></script>
-<!-- Datetimepicker -->
-<script type="text/javascript" src="static/js/jquery.datetimepicker.full.min.js"></script>
-<!-- ckeditor -->
-<script type="text/javascript" src="static/js/ckeditor/ckeditor.js"></script>
+<!-- login/logout -->
+<script type="text/javascript" src="static/js/bloger/login.js"></script>
 <!-- user-avatar -->
 <script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
-<!-- blog -->
-<script type="text/javascript" src="static/js/bloger/blog.js"></script>
 
 
 </html>

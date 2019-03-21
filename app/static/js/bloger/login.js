@@ -32,6 +32,9 @@ function AuthService() {
             xhr.onload = function() {
                 var response = JSON.parse(this.responseText);
                 sessionStorage.setItem('token', response.token);
+                if (this.status === 202) {
+                    window.location = "1TV-Blogers-BlogerPage.html";
+                }
                 console.log(response);
             };
             xhr.send(JSON.stringify({ tel, password, otp }));
@@ -77,9 +80,9 @@ function loginHandler(e) {
 
     auth.login(phoneInput.value, passwordInput.value, otpInput.value);
 
-    if (sessionStorage.getItem("token")) {
-        window.location = "1TV-Blogers-BlogerPage.html";
-    };
+    // if (sessionStorage.getItem("token")) {
+    //     window.location = "1TV-Blogers-BlogerPage.html";
+    // };
 }
 
 form.addEventListener("submit", loginHandler);

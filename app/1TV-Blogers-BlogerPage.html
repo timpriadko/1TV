@@ -29,6 +29,8 @@
     <!-- Bloger styles -->
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
+    <!-- Modal -->
+    <link rel="stylesheet" href="static/css/modal.css">
 </head>
 
 <body>
@@ -72,6 +74,20 @@
                                 <button type="button" class="header-search-button flex align-center justify-center transition"></button>
                             </div>
                         </div>
+                        <!-- user-avatar -->
+                        <div id="user-avatar">
+                            <img src="/static/img/icon-user-circle.svg" alt="User avatar">
+                        </div>
+                        <div class="block-user-options">
+                            <div>
+                                <div class="user-name">Ім’я Прізвище</div>
+                                <div class="user-options">
+                                    <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
+                                </div>
+                                <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
+                            </div>
+                        </div>
+                        <!-- /user-avatar -->
                     </div>
                 </div>
                 <div class="block-nav">
@@ -150,7 +166,8 @@
                                 <div class="col-md-2">Дії</div>
                             </div>
                             <!-- Table body -->
-                            <div class="post-row d-flex flex-column flex-md-row">
+                            <div class="table-body-block"></div>
+                            <!-- <div class="post-row d-flex flex-column flex-md-row">
                                 <div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">20.02.2019, 00:00</div>
                                 <div class="post-name col-md-4 d-flex justify-content-center justify-content-md-start">Українці зробили вибір, перші результати виборів президента</div>
                                 <div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">Неопубліковано</div>
@@ -333,7 +350,7 @@
                                         <img src="static/img/Icon-delete.svg" alt="Icon-delete">
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- Navigation -->
                         <nav class="bloger-page-bottom-nav d-flex justify-content-center">
@@ -475,14 +492,38 @@
             </ul>
         </div>
     </div>
+    <!-- Delete Modal -->
+    <div id="modalDelete" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content col-md-4">
+
+            <div class="modal-header">
+                <div class="modal-title">Ви впевненi, що хочете видалити публікацію</div>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex flex-column flex-sm-row justify-content-between">
+                    <div class="col-md-5">
+                        <button class="modal-cancel-btn close" type="button">Нi</button>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="delete-unpublish-btn modal-unpublish-btn" class="d-flex align-items-center justify-content-center">Так</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/slick.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
-
-
 <script type="text/javascript" src="/static/js/loader.js"></script>
+<!-- user-avatar -->
+<script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
+<!-- bloger-page -->
+<script type="text/javascript" src="static/js/bloger/bloger-page.js"></script>
 
 </html>
