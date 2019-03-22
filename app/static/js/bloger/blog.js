@@ -31,7 +31,13 @@ function BlogService() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'blog/create/');
             xhr.setRequestHeader("Authorization", token);
-            return xhr.send(JSON.stringify({
+            xhr.onload = function() {
+                var response = JSON.parse(this.status);
+                if (response < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html";
+                }
+            };
+            xhr.send(JSON.stringify({
                 title,
                 description,
                 content,
