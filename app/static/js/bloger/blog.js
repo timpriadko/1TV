@@ -58,16 +58,46 @@ var draftBtn = document.querySelector('.save-article button')
 // New blog UI
 var newBlogform = document.forms["newBlog"];
 var titleInput = document.querySelector('.article-title input');
-// var contentInput = document.getElementById('ckeditor');
 var tagsInput = document.querySelector('.article-tags input');
 var publishDate = document.getElementById('datetimepicker');
 var publishBtn = document.querySelector('.publish-article button');
+var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
+var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
+var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
 
-
+// Validation
+function newBlogValidation() {
+    // title error message
+    switch (titleInput.value) {
+        case '':
+            titleValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case titleInput.value:
+            titleValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+    // content error message
+    switch (CKEDITOR.instances.ckeditor.getData()) {
+        case '':
+            contentValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case CKEDITOR.instances.ckeditor.getData():
+            contentValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+    // date error message
+    switch (publishDate.value) {
+        case '':
+            dateValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case publishDate.value:
+            dateValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+}
 
 // Publish new blog handler
 function publishNewBlog(e) {
-    e.preventDefault();
 
     // Get content data from ckeditor    
     var contentInput = CKEDITOR.instances.ckeditor.getData();
@@ -94,11 +124,18 @@ function publishNewBlog(e) {
     blog.newBlog(newBlogData);
 }
 
-publishBtn.addEventListener("click", publishNewBlog);
+publishBtn.addEventListener("click", function() {
+    newBlogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !dateValidationMsgWrapper.classList.contains('is-invalid')
+    ) {
+        publishNewBlog();
+    }
+});
 
 // Save blog as draft handler
 function saveBlogAsNewDraft(e) {
-    e.preventDefault();
 
     // Get content data from ckeditor    
     var contentInput = CKEDITOR.instances.ckeditor.getData();
@@ -125,40 +162,12 @@ function saveBlogAsNewDraft(e) {
     blog.newBlog(saveBlogAsDraft);
 }
 
-draftBtn.addEventListener("click", saveBlogAsNewDraft);
-
-// // Validation
-// var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
-// var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
-// var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
-
-// function validation() {
-//     if (!titleInput.value) {
-//         titleValidationMsgWrapper.classList.add('is-invalid');
-//         if (!document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-//             contentValidationMsgWrapper.classList.add('is-invalid');
-//         } else if (document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-//             contentValidationMsgWrapper.classList.remove('is-invalid');
-//         }
-//     } else if (!document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-//         contentValidationMsgWrapper.classList.add('is-invalid');
-//         if (titleInput.value) {
-//             titleValidationMsgWrapper.classList.remove('is-invalid');
-//         }
-//     } else if (titleInput.value && titleValidationMsgWrapper.classList.contains('is-invalid')) {
-//         titleValidationMsgWrapper.classList.remove('is-invalid');
-//         if (!contentValidationMsgWrapper.classList.contains('is-invalid')) {
-//             modal.style.display = "block";
-//         }
-//     } else if (document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent && contentValidationMsgWrapper.classList.contains('is-invalid')) {
-//         contentValidationMsgWrapper.classList.remove('is-invalid');
-//         if (!titleValidationMsgWrapper.classList.contains('is-invalid')) {
-//             modal.style.display = "block";
-//         }
-//     } else if (!titleValidationMsgWrapper.classList.contains('is-invalid') && !contentValidationMsgWrapper.classList.contains('is-invalid')) {
-//         modal.style.display = "block";
-//     }
-// }
-
-// draftBtn.addEventListener("click", validation);
-// publishBtn.addEventListener("click", validation);
+draftBtn.addEventListener("click", function() {
+    newBlogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !dateValidationMsgWrapper.classList.add('is-invalid')
+    ) {
+        saveBlogAsNewDraft();
+    }
+});

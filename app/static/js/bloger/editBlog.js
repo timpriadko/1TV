@@ -74,12 +74,6 @@ function BlogService() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
             xhr.setRequestHeader("Authorization", token);
-            xhr.onload = function() {
-                var response = JSON.parse(this.status);
-                if (response < 300) {
-                    window.location = "1TV-Blogers-BlogerPage.html";
-                }
-            };
             xhr.send(JSON.stringify({
                 title,
                 description,
@@ -94,39 +88,6 @@ function BlogService() {
 
 // Init Blog service
 var blog = BlogService();
-
-
-// Validation
-var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
-var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
-
-unpublishPreModalBtn.onclick = function() {
-    if (!titleInput.value) {
-        titleValidationMsgWrapper.classList.add('is-invalid');
-        if (!document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-            contentValidationMsgWrapper.classList.add('is-invalid');
-        } else if (document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-            contentValidationMsgWrapper.classList.remove('is-invalid');
-        }
-    } else if (!document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent) {
-        contentValidationMsgWrapper.classList.add('is-invalid');
-        if (titleInput.value) {
-            titleValidationMsgWrapper.classList.remove('is-invalid');
-        }
-    } else if (titleInput.value && titleValidationMsgWrapper.classList.contains('is-invalid')) {
-        titleValidationMsgWrapper.classList.remove('is-invalid');
-        if (!contentValidationMsgWrapper.classList.contains('is-invalid')) {
-            modal.style.display = "block";
-        }
-    } else if (document.querySelector('.cke_wysiwyg_frame').contentDocument.querySelector('p').textContent && contentValidationMsgWrapper.classList.contains('is-invalid')) {
-        contentValidationMsgWrapper.classList.remove('is-invalid');
-        if (!titleValidationMsgWrapper.classList.contains('is-invalid')) {
-            modal.style.display = "block";
-        }
-    } else if (!titleValidationMsgWrapper.classList.contains('is-invalid') && !contentValidationMsgWrapper.classList.contains('is-invalid')) {
-        modal.style.display = "block";
-    }
-}
 
 
 // Delete blog by Editor handler
@@ -171,6 +132,44 @@ window.onclick = function(event) {
     }
 }
 
+
+// Validation
+var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
+var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
+var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
+
+function blogValidation() {
+    // title error message
+    switch (titleInput.value) {
+        case '':
+            titleValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case titleInput.value:
+            titleValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+    // content error message
+    switch (CKEDITOR.instances.ckeditor.getData()) {
+        case '':
+            contentValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case CKEDITOR.instances.ckeditor.getData():
+            contentValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+    // date error message
+    switch (publishDate.value) {
+        case '':
+            dateValidationMsgWrapper.classList.add('is-invalid');
+            break;
+        case publishDate.value:
+            dateValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+}
+
+
+
 // Unpublish blog modal
 
 // Get the Unpublish modal
@@ -183,14 +182,27 @@ span.onclick = function() {
     }
     // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-}
+    // Validate blog and open the unpublish modal
+unpublishPreModalBtn.addEventListener('click', function() {
+    blogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !dateValidationMsgWrapper.classList.contains('is-invalid')
+    ) {
+        modal.style.display = "block";
+    }
+});
 
 // Unpublish blog by Editor handler
 function unpublishBlog(e) {
-    e.preventDefault();
+
+    // Get content data from ckeditor    
+    var contentData = CKEDITOR.instances.ckeditor.getData();
+    console.log(contentData);
 
     // Make 'tags' string to array
     var tagsArr;
@@ -205,11 +217,11 @@ function unpublishBlog(e) {
     var unpublishBlog = {
         title: titleInput.value,
         description: "update",
-        content: contentInput.value,
+        content: contentData,
         tags: [],
         publish_in: publishDate.value,
         published: false
-    }
+    };
 
     blog.unpublishBlog(unpublishBlog);
 }
