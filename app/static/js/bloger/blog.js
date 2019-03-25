@@ -33,9 +33,9 @@ function BlogService() {
             xhr.setRequestHeader("Authorization", token);
             xhr.onload = function() {
                 var response = JSON.parse(this.status);
-                // if (response < 300) {
-                //     window.location = "1TV-Blogers-BlogerPage.html";
-                // }
+                if (response < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html";
+                }
             };
             xhr.send(JSON.stringify({
                 title,
