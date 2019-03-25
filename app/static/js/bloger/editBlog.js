@@ -74,6 +74,11 @@ function BlogService() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
             xhr.setRequestHeader("Authorization", token);
+            xhr.onload = function() {
+                if (JSON.parse(this.status) < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html";
+                }
+            };
             xhr.send(JSON.stringify({
                 title,
                 description,
@@ -220,7 +225,7 @@ function unpublishBlog(e) {
         content: contentData,
         tags: [],
         publish_in: publishDate.value,
-        published: false
+        published: 'false'
     };
 
     blog.unpublishBlog(unpublishBlog);

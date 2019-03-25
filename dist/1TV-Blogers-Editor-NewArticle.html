@@ -26,11 +26,15 @@
     <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
     <link rel="stylesheet" href="/static/style/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <!-- For Tags -->
+    <link rel="stylesheet" href="static/css/jquery-ui.css">
+    <link rel="stylesheet" href="static/css/jquery.tagit.css">
     <!-- Bloger styles -->
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
     <!-- Datetimepicker -->
     <link rel="stylesheet" href="static/css/jquery.datetimepicker.css">
+
 </head>
 
 <body>
@@ -157,9 +161,14 @@
                         <div class="validation-message-wrapper"></div>
                     </div>
                     <!-- Tags -->
-                    <div class="article-tags d-flex flex-column">
+                    <div class="article-tags d-flex flex-column ui-widget">
                         <label for="article-tags">Теги:</label>
-                        <input type="text" name="article-tags" placeholder="Почніть кожен новий тег з символу #">
+                        <!-- <input id="tags" type="text" class="article-tags" name='tags' placeholder="Почніть кожен новий тег з символу #"> -->
+                        <ul id="myTags">
+                            <!-- Existing list items will be pre-added to the tags -->
+                            <!-- <li>Tag1</li>
+                            <li>Tag2</li> -->
+                        </ul>
                     </div>
                     <!-- Form bottom -->
                     <div class="article-form-bottom d-flex justify-content-between flex-column flex-lg-row">
@@ -179,7 +188,7 @@
                                 <button type="button">Зберегти як чернетку</button>
                             </div>
                             <div class="publish-article col-md-6">
-                                <button type="submit" class="d-flex align-items-center justify-content-center"><img src="static/img/Icon-notification-filled.svg">Опублікувати</button>
+                                <button type="button" class="d-flex align-items-center justify-content-center"><img src="static/img/Icon-notification-filled.svg">Опублікувати</button>
                             </div>
                         </div>
                     </div>
@@ -279,8 +288,12 @@
 <script type="text/javascript" src="static/js/ckeditor/ckeditor.js"></script>
 <!-- user-avatar -->
 <script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
+<!-- Tag -->
+<script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="static/js/tag-it.min.js"></script>
 <!-- blog -->
 <script type="text/javascript" src="static/js/bloger/blog.js"></script>
+
 
 
 </html>

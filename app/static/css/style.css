@@ -824,4 +824,35 @@ table {
 .delay-article-post-by-admin {
   margin-left: 0; }
 
+ul.tagit {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #444444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 1px 15px; }
+  ul.tagit li {
+    margin: 0; }
+    ul.tagit li .tagit-choice-editable {
+      padding: .2em; }
+    ul.tagit li .ui-widget-content {
+      border: none; }
+  ul.tagit .tagit-choice {
+    border: none; }
+  ul.tagit .tagit-close {
+    display: none; }
+  ul.tagit li.tagit-choice-editable {
+    padding: .2em; }
+  ul.tagit li.tagit-new {
+    width: 240px; }
+    ul.tagit li.tagit-new input {
+      height: auto;
+      padding: 5px; }
+
 /*# sourceMappingURL=style.css.map */

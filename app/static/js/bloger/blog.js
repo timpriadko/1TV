@@ -33,9 +33,9 @@ function BlogService() {
             xhr.setRequestHeader("Authorization", token);
             xhr.onload = function() {
                 var response = JSON.parse(this.status);
-                if (response < 300) {
-                    window.location = "1TV-Blogers-BlogerPage.html";
-                }
+                // if (response < 300) {
+                //     window.location = "1TV-Blogers-BlogerPage.html";
+                // }
             };
             xhr.send(JSON.stringify({
                 title,
@@ -85,15 +85,6 @@ function newBlogValidation() {
             contentValidationMsgWrapper.classList.remove('is-invalid');
             break;
     };
-    // date error message
-    switch (publishDate.value) {
-        case '':
-            dateValidationMsgWrapper.classList.add('is-invalid');
-            break;
-        case publishDate.value:
-            dateValidationMsgWrapper.classList.remove('is-invalid');
-            break;
-    };
 }
 
 // Publish new blog handler
@@ -102,14 +93,18 @@ function publishNewBlog(e) {
     // Get content data from ckeditor    
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
-    // Make 'tags' string to array
-    var tagsArr;
+    // // Make 'tags' string to array
+    // var tagsArr;
 
-    function tagsToArr() {
-        tagsArr = tagsInput.value.split('#').slice(1);
-        return tagsArr;
-    }
-    tagsToArr();
+    // function tagsToArr() {
+    //     tagsArr = tagsInput.value.split('#').slice(1);
+    //     return tagsArr;
+    // }
+    // tagsToArr();
+
+    // time now
+    var date = new Date();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
 
     // New blog data to send
     var newBlogData = {
@@ -117,7 +112,7 @@ function publishNewBlog(e) {
         description: "create",
         content: contentInput,
         tags: [],
-        publish_in: publishDate.value,
+        publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
         published: true
     }
 
@@ -127,8 +122,7 @@ function publishNewBlog(e) {
 publishBtn.addEventListener("click", function() {
     newBlogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !dateValidationMsgWrapper.classList.contains('is-invalid')
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {
         publishNewBlog();
     }
@@ -141,22 +135,26 @@ function saveBlogAsNewDraft(e) {
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
     // Make 'tags' string to array
-    var tagsArr;
+    // var tagsArr;
 
-    function tagsToArr() {
-        tagsArr = tagsInput.value.split('#').slice(1);
-        return tagsArr;
-    }
-    tagsToArr();
+    // function tagsToArr() {
+    //     tagsArr = tagsInput.value.split('#').slice(1);
+    //     return tagsArr;
+    // }
+    // tagsToArr();
+
+    // time now
+    var date = new Date();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes();
 
     // Save blog as draft data to send
     var saveBlogAsDraft = {
         title: titleInput.value,
-        description: "create",
+        description: "create draft",
         content: contentInput,
         tags: [],
-        publish_in: publishDate.value,
-        published: false
+        publish_in: dateAndTimeNow,
+        published: 'false'
     }
 
     blog.newBlog(saveBlogAsDraft);
@@ -165,9 +163,68 @@ function saveBlogAsNewDraft(e) {
 draftBtn.addEventListener("click", function() {
     newBlogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !dateValidationMsgWrapper.classList.add('is-invalid')
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {
         saveBlogAsNewDraft();
     }
 });
+
+// Tags
+$(document).ready(function() {
+    var availableTags = [
+        "#ActionScript",
+        "#AppleScript",
+        "Asp",
+        "#BASIC",
+        "C",
+        "C++",
+        "Clojure",
+        "COBOL",
+        "ColdFusion",
+        "Erlang",
+        "Fortran",
+        "Groovy",
+        "Haskell",
+        "#Java",
+        "#JavaScript",
+        "Lisp",
+        "Perl",
+        "PHP",
+        "Python",
+        "Ruby",
+        "Scala",
+        "Scheme",
+        '#кривий рiг',
+        '#кривбасводоканал',
+        '#криворiжгаз',
+        '#Політика ',
+        '#Воєнний стан',
+        '#Економіка',
+    ];
+    $("#myTags").tagit({
+        autocomplete: {
+            delay: 0,
+            minLength: 2
+        },
+        autocomplete: {
+            source: availableTags
+        },
+        placeholderText: "Почніть кожен новий тег з символу #"
+    });
+});
+
+// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+// var xhr = new XMLHttpRequest();
+// xhr.open('GET', url); 
+// xhr.onload = function() {console.log(this.responseText)};
+// xhr.send();
+
+
+// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+// var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+// var xhr = new XMLHttpRequest();
+// xhr.open('POST', url);
+// xhr.onload = function() {console.log(this.responseText)};
+// xhr.setRequestHeader("Authorization", token);
+// xhr.setRequestHeader('Content-Type', 'application/json');
+// xhr.send(JSON.stringify({add: 'криввбасс'}));

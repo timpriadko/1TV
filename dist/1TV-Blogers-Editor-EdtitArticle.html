@@ -146,23 +146,21 @@
                     </p>
                     <span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">0:15</span></span>
                 </div>
-                <div class="unpublished-alert-message-block">
+                <!-- <div class="unpublished-alert-message-block">
                     <p class="unpublish-status">Знято з публікації редакцією</p>
                     <p class="unpublish-summary">Порушення правил. Стаття має ознаки політичної агітаціі.</p>
-                </div>
+                </div> -->
                 <!-- Article form -->
                 <form>
                     <div class="article-title d-flex flex-column">
                         <label for="article-title">Заголовок статті</label>
-                        <input type="text" name="new-article-title" placeholder="Заголовок" value="Два дні майже воєнного стану: перші наслідки" required>
+                        <input type="text" name="new-article-title" placeholder="Заголовок" required>
                         <div class="validation-message-wrapper"></div>
                     </div>
                     <!-- Content -->
                     <div class="article-content">
                         <div class="article-content-toolbar"></div>
-                        <textarea name="ckeditor" id="ckeditor" rows="18" class="ckeditor" required>Що відбувалось із курсом гривні? У понеділок і вже не так яскраво виражено, але і у вівторок, відбувались досить помітні коливання на валютному ринку. Ті, хто піддався паніці побігли скуповувати іноземну валюту. Звичайно, цим скористалися спекулянти, задравши курс у "обмінках". Однак обсяги продажів на готівковому ринку все одно залишалися мінімальними.
-
-                        У вівторок ситуація великою мірою заспокоїлась, курс продажу готівкового долара з космічних 29,5 грн. впав до 28,5 лише за кілька годин. Міжбанківський курс, який і визначає ціни на товари, які імпортуються в Україну, зріс за два дні лише на 30 копійок, то й то на фоні щомісячної виплати відшкодування ПДВ.
+                        <textarea name="ckeditor" id="ckeditor" rows="18" class="ckeditor" required>
                         </textarea>
                         <div class="validation-message-wrapper"></div>
                     </div>
@@ -181,6 +179,7 @@
                             <div class="delay-article-post d-flex flex-column">
                                 <label for="delay-article-post">Відкласти публікацію</label>
                                 <input type="text" name="delay-article-post" id="datetimepicker" autocomplete="off" placeholder="Дата публікаціі">
+                                <div class="validation-message-wrapper"></div>
                             </div>
                         </div>
                         <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">
@@ -276,7 +275,7 @@
         </div>
     </footer>
 
-    <!-- The Modal -->
+    <!-- Unpublish Modal -->
     <div id="modalUnpublish" class="modal">
         <!-- Modal content -->
         <div class="modal-content col-md-4">
@@ -298,6 +297,28 @@
             </div>
         </div>
     </div>
+    <!-- Delete Modal -->
+    <div id="modalDelete" class="modal delete-modal">
+        <!-- Modal content -->
+        <div class="modal-content col-md-4">
+
+            <div class="modal-header">
+                <div class="modal-title">Ви впевненi, що хочете видалити публікацію</div>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex flex-column flex-sm-row justify-content-between">
+                    <div class="col-md-5">
+                        <button class="modal-cancel-btn close" type="button">Нi</button>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="delete-unpublish-btn modal-unpublish-btn" class="d-flex align-items-center justify-content-center">Так</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>
@@ -305,8 +326,6 @@
 <script type="text/javascript" src="static/js/slick.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.nice-select.js"></script>
 <script type="text/javascript" src="/static/js/loader.js"></script>
-<!-- Modal -->
-<script type="text/javascript" src="static/js/modal.js"></script>
 <!-- Datetimepicker -->
 <script type="text/javascript" src="static/js/jquery.datetimepicker.full.min.js"></script>
 <script>
