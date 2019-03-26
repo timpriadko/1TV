@@ -29,14 +29,16 @@ function BlogService() {
         }) {
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                // if (JSON.parse(this.status) < 300) {
+                //     window.location = "1TV-Blogers-BlogerPage.html";
+                // }
+                var redirectInTime = setTimeout(function() {
+                    window.location.replace("1TV-Blogers-BlogerPage.html");
+                }, 1000)
+            };
             xhr.open('POST', env.apiUrl + 'blog/create/');
             xhr.setRequestHeader("Authorization", token);
-            xhr.onload = function() {
-                var response = JSON.parse(this.status);
-                if (response < 300) {
-                    window.location = "1TV-Blogers-BlogerPage.html";
-                }
-            };
             xhr.send(JSON.stringify({
                 title,
                 description,
@@ -66,7 +68,7 @@ var contentValidationMsgWrapper = document.querySelector('.article-content .vali
 var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
 
 // Validation
-function newBlogValidation() {
+function blogValidation() {
     // title error message
     switch (titleInput.value) {
         case '':
@@ -120,7 +122,7 @@ function publishNewBlog(e) {
 }
 
 publishBtn.addEventListener("click", function() {
-    newBlogValidation();
+    blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
         !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {
@@ -154,14 +156,14 @@ function saveBlogAsNewDraft(e) {
         content: contentInput,
         tags: [],
         publish_in: dateAndTimeNow,
-        published: 'false'
+        published: false
     }
 
     blog.newBlog(saveBlogAsDraft);
 }
 
 draftBtn.addEventListener("click", function() {
-    newBlogValidation();
+    blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
         !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {

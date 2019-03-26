@@ -6,8 +6,6 @@ var env = {
 // Контейнер блогов
 var _blogsContainer = document.querySelector('.table-body-block');
 
-
-
 // Класс для работы с шаблонами
 function BlodsUI() {
     return {
@@ -69,16 +67,24 @@ function BlogerService() {
     return {
         // Get blog-list
         blogList: function() {
+
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'blog/list/');
             xhr.onload = function() {
-                var response = JSON.parse(this.responseText);
-                sessionStorage.setItem('blogs', this.responseText)
-                    // console.log(response);
+                sessionStorage.setItem('blogs', this.responseText);
             };
             xhr.setRequestHeader("Authorization", token);
-            return xhr.send();
+            xhr.send();
+
+            // parse response
+            var blogs = JSON.parse(sessionStorage.getItem('blogs'));
+            console.log(blogs);
+
+            // get response in UI
+            blogs.forEach(function(blogs) {
+                return blogsUI.addBlogs(blogs);
+            });
         },
 
         // Delete blog
@@ -95,23 +101,8 @@ function BlogerService() {
 // Init Blog service
 var bloger = BlogerService();
 
-// Blogs array
-var blogs;
+bloger.blogList();
 
-// Вывод на страницу блогов
-function getBlogList(e) {
-
-    bloger.blogList();
-
-    blogs = JSON.parse(sessionStorage.getItem('blogs'));
-    console.log(JSON.parse(sessionStorage.getItem('blogs')));
-
-    blogs.forEach(function(blogs) {
-        return blogsUI.addBlogs(blogs);
-    });
-}
-
-window.onload = getBlogList();
 
 // Переход на страницу редактирования
 

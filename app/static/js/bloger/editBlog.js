@@ -16,6 +16,11 @@ var deleteBtn = document.querySelector('.delete-article button')
 var unpublishDescription = document.getElementById('unpublish-description');
 var unpublishPreModalBtn = document.querySelector('.unpublish-article button');
 var unpublisBtn = document.querySelector('.modal-unpublish-btn');
+var publishBtn = document.querySelector('.publish-article button');
+
+// Current blog data
+var currentBlogStatus = JSON.parse(sessionStorage.getItem("currentBlog")).status;
+var currentBlogId = sessionStorage.getItem('currentBlogId');
 
 // Set current blog data to the inputs
 var blogData;
@@ -30,8 +35,19 @@ function setBlogValue() {
 
 window.onload = setBlogValue();
 
-// Current blog ID
-var currentBlogId = sessionStorage.getItem('currentBlogId');
+// Buttons visibility
+window.onload = function() {
+    if (currentBlogStatus === "draft") {
+        document.querySelector(".unpublish-article").style.display = "none";
+    } else if (currentBlogStatus === "published") {
+        document.querySelector(".publish-article").style.display = "none";
+    } else if (currentBlogStatus === "removed_by_author") {
+        document.querySelector(".unpublish-article").style.display = "none";
+        document.querySelector(".publish-article").style.display = "none";
+        document.querySelector(".delete-article").style.display = "none";
+
+    }
+}
 
 // Blog service
 function BlogService() {
@@ -79,6 +95,34 @@ function BlogService() {
                     window.location = "1TV-Blogers-BlogerPage.html";
                 }
             };
+            xhr.send(JSON.stringify({
+                title,
+                description,
+                content,
+                tags,
+                publish_in,
+                published
+            }));
+        },
+
+        // Publish draft
+        publishDraft: function({
+            title,
+            description,
+            content,
+            tags,
+            publish_in,
+            published
+        }) {
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (JSON.parse(this.status) < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html"
+                }
+            };
+            xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
+            xhr.setRequestHeader("Authorization", token);
             xhr.send(JSON.stringify({
                 title,
                 description,
@@ -141,7 +185,6 @@ window.onclick = function(event) {
 // Validation
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
 var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
-var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
 
 function blogValidation() {
     // title error message
@@ -160,15 +203,6 @@ function blogValidation() {
             break;
         case CKEDITOR.instances.ckeditor.getData():
             contentValidationMsgWrapper.classList.remove('is-invalid');
-            break;
-    };
-    // date error message
-    switch (publishDate.value) {
-        case '':
-            dateValidationMsgWrapper.classList.add('is-invalid');
-            break;
-        case publishDate.value:
-            dateValidationMsgWrapper.classList.remove('is-invalid');
             break;
     };
 }
@@ -232,3 +266,36 @@ function unpublishBlog(e) {
 }
 
 unpublisBtn.addEventListener("click", unpublishBlog);
+
+
+// Publish draft handler
+
+function publishDraft(e) {
+    // Get content data from ckeditor    
+    var contentData = CKEDITOR.instances.ckeditor.getData();
+
+    // time now
+    var date = new Date();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+
+    // Publish draft data to send
+    var publishDraftData = {
+        title: titleInput.value,
+        description: "update",
+        content: contentData,
+        tags: [],
+        publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
+        published: 'true'
+    };
+
+    blog.publishDraft(publishDraftData);
+}
+
+publishBtn.addEventListener("click", function() {
+    blogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
+    ) {
+        publishDraft();
+    }
+})
