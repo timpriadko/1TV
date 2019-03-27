@@ -30,8 +30,46 @@
         margin-right: auto;
         margin-top: 15px;
         margin-bottom: 15px;
-        p {
+        .otp-sent {
             color: #888;
+            _display: none;
+            opacity: 0;
+            overflow: hidden;
+            max-height: 0;
+            -moz-transition: opacity 1s, max-height 1s;
+            -ms-transition: opacity 1s, max-height 1s;
+            transition: opacity 1s, max-height 1s;
+            span {
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+            }
+        }
+        .no-match {
+            color: #888;
+            _display: none;
+            opacity: 0;
+            overflow: hidden;
+            max-height: 0;
+            -moz-transition: opacity 1s, max-height 1s;
+            -ms-transition: opacity 1s, max-height 1s;
+            transition: opacity 1s, max-height 1s;
+        }
+        .try-later {
+            color: #888;
+            _display: none;
+            opacity: 0;
+            overflow: hidden;
+            max-height: 0;
+            -moz-transition: opacity 1s, max-height 1s;
+            -ms-transition: opacity 1s, max-height 1s;
+            transition: opacity 1s, max-height 1s;
+        }
+        .expanded {
+            max-height: 50px;
+            opacity: 1;
+            _display: block;
+            transition: max-height 1s;
             margin-bottom: 25px;
         }
     }

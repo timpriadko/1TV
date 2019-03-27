@@ -152,7 +152,11 @@
                             <input type="password" name="passwordInput" placeholder="Пароль">
                             <button type="button" id="sendOtpBtn" class="white-btn">Надіслати Код</button>
                             <input type="number" name="otpInput" placeholder="Код з SMS">
-                            <p>На вказаний телефон: +380ХХ-ХХХ-ХХ-ХХ було відправлено одноразовий код підтвердження</p>
+                            <div id="informer" class="b-toggle">
+                                <p class="otp-sent">На вказаний телефон: <span class="tel-num"></span> було відправлено одноразовий код підтвердження</p>
+                                <p class="no-match">Номер телефону, або пароль, введенi невiрно</p>
+                                <p class="try-later">Спробуйте, будь-ласка, пiзнiше</p>
+                            </div>
                             <button type="submit" class="blue-btn">Увійти</button>
                         </div>
                     </div>

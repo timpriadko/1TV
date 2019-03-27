@@ -163,11 +163,7 @@
                     <!-- Tags -->
                     <div class="article-tags d-flex flex-column ui-widget">
                         <label for="article-tags">Теги:</label>
-                        <!-- <input id="tags" type="text" class="article-tags" name='tags' placeholder="Почніть кожен новий тег з символу #"> -->
                         <ul id="myTags">
-                            <!-- Existing list items will be pre-added to the tags -->
-                            <!-- <li>Tag1</li>
-                            <li>Tag2</li> -->
                         </ul>
                     </div>
                     <!-- Form bottom -->
@@ -180,7 +176,6 @@
                             <div class="delay-article-post d-flex flex-column">
                                 <label for="delay-article-post">Відкласти публікацію</label>
                                 <input type="text" name="delay-article-post" id="datetimepicker" autocomplete="off" placeholder="Дата публікаціі">
-                                <div class="validation-message-wrapper"></div>
                             </div>
                         </div>
                         <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">
@@ -284,6 +279,9 @@
 <script type="text/javascript" src="/static/js/loader.js"></script>
 <!-- Datetimepicker -->
 <script type="text/javascript" src="static/js/jquery.datetimepicker.full.min.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker();
+</script>
 <!-- ckeditor -->
 <script type="text/javascript" src="static/js/ckeditor/ckeditor.js"></script>
 <!-- user-avatar -->

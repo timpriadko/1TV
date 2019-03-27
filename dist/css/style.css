@@ -417,8 +417,40 @@ table {
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 15px; }
-    .auth-bloger form p {
+    .auth-bloger form .otp-sent {
       color: #888;
+      _display: none;
+      opacity: 0;
+      overflow: hidden;
+      max-height: 0;
+      -webkit-transition: opacity 1s, max-height 1s;
+      transition: opacity 1s, max-height 1s; }
+      .auth-bloger form .otp-sent span {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit; }
+    .auth-bloger form .no-match {
+      color: #888;
+      _display: none;
+      opacity: 0;
+      overflow: hidden;
+      max-height: 0;
+      -webkit-transition: opacity 1s, max-height 1s;
+      transition: opacity 1s, max-height 1s; }
+    .auth-bloger form .try-later {
+      color: #888;
+      _display: none;
+      opacity: 0;
+      overflow: hidden;
+      max-height: 0;
+      -webkit-transition: opacity 1s, max-height 1s;
+      transition: opacity 1s, max-height 1s; }
+    .auth-bloger form .expanded {
+      max-height: 50px;
+      opacity: 1;
+      _display: block;
+      -webkit-transition: max-height 1s;
+      transition: max-height 1s;
       margin-bottom: 25px; }
 
 @media (min-width: 240px) {

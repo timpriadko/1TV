@@ -2,6 +2,15 @@
 var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
+
+
+// UI
+const form = document.forms["loginForm"];
+const phoneInput = form.elements["phoneInput"];
+const passwordInput = form.elements["passwordInput"];
+const sendOtpBtn = document.getElementById("sendOtpBtn");
+const otpInput = form.elements["otpInput"];
+
 // Login service
 function AuthService() {
     return {
@@ -15,6 +24,14 @@ function AuthService() {
             xhr.open('POST', env.apiUrl + 'login/');
             xhr.onload = function() {
                 console.log(JSON.parse(this.responseText));
+                if (JSON.parse(this.status) < 300) {
+                    document.querySelector(".auth-bloger form .otp-sent").classList.add('expanded');
+                    document.querySelector(".auth-bloger form .otp-sent .tel-num").innerText = phoneInput.value.substring(0, 6) + '-' + phoneInput.value.substring(6, 9) + '-' + phoneInput.value.substring(9, 11) + '-' + phoneInput.value.substring(11, 13);
+                } else if (JSON.parse(this.status) == 401) {
+                    document.querySelector(".auth-bloger form .no-match").classList.add('expanded');
+                } else if (JSON.parse(this.status) == 503) {
+                    document.querySelector(".auth-bloger form .try-later").classList.add('expanded');
+                }
             };
             xhr.send(JSON.stringify({ tel, password }));
         },
@@ -57,13 +74,6 @@ function AuthService() {
 // InitAuthService
 const loginService = AuthService();
 
-// UI
-const form = document.forms["loginForm"];
-const phoneInput = form.elements["phoneInput"];
-const passwordInput = form.elements["passwordInput"];
-const sendOtpBtn = document.getElementById("sendOtpBtn");
-const otpInput = form.elements["otpInput"];
-
 // Send OTP handler
 function sendOtpHandler(e) {
     e.preventDefault();
@@ -81,3 +91,11 @@ function loginHandler(e) {
 }
 
 form.addEventListener("submit", loginHandler);
+
+
+// send otp message
+
+// sendOtpBtn.addEventListener('click', function() {
+//     document.querySelector(".auth-bloger form p").classList.add('expanded');
+//     // document.querySelector(".auth-bloger form .expanded").style = "max-height: 50px; transition: max-height 1s;"
+// });

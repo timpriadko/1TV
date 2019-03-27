@@ -3,6 +3,9 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
+// Init DateTimepicker
+$('#datetimepicker').datetimepicker();
+
 // Blog service
 function BlogService() {
     return {
@@ -51,9 +54,6 @@ function BlogService() {
 // Init Blog service
 var blog = BlogService();
 
-// All forms UI
-var draftBtn = document.querySelector('.save-article button')
-
 // New blog UI
 var newBlogform = document.forms["newBlog"];
 var titleInput = document.querySelector('.article-title input');
@@ -63,25 +63,26 @@ var publishBtn = document.querySelector('.publish-article button');
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
 var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
 var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
+var draftBtn = document.querySelector('.save-article button')
 
 // Validation
 function blogValidation() {
     // title error message
-    switch (titleInput.value) {
+    switch (document.querySelector('.article-title input').value) {
         case '':
-            titleValidationMsgWrapper.classList.add('is-invalid');
+            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-invalid');
             break;
-        case titleInput.value:
-            titleValidationMsgWrapper.classList.remove('is-invalid');
+        case document.querySelector('.article-title input').value:
+            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-invalid');
             break;
     };
     // content error message
     switch (CKEDITOR.instances.ckeditor.getData()) {
         case '':
-            contentValidationMsgWrapper.classList.add('is-invalid');
+            document.querySelector('.article-content .validation-message-wrapper').classList.add('is-invalid');
             break;
         case CKEDITOR.instances.ckeditor.getData():
-            contentValidationMsgWrapper.classList.remove('is-invalid');
+            document.querySelector('.article-content .validation-message-wrapper').classList.remove('is-invalid');
             break;
     };
 }
@@ -107,7 +108,7 @@ function publishNewBlog(e) {
 
     // New blog data to send
     var newBlogData = {
-        title: titleInput.value,
+        title: document.querySelector('.article-title input').value,
         description: "create",
         content: contentInput,
         tags: [],
@@ -120,8 +121,8 @@ function publishNewBlog(e) {
 
 publishBtn.addEventListener("click", function() {
     blogValidation();
-    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid')
+    if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
     ) {
         publishNewBlog();
     }
@@ -134,13 +135,13 @@ function saveBlogAsNewDraft(e) {
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
     // Make 'tags' string to array
-    // var tagsArr;
+    var tagsArr;
 
-    // function tagsToArr() {
-    //     tagsArr = tagsInput.value.split('#').slice(1);
-    //     return tagsArr;
-    // }
-    // tagsToArr();
+    function tagsToArr() {
+        tagsArr = document.querySelector('#myTags').innerText.split('#').slice(1);
+        return tagsArr;
+    }
+    tagsToArr();
 
     // time now
     var date = new Date();
@@ -148,25 +149,27 @@ function saveBlogAsNewDraft(e) {
 
     // Save blog as draft data to send
     var saveBlogAsDraft = {
-        title: titleInput.value,
+        title: document.querySelector('.article-title input').value,
         description: "create draft",
         content: contentInput,
-        tags: [],
+        tags: tagsArr,
         publish_in: dateAndTimeNow,
         published: false
     }
 
+    // Init Blog service
+    var blog = BlogService();
     blog.newBlog(saveBlogAsDraft);
 }
 
-draftBtn.addEventListener("click", function() {
+function saveBlogAsNewDraftHandler() {
     blogValidation();
-    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid')
+    if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
     ) {
         saveBlogAsNewDraft();
     }
-});
+};
 
 // Tags
 $(document).ready(function() {
@@ -214,8 +217,8 @@ $(document).ready(function() {
 
 // var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
 // var xhr = new XMLHttpRequest();
-// xhr.open('GET', url); 
-// xhr.onload = function() {console.log(this.responseText)};
+// xhr.open('GET', url);
+// xhr.onload = function() { console.log(this.responseText) };
 // xhr.send();
 
 

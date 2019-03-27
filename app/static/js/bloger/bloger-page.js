@@ -12,18 +12,31 @@ function BlodsUI() {
 
         // Шаблон блога
         _blogRowTemplate: function(blog) {
+            var statusImg;
+
+            function statusImgFunc() {
+                if (blog.status == 'published') {
+                    statusImg = '<img src="static/img/Icon-notification-filled.svg" alt="Icon-notification-filled"';
+                } else if (blog.status == 'draft') {
+                    statusImg = '<img src="static/img/Icon-notification-empty.svg" alt="Icon-notification-empty"';
+                } else {
+                    statusImg = '<img src="static/img/Icon-notification-empty.svg" alt="Icon-notification-empty"';
+                };
+                return statusImg;
+            };
+            statusImgFunc();
             return '<div class="post-row d-flex flex-column flex-md-row">' +
                 '<div class="blog-id" style="display: none">' + blog.id + '</div>' +
-                '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in + '</div>' +
+                '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
                 '<div class="post-name col-md-4 d-flex justify-content-center justify-content-md-start">' + blog.title + '</div>' +
                 '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.status + '</div>' +
-                '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.publish_in + '</div>' +
+                '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16) + '</div>' +
                 '<div class="post-actions col-md-2">' +
                 '<a href="#" class="watch">' +
                 '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
                 '</a>' +
                 '<a href="#" class="notification">' +
-                '<img src="static/img/Icon-notification-filled.svg" alt="Icon-notification-filled"' +
+                statusImg +
                 '</a>' +
                 '<a href="#" class="edit">' +
                 '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="currentBlogData(event)">' +
@@ -117,7 +130,8 @@ window.onload = bloger.blogList();
 // UI
 var editBtn = document.querySelector(".edit");
 
-// Blog to reduct
+
+// Blog to reduct handler
 var currentBlogId;
 var currentBlog;
 
@@ -135,7 +149,7 @@ function currentBlogData(e) {
 }
 
 
-// Delete modal
+// Delete blog
 var deleteModalBtn = document.querySelector('.delete-unpublish-btn');
 
 // Get the modal
@@ -176,3 +190,6 @@ function deleteBlog(e) {
 }
 
 deleteModalBtn.addEventListener("click", deleteBlog);
+
+
+// Publish blog
