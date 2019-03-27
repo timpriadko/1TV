@@ -31,7 +31,7 @@ function BlogService() {
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (JSON.parse(this.status) < 300) {
-                    window.location = "1TV-Blogers-BlogerPage.html"
+                    window.location = "1TV-Blogers-BlogerPage.html";
                 }
             };
             xhr.open('POST', env.apiUrl + 'blog/create/');

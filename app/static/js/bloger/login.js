@@ -55,10 +55,9 @@ function AuthService() {
 }
 
 // InitAuthService
-const auth = AuthService();
+const loginService = AuthService();
 
 // UI
-const logoutBtn = document.getElementById('logout');
 const form = document.forms["loginForm"];
 const phoneInput = form.elements["phoneInput"];
 const passwordInput = form.elements["passwordInput"];
@@ -69,7 +68,7 @@ const otpInput = form.elements["otpInput"];
 function sendOtpHandler(e) {
     e.preventDefault();
 
-    auth.sendOtp(phoneInput.value, passwordInput.value);
+    loginService.sendOtp(phoneInput.value, passwordInput.value);
 }
 
 sendOtpBtn.addEventListener("click", sendOtpHandler);
@@ -78,20 +77,7 @@ sendOtpBtn.addEventListener("click", sendOtpHandler);
 function loginHandler(e) {
     e.preventDefault();
 
-    auth.login(phoneInput.value, passwordInput.value, otpInput.value);
-
-    // if (sessionStorage.getItem("token")) {
-    //     window.location = "1TV-Blogers-BlogerPage.html";
-    // };
+    loginService.login(phoneInput.value, passwordInput.value, otpInput.value);
 }
 
 form.addEventListener("submit", loginHandler);
-
-// Logout handler
-function logoutHandler(e) {
-    e.preventDefault();
-
-    auth.logout();
-}
-
-logoutBtn.addEventListener("click", logoutHandler);

@@ -95,8 +95,13 @@ function BlogerService() {
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.open('POST', env.apiUrl + 'blog/delete/' + deleteBlogId + '/');
+            xhr.onload = function() {
+                if (JSON.parse(this.status) < 300) {
+                    window.location.reload();
+                }
+            }
             xhr.setRequestHeader("Authorization", token);
-            return xhr.send();
+            xhr.send();
         }
     };
 }
