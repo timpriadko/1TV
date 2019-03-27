@@ -62,6 +62,9 @@ var blogsUI = BlodsUI();
 // ID блога, который будет удаляться
 var deleteBlogId;
 
+// Blogs array
+var blogs;
+
 // Bloger service
 function BlogerService() {
     return {
@@ -73,18 +76,18 @@ function BlogerService() {
             xhr.open('POST', env.apiUrl + 'blog/list/');
             xhr.onload = function() {
                 sessionStorage.setItem('blogs', this.responseText);
+                // get response in UI
+                blogs = JSON.parse(this.responseText);
+                blogs.forEach(function(blogs) {
+                    return blogsUI.addBlogs(blogs);
+                });
+                console.log(JSON.parse(this.responseText));
             };
             xhr.setRequestHeader("Authorization", token);
             xhr.send();
 
             // parse response
-            var blogs = JSON.parse(sessionStorage.getItem('blogs'));
-            console.log(blogs);
-
-            // get response in UI
-            blogs.forEach(function(blogs) {
-                return blogsUI.addBlogs(blogs);
-            });
+            // blogs = JSON.parse(sessionStorage.getItem('blogs'));
         },
 
         // Delete blog
@@ -101,7 +104,12 @@ function BlogerService() {
 // Init Blog service
 var bloger = BlogerService();
 
-bloger.blogList();
+// init Get blog-list
+function blogList(e) {
+    bloger.blogList();
+};
+
+window.onload = blogList();
 
 
 // Переход на страницу редактирования
