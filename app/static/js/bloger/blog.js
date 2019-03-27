@@ -30,10 +30,9 @@ function BlogService() {
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
-                // var redirectInTime = setTimeout(function() {
-                //     window.location.assign("1TV-Blogers-BlogerPage.html");
-                // }, 1000)
-                window.location = "1TV-Blogers-BlogerPage.html";
+                if (JSON.parse(this.status) < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html"
+                }
             };
             xhr.open('POST', env.apiUrl + 'blog/create/');
             xhr.setRequestHeader("Authorization", token);

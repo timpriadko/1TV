@@ -23,13 +23,13 @@ function BlodsUI() {
                 '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
                 '</a>' +
                 '<a href="#" class="notification">' +
-                '<img src="static/img/Icon-notification-filled.svg" alt="Icon-notification-filled">' +
+                '<img src="static/img/Icon-notification-filled.svg" alt="Icon-notification-filled"' +
                 '</a>' +
                 '<a href="#" class="edit">' +
-                '<img src="static/img/Icon-edit.svg" alt="Icon-edit">' +
+                '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="currentBlogData(event)">' +
                 '</a>' +
                 '<a href="#" class="delete">' +
-                '<img src="static/img/Icon-delete.svg" alt="Icon-delete">' +
+                '<img src="static/img/Icon-delete.svg" alt="Icon-delete" onclick="getDeleteModal(event)">' +
                 '</a>' +
                 '</div>' +
                 '</div>';
@@ -104,13 +104,8 @@ function BlogerService() {
 // Init Blog service
 var bloger = BlogerService();
 
-// init Get blog-list
-function blogList(e) {
-    bloger.blogList();
-};
-
-window.onload = blogList();
-
+// Init "Get blog-list"
+window.onload = bloger.blogList();
 
 // Переход на страницу редактирования
 
@@ -122,8 +117,6 @@ var currentBlogId;
 var currentBlog;
 
 function currentBlogData(e) {
-    e.preventDefault();
-
     // Select and set current blog id to session starage
     currentBlogId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     sessionStorage.setItem('currentBlogId', currentBlogId);
@@ -135,9 +128,6 @@ function currentBlogData(e) {
 
     window.location = "1TV-Blogers-Editor-EdtitArticle.html";
 }
-
-// init currentBlogData()
-$('.edit').bind('click', currentBlogData);
 
 
 // Delete modal
@@ -154,14 +144,11 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 function getDeleteModal(e) {
-    e.preventDefault();
     modal.style.display = "block";
     var blogToDeleteId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     deleteBlogId = blogToDeleteId;
-    console.log(deleteBlogId);
+    console.log(blogToDeleteId);
 }
-
-$('.delete').bind('click', getDeleteModal);
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
