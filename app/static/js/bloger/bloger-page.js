@@ -35,7 +35,7 @@ function BlodsUI() {
                 '<a href="#" class="watch">' +
                 '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
                 '</a>' +
-                '<a href="#" class="notification">' +
+                '<a href="#" class="notification publish" onclick="getPublishModal(event)">' +
                 statusImg +
                 '</a>' +
                 '<a href="#" class="edit">' +
@@ -125,7 +125,8 @@ var bloger = BlogerService();
 // Init "Get blog-list"
 window.onload = bloger.blogList();
 
-// Переход на страницу редактирования
+
+// Edit blog
 
 // UI
 var editBtn = document.querySelector(".edit");
@@ -159,7 +160,7 @@ var modal = document.getElementById('modalDelete');
 var btn = document.querySelector(".delete");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var cancel = document.querySelector(".close");
 
 // When the user clicks the button, open the modal 
 function getDeleteModal(e) {
@@ -169,10 +170,10 @@ function getDeleteModal(e) {
     console.log(blogToDeleteId);
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+// Close the modal
+document.querySelector("#modalDelete .close").addEventListener('click', function() {
     modal.style.display = "none";
-}
+})
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -193,3 +194,24 @@ deleteModalBtn.addEventListener("click", deleteBlog);
 
 
 // Publish blog
+
+// Get publish modal
+var publishModal = document.getElementById('modalPublish');
+// Publish button that opens the modal
+var getPublishModalBtn = document.querySelector(".publish");
+// When the user clicks the button, open the modal
+function getPublishModal(e) {
+    publishModal.style.display = "block";
+    var currentId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
+    console.log(currentId);
+}
+// Close the modal
+document.querySelector("#modalPublish .close").addEventListener('click', function() {
+    modal.style.display = "none";
+})
+
+// Publish block handler
+// function publishBlog(e) {
+//     e.preventDefault();
+
+// }
