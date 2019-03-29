@@ -17,13 +17,13 @@ var unpublishDescription = document.getElementById('unpublish-description');
 var unpublishPreModalBtn = document.querySelector('.unpublish-article button');
 var unpublisBtn = document.querySelector('.modal-unpublish-btn');
 var publishBtn = document.querySelector('.publish-article button');
-var saveDraftBtn = document.querySelector('.save-article button');
+var saveDraftBtn = document.querySelector('#saveBlogBtn');
+var savePublishedBlogChangesBtn = document.querySelector('#savePublishedBlogChangesBtn');
 
 // Current blog data
 var currentBlogStatus = JSON.parse(sessionStorage.getItem("currentBlog")).status;
 var currentBlogId = sessionStorage.getItem('currentBlogId');
 var currentBlogTime;
-var editTimeExpired;
 
 // Set current blog data to the inputs
 var blogData;
@@ -41,40 +41,48 @@ function publishTimeCheck() {
     currentBlogTime = JSON.parse(sessionStorage.getItem("currentBlog")).publish_in;
     var blogTimestamp = +Date.parse(currentBlogTime);
 
-    var editTimeExpired;
-
-    // if (+Date.now() < (+blogTimestamp + 3600000)) {
-    //     editTimeExpired = true;
-    // } else {
-    //     editTimeExpired = false;
-    // }
-
+    var mayEdit;
 
     var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
     var nowTime = Date.now();
 
     if (nowTime > blogEditionEndTime) {
-        editTimeExpired = false;
+        mayEdit = false;
     } else {
-        editTimeExpired = true;
+        mayEdit = true;
     }
 
-    console.log(editTimeExpired);
+    // console.log(mayEdit);
+    return mayEdit;
 }
 
 // Buttons visibility
 function buttonVisibility() {
+    //  Publish time check
+    var ableToEdit = publishTimeCheck();
+
     if (currentBlogStatus === "draft") {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
+        document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
+    } else if (currentBlogStatus === "published" && ableToEdit == true) {
+        document.querySelector(".unpublish-article").style.display = "none";
+        document.querySelector(".unpublish-article").style.display = "none";
+        document.querySelector(".publish-article").style.display = "none";
+        document.querySelector('#saveBlogBtn').style.display = "none";
+        document.getElementById('datetimepicker').disabled = true;
     } else if (currentBlogStatus === "published") {
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
-        document.querySelector(".save-article").style.display = "none";
+        document.querySelector('#saveBlogBtn').style.display = "none";
+        document.querySelector('.saveBlogBtn-block').style.display = "none";
+        document.getElementById('datetimepicker').disabled = true;
+        document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
     } else if (currentBlogStatus === "removed_by_author") {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector(".delete-article").style.display = "none";
+        document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
 
     }
 }
@@ -82,8 +90,6 @@ function buttonVisibility() {
 window.onload = function() {
     // init set current blog data to the inputs
     setBlogValue();
-    //  Publish time check
-    publishTimeCheck();
     //  Init buttons visibility func
     buttonVisibility();
 }
@@ -351,7 +357,7 @@ function publishDraft(e) {
         description: "update",
         content: contentData,
         tags: [],
-        publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
+        publish_in: dateAndTimeNow,
         published: 'true'
     };
 
@@ -393,14 +399,38 @@ function saveDraftHndler(e) {
 saveDraftBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid')
+        (!contentValidationMsgWrapper.classList.contains('is-invalid'))
     ) {
         saveDraftHndler();
     }
-})
+});
 
+// Save changes in published blog handler
+function saveChangesInPublishedBlog(e) {
+    // Get content data from ckeditor    
+    var contentData = CKEDITOR.instances.ckeditor.getData();
 
+    // Publish changes data to send
+    var publishChangesData = {
+        title: titleInput.value,
+        description: "updete published",
+        content: contentData,
+        tags: [],
+        publish_in: publishDate.value,
+        published: true
+    };
 
+    blog.publishDraft(publishChangesData);
+}
+
+savePublishedBlogChangesBtn.addEventListener('click', function() {
+    blogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        (!contentValidationMsgWrapper.classList.contains('is-invalid'))
+    ) {
+        saveChangesInPublishedBlog();
+    }
+});
 
 // User name
 

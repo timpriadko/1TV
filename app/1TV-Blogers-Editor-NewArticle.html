@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
     <!-- Datetimepicker -->
     <link rel="stylesheet" href="static/css/jquery.datetimepicker.css">
+    <!-- Modal -->
+    <link rel="stylesheet" href="static/css/modal.css">
 
 </head>
 
@@ -179,6 +181,9 @@
                             </div>
                         </div>
                         <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">
+                            <div class="delete-article col-md-5 col-lg-6">
+                                <button type="button" onclick="deleteModal()" id="deleteByAuthor">Видалити</button>
+                            </div>
                             <div class="save-article col-md-6">
                                 <button type="button" onclick="saveBlogAsNewDraftHandler()">Зберегти як чернетку</button>
                             </div>
@@ -270,6 +275,29 @@
             </div>
         </div>
     </footer>
+
+    <!-- Delete Modal -->
+    <div id="modalDelete" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content col-md-4">
+
+            <div class="modal-header">
+                <div class="modal-title">Ви впевненi, що хочете видалити публікацію</div>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex flex-column flex-sm-row justify-content-between">
+                    <div class="col-md-5">
+                        <button class="modal-cancel-btn close" type="button" onclick="closeDeleteModal()">Нi</button>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="delete-unpublish-btn modal-unpublish-btn" class="d-flex align-items-center justify-content-center" onclick="backToBP()">Так</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>
