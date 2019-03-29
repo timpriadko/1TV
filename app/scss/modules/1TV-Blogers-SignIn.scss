@@ -30,6 +30,13 @@
         margin-right: auto;
         margin-top: 15px;
         margin-bottom: 15px;
+        .otp,
+        .send-btn {
+            _display: none;
+            opacity: 0;
+            overflow: hidden;
+            max-height: 0;
+        }
         .otp-sent {
             color: #888;
             _display: none;

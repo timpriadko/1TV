@@ -174,7 +174,7 @@
                         <div class="article-form-bottom-inputs d-flex flex-column flex-sm-row  justify-content-between justify-content-lg-start">
                             <div class="article-author d-flex flex-column">
                                 <label for="article-author">Автор:</label>
-                                <input type="text" name="article-author" placeholder="Ім’я Прізвище">
+                                <input type="text" name="article-author" disabled>
                             </div>
                             <div class="delay-article-post d-flex flex-column">
                                 <label for="delay-article-post">Відкласти публікацію</label>
@@ -185,6 +185,9 @@
                         <div class="article-form-bottom-btns d-flex flex-column flex-sm-row col-12 col-lg-6 justify-content-between justify-content-lg-end align-items-end">
                             <div class="delete-article col-md-6">
                                 <button type="button" id="deleteByAuthor">Видалити</button>
+                            </div>
+                            <div class="save-article col-md-6">
+                                <button type="button" onclick="saveBlogAsNewDraftHandler()">Зберегти як чернетку</button>
                             </div>
                             <div class="unpublish-article col-md-6">
                                 <button type="button" id="unpublishModalBtn" class="d-flex align-items-center justify-content-center">Зняти з публікації</button>

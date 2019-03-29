@@ -417,6 +417,12 @@ table {
     margin-right: auto;
     margin-top: 15px;
     margin-bottom: 15px; }
+    .auth-bloger form .otp,
+    .auth-bloger form .send-btn {
+      _display: none;
+      opacity: 0;
+      overflow: hidden;
+      max-height: 0; }
     .auth-bloger form .otp-sent {
       color: #888;
       _display: none;
@@ -740,10 +746,10 @@ table {
     padding-left: 0;
     padding-right: 0; }
     .article-form-bottom .article-form-bottom-btns .save-article,
-    .article-form-bottom .article-form-bottom-btns .delete-article {
-      padding-left: 0; }
+    .article-form-bottom .article-form-bottom-btns .delete-article,
     .article-form-bottom .article-form-bottom-btns .publish-article,
     .article-form-bottom .article-form-bottom-btns .unpublish-article {
+      padding-left: 0;
       padding-right: 0; } }
 
 @media (max-width: 576px) {
@@ -796,9 +802,12 @@ table {
       .article form .article-form-bottom .article-form-bottom-inputs div {
         width: 100%; }
       .article form .article-form-bottom .article-form-bottom-btns {
-        margin-right: -30px; }
+        margin-right: -30px;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
         .article form .article-form-bottom .article-form-bottom-btns div {
-          width: 100%; }
+          width: 100%;
+          margin-top: 10px; }
         .article form .article-form-bottom .article-form-bottom-btns button {
           height: 40px;
           font-size: 14px;
