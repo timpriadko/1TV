@@ -53,10 +53,10 @@ function publishTimeCheck() {
     var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
     var nowTime = Date.now();
 
-    if ((blogEditionEndTime) > nowTime) {
-        editTimeExpired = true;
-    } else {
+    if (nowTime > blogEditionEndTime) {
         editTimeExpired = false;
+    } else {
+        editTimeExpired = true;
     }
 
     console.log(editTimeExpired);

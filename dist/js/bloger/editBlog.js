@@ -17,10 +17,13 @@ var unpublishDescription = document.getElementById('unpublish-description');
 var unpublishPreModalBtn = document.querySelector('.unpublish-article button');
 var unpublisBtn = document.querySelector('.modal-unpublish-btn');
 var publishBtn = document.querySelector('.publish-article button');
+var saveDraftBtn = document.querySelector('.save-article button');
 
 // Current blog data
 var currentBlogStatus = JSON.parse(sessionStorage.getItem("currentBlog")).status;
 var currentBlogId = sessionStorage.getItem('currentBlogId');
+var currentBlogTime;
+var editTimeExpired;
 
 // Set current blog data to the inputs
 var blogData;
@@ -33,12 +36,36 @@ function setBlogValue() {
     publishDate.value = blogData.publish_in;
 }
 
-window.onload = function() {
-    // init set current blog data to the inputs
-    setBlogValue();
+//  Publish time check
+function publishTimeCheck() {
+    currentBlogTime = JSON.parse(sessionStorage.getItem("currentBlog")).publish_in;
+    var blogTimestamp = +Date.parse(currentBlogTime);
 
-    // Buttons visibility
+    var editTimeExpired;
+
+    // if (+Date.now() < (+blogTimestamp + 3600000)) {
+    //     editTimeExpired = true;
+    // } else {
+    //     editTimeExpired = false;
+    // }
+
+
+    var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+    var nowTime = Date.now();
+
+    if (nowTime > blogEditionEndTime) {
+        editTimeExpired = false;
+    } else {
+        editTimeExpired = true;
+    }
+
+    console.log(editTimeExpired);
+}
+
+// Buttons visibility
+function buttonVisibility() {
     if (currentBlogStatus === "draft") {
+        document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
     } else if (currentBlogStatus === "published") {
         document.querySelector(".publish-article").style.display = "none";
@@ -50,6 +77,15 @@ window.onload = function() {
         document.querySelector(".delete-article").style.display = "none";
 
     }
+}
+
+window.onload = function() {
+    // init set current blog data to the inputs
+    setBlogValue();
+    //  Publish time check
+    publishTimeCheck();
+    //  Init buttons visibility func
+    buttonVisibility();
 }
 
 // Blog service
@@ -125,6 +161,34 @@ function BlogService() {
                 }
             };
             xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
+            xhr.setRequestHeader("Authorization", token);
+            xhr.send(JSON.stringify({
+                title,
+                description,
+                content,
+                tags,
+                publish_in,
+                published
+            }));
+        },
+
+        // Save draft
+        saveDraft: function({
+            title,
+            description,
+            content,
+            tags,
+            publish_in,
+            published
+        }) {
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (JSON.parse(this.status) < 300) {
+                    window.location = "1TV-Blogers-BlogerPage.html";
+                }
+            };
+            xhr.open('POST', env.apiUrl + 'blog/create/');
             xhr.setRequestHeader("Authorization", token);
             xhr.send(JSON.stringify({
                 title,
@@ -292,7 +356,7 @@ function publishDraft(e) {
     };
 
     blog.publishDraft(publishDraftData);
-}
+};
 
 publishBtn.addEventListener("click", function() {
     blogValidation();
@@ -301,7 +365,42 @@ publishBtn.addEventListener("click", function() {
     ) {
         publishDraft();
     }
+});
+
+
+// Save draft handler
+function saveDraftHndler(e) {
+    // Get content data from ckeditor    
+    var contentData = CKEDITOR.instances.ckeditor.getData();
+
+    // time now
+    var date = new Date();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+
+    // Publish draft data to send
+    var savehDraftData = {
+        title: titleInput.value,
+        description: "draft",
+        content: contentData,
+        tags: [],
+        publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
+        published: false
+    };
+
+    blog.saveDraft(savehDraftData);
+};
+
+saveDraftBtn.addEventListener('click', function() {
+    blogValidation();
+    if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
+    ) {
+        saveDraftHndler();
+    }
 })
+
+
+
 
 // User name
 

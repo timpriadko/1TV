@@ -108,25 +108,25 @@ function publishNewBlog(e) {
 
     // New blog data to send
     var newBlogData = {
-        title: document.querySelector('.article-title input').value,
-        description: "create",
-        content: contentInput,
-        tags: [],
-        publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
-        published: true
-    }
-
+            title: document.querySelector('.article-title input').value,
+            description: "create",
+            content: contentInput,
+            tags: [],
+            publish_in: (!document.getElementById('datetimepicker').value ? dateAndTimeNow : document.getElementById('datetimepicker').value),
+            published: true
+        }
+        // Init Blog service
+    var blog = BlogService();
     blog.newBlog(newBlogData);
 }
 
-publishBtn.addEventListener("click", function() {
+function publishNewBlogHandler() {
     blogValidation();
-    if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
-    ) {
+    if ((!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
+            (!document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')))) {
         publishNewBlog();
     }
-});
+};
 
 // Save blog as draft handler
 function saveBlogAsNewDraft(e) {
@@ -145,7 +145,7 @@ function saveBlogAsNewDraft(e) {
 
     // time now
     var date = new Date();
-    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
 
     // Save blog as draft data to send
     var saveBlogAsDraft = {

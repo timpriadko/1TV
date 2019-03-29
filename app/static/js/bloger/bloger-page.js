@@ -91,16 +91,16 @@ function BlogerService() {
                 sessionStorage.setItem('blogs', this.responseText);
                 // get response in UI
                 blogs = JSON.parse(this.responseText);
+                totalBlogs = blogs.length
                 blogs.forEach(function(blogs) {
+                    // Show a number of blogs
+                    document.querySelector('#total-posts').innerText = totalBlogs;
                     return blogsUI.addBlogs(blogs);
                 });
-                console.log(JSON.parse(this.responseText));
+                console.log(blogs);
             };
             xhr.setRequestHeader("Authorization", token);
             xhr.send();
-
-            // parse response
-            // blogs = JSON.parse(sessionStorage.getItem('blogs'));
         },
 
         // Publish blog
