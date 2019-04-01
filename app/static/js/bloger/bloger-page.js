@@ -57,7 +57,7 @@ function BlodsUI() {
         // Шаблон сообщения о том, что результаты поиска отсутствуют
         _noResultsTemplate() {
             return '<div class="col s12">' +
-                '<h4 class="center-align">' + 'No results found' + '</h4>' +
+                '<h4 class="center-align">' + 'Блогiв ще немає' + '</h4>' +
                 '</div>'
         },
 
@@ -197,12 +197,12 @@ function getDeleteModal(e) {
     var blogToDeleteId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     deleteBlogId = blogToDeleteId;
     console.log(blogToDeleteId);
-}
+};
 
 // Close the modal
 document.querySelector("#modalDelete .close").addEventListener('click', function() {
     modal.style.display = "none";
-})
+});
 
 // Delete blog handler
 function deleteBlog(e) {
@@ -210,7 +210,7 @@ function deleteBlog(e) {
 
     bloger.deleteBlog();
     modal.style.display = "none";
-}
+};
 
 deleteModalBtn.addEventListener("click", deleteBlog);
 
@@ -277,4 +277,43 @@ window.onclick = function(event) {
     if (event.target == publishModal) {
         publishModal.style.display = "none";
     }
-}
+};
+
+
+// Pagination
+
+$(function($) {
+    // Consider adding an ID to your table
+    // incase a second table ever enters the picture.
+    var items = $(".post-row");
+
+    var numItems = items.length;
+    var perPage = 9;
+
+    // Only show the first 2 (or first `per_page`) items initially.
+    items.slice(perPage).hide();
+
+    // Now setup the pagination using the `.pagination-page` div.
+    $(".pagination").pagination({
+        items: 180,
+        itemsOnPage: perPage,
+        cssStyle: "light-theme",
+
+        // This is the actual page changing functionality.
+        onPageClick: function(pageNumber) {
+            // We need to show and hide `tr`s appropriately.
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+
+            // We'll first hide everything...
+            items.hide()
+                // ... and then only show the appropriate rows.
+                .slice(showFrom, showTo).show();
+        }
+    })
+});
+
+// 
+(function() {
+
+});
