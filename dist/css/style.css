@@ -898,4 +898,33 @@ ul.tagit {
       height: auto;
       padding: 5px; }
 
+#compact-pagination ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  #compact-pagination ul li + li {
+    margin-left: 2px; }
+  #compact-pagination ul li .prev:before {
+    display: none; }
+  #compact-pagination ul li .next:before {
+    display: none; }
+  #compact-pagination ul li span {
+    height: 40px;
+    width: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  #compact-pagination ul .active .current {
+    background-color: #3350B2;
+    color: #fff;
+    font-weight: bold; }
+  #compact-pagination ul .ellipse {
+    width: 55px; }
+
 /*# sourceMappingURL=style.css.map */

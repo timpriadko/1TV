@@ -57,7 +57,7 @@ function BlodsUI() {
         // Шаблон сообщения о том, что результаты поиска отсутствуют
         _noResultsTemplate() {
             return '<div class="col s12">' +
-                '<h4 class="center-align">' + 'No results found' + '</h4>' +
+                '<h4 class="center-align">' + 'Блогiв ще немає' + '</h4>' +
                 '</div>'
         },
 
@@ -65,6 +65,11 @@ function BlodsUI() {
         noResults() {
             var template = this._noResultsTemplate();
             _blogsContainer.insertAdjacentHTML("afterbegin", template);
+        },
+
+        // Очищает контейнер с блогами
+        clearContainer() {
+            return _blogsContainer.innerHTML = '<div class="posts-table-block"></div>';
         }
     }
 }
@@ -82,7 +87,7 @@ var blogs;
 function BlogerService() {
     return {
         // Get blog-list
-        blogList: function() {
+        blogList: function(firstItem, lastItem) {
 
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
@@ -91,13 +96,13 @@ function BlogerService() {
                 sessionStorage.setItem('blogs', this.responseText);
                 // get response in UI
                 blogs = JSON.parse(this.responseText);
-                totalBlogs = blogs.length
-                blogs.forEach(function(blogs) {
+                totalBlogs = blogs.length;
+                blogs.slice(firstItem, lastItem).forEach(function(blogs) {
                     // Show a number of blogs
                     document.querySelector('#total-posts').innerText = totalBlogs;
                     return blogsUI.addBlogs(blogs);
                 });
-                console.log(totalBlogs);
+                console.log(blogs);
             };
             xhr.setRequestHeader("Authorization", token);
             xhr.send();
@@ -152,7 +157,8 @@ function BlogerService() {
 var bloger = BlogerService();
 
 // Init "Get blog-list"
-window.onload = bloger.blogList();
+var firstItem = -10;
+window.onload = bloger.blogList(firstItem);
 
 
 // Edit blog
@@ -197,12 +203,12 @@ function getDeleteModal(e) {
     var blogToDeleteId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     deleteBlogId = blogToDeleteId;
     console.log(blogToDeleteId);
-}
+};
 
 // Close the modal
 document.querySelector("#modalDelete .close").addEventListener('click', function() {
     modal.style.display = "none";
-})
+});
 
 // Delete blog handler
 function deleteBlog(e) {
@@ -210,7 +216,7 @@ function deleteBlog(e) {
 
     bloger.deleteBlog();
     modal.style.display = "none";
-}
+};
 
 deleteModalBtn.addEventListener("click", deleteBlog);
 
@@ -277,4 +283,58 @@ window.onclick = function(event) {
     if (event.target == publishModal) {
         publishModal.style.display = "none";
     }
-}
+};
+
+
+
+// Pagination
+var paginationBlock = document.getElementById('compact-pagination');
+var paginationPages = document.querySelector('#compact-pagination ul');
+// var paginationBlock = document.querySelector('.bloger-page-bottom-nav');
+
+
+// Init pagination JQuery plugin
+$(function($) {
+    $(".pagination").pagination({
+        items: JSON.parse(sessionStorage.getItem('blogs')).length + 1,
+        itemsOnPage: 10,
+        cssStyle: "compact-theme"
+    })
+});
+
+// Display calculated blogs 
+paginationBlock.addEventListener('click', function(e) {
+    firstItem = -(+e.target.innerText * 10);
+    var lastItem = firstItem + 10;
+    console.log(e.target.innerText);
+
+    // Clear container
+    blogsUI.clearContainer();
+
+    if (e.target.innerText == 1) {
+        bloger.blogList(-10);
+    } else if (e.target.innerText == 'Prev') {
+        var currentPage = document.querySelector('#compact-pagination .active').innerText;
+        if (currentPage == 1) {
+            bloger.blogList(-10);
+        } else {
+            firstItem = -(+currentPage * 10);
+            lastItem = firstItem + 10;
+            bloger.blogList(firstItem, lastItem);
+            console.log(currentPage);
+        }
+    } else if (e.target.innerText == 'Next') {
+        currentPage = document.querySelector('#compact-pagination .active').innerText;
+        if (currentPage == 1) {
+            bloger.blogList(-10);
+        } else {
+            firstItem = -(+currentPage * 10);
+            lastItem = firstItem + 10;
+            bloger.blogList(firstItem, lastItem);
+            console.log(currentPage);
+        }
+    } else {
+        bloger.blogList(firstItem, lastItem);
+    }
+
+});

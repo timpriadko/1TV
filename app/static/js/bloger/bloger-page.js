@@ -65,6 +65,11 @@ function BlodsUI() {
         noResults() {
             var template = this._noResultsTemplate();
             _blogsContainer.insertAdjacentHTML("afterbegin", template);
+        },
+
+        // Очищает контейнер с блогами
+        clearContainer() {
+            return _blogsContainer.innerHTML = '<div class="posts-table-block"></div>';
         }
     }
 }
@@ -82,7 +87,7 @@ var blogs;
 function BlogerService() {
     return {
         // Get blog-list
-        blogList: function() {
+        blogList: function(firstItem, lastItem) {
 
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
@@ -91,8 +96,8 @@ function BlogerService() {
                 sessionStorage.setItem('blogs', this.responseText);
                 // get response in UI
                 blogs = JSON.parse(this.responseText);
-                totalBlogs = blogs.length
-                blogs.forEach(function(blogs) {
+                totalBlogs = blogs.length;
+                blogs.slice(firstItem, lastItem).forEach(function(blogs) {
                     // Show a number of blogs
                     document.querySelector('#total-posts').innerText = totalBlogs;
                     return blogsUI.addBlogs(blogs);
@@ -152,7 +157,8 @@ function BlogerService() {
 var bloger = BlogerService();
 
 // Init "Get blog-list"
-window.onload = bloger.blogList();
+var firstItem = -10;
+window.onload = bloger.blogList(firstItem);
 
 
 // Edit blog
@@ -280,40 +286,55 @@ window.onclick = function(event) {
 };
 
 
+
 // Pagination
+var paginationBlock = document.getElementById('compact-pagination');
+var paginationPages = document.querySelector('#compact-pagination ul');
+// var paginationBlock = document.querySelector('.bloger-page-bottom-nav');
 
+
+// Init pagination JQuery plugin
 $(function($) {
-    // Consider adding an ID to your table
-    // incase a second table ever enters the picture.
-    var items = $(".post-row");
-
-    var numItems = items.length;
-    var perPage = 9;
-
-    // Only show the first 2 (or first `per_page`) items initially.
-    items.slice(perPage).hide();
-
-    // Now setup the pagination using the `.pagination-page` div.
     $(".pagination").pagination({
-        items: 180,
-        itemsOnPage: perPage,
-        cssStyle: "light-theme",
-
-        // This is the actual page changing functionality.
-        onPageClick: function(pageNumber) {
-            // We need to show and hide `tr`s appropriately.
-            var showFrom = perPage * (pageNumber - 1);
-            var showTo = showFrom + perPage;
-
-            // We'll first hide everything...
-            items.hide()
-                // ... and then only show the appropriate rows.
-                .slice(showFrom, showTo).show();
-        }
+        items: JSON.parse(sessionStorage.getItem('blogs')).length + 1,
+        itemsOnPage: 10,
+        cssStyle: "compact-theme"
     })
 });
 
-// 
-(function() {
+// Display calculated blogs 
+paginationBlock.addEventListener('click', function(e) {
+    firstItem = -(+e.target.innerText * 10);
+    var lastItem = firstItem + 10;
+    console.log(e.target.innerText);
+
+    // Clear container
+    blogsUI.clearContainer();
+
+    if (e.target.innerText == 1) {
+        bloger.blogList(-10);
+    } else if (e.target.innerText == 'Prev') {
+        var currentPage = document.querySelector('#compact-pagination .active').innerText;
+        if (currentPage == 1) {
+            bloger.blogList(-10);
+        } else {
+            firstItem = -(+currentPage * 10);
+            lastItem = firstItem + 10;
+            bloger.blogList(firstItem, lastItem);
+            console.log(currentPage);
+        }
+    } else if (e.target.innerText == 'Next') {
+        currentPage = document.querySelector('#compact-pagination .active').innerText;
+        if (currentPage == 1) {
+            bloger.blogList(-10);
+        } else {
+            firstItem = -(+currentPage * 10);
+            lastItem = firstItem + 10;
+            bloger.blogList(firstItem, lastItem);
+            console.log(currentPage);
+        }
+    } else {
+        bloger.blogList(firstItem, lastItem);
+    }
 
 });

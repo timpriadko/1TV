@@ -31,240 +31,245 @@
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
     <!-- Modal -->
     <link rel="stylesheet" href="static/css/modal.css">
+    <!-- Pagination -->
+    <!-- <link rel="stylesheet" href="static/css/simplePagination.css"> -->
 </head>
 
 <body>
-    <div class="d-md-flex flex-column flex-md-row justify-content-center">
-        <div class="main-content-wraper col-12 col-md-10">
-            <header>
-                <div class="top-header">
-                    <div class="wrap flex justify-between align-center">
-                        <div class="social-network header flex align-center transition-3">
-                            <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
-                            <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
-                            <a class="telegram transition" href="https://t.me/firsttv"></a>
-                            <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
-                            <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
-                        </div>
-                        <ul id="block-exchange-rates" class="block-info flex"></ul>
-                    </div>
+    <header>
+        <div class="top-header">
+            <div class="wrap flex justify-between align-center">
+                <div class="social-network header flex align-center transition-3">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
                 </div>
-                <div class="block-logo">
-                    <div class="wrap flex align-center justify-end">
-                        <div class="toogle transition">
-                            <span class="menu-line transition"></span>
-                            <span class="menu-line transition"></span>
-                            <span class="menu-line transition"></span>
-                        </div>
-                        <div class="logo">
-                            <a class="logo-big" href="/">
-                                <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
-                            </a>
-                            <a class="logo-mobile" href="/">
-                                <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
-                            </a>
-                        </div>
-                        <div class="broadcast flex align-center justify-center transition">ефір</div>
-                        <div id="search-button" class="search flex align-center justify-center">
-                            <span class="icon transition"></span>
-                        </div>
-                        <div class="block-search">
-                            <div>
-                                <input id="search-str" type="text" placeholder="Пошук" />
-                                <button type="button" class="header-search-button flex align-center justify-center transition"></button>
-                            </div>
-                        </div>
-                        <!-- user-avatar -->
-                        <div id="user-avatar">
-                            <img src="/static/img/icon-user-circle.svg" alt="User avatar">
-                        </div>
-                        <div class="block-user-options">
-                            <div>
-                                <div class="user-name">Ім’я Прізвище</div>
-                                <div class="user-options">
-                                    <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
-                                </div>
-                                <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
-                            </div>
-                        </div>
-                        <!-- /user-avatar -->
-                    </div>
-                </div>
-                <div class="block-nav">
-                    <div class="wrap transition-3">
-                        <nav class="nav">
-                            <ul class="flex justify-center">
-
-                                <li>
-                                    <a href="/" class="def" rel="nofollow">Головна</a>
-                                </li>
-
-                                <li>
-                                    <a href="/news/" class="def">Новини</a>
-                                </li>
-
-                                <li>
-                                    <a href="/analytics/" class="def">Аналітика</a>
-                                </li>
-
-                                <li>
-                                    <a href="/blog/" class="def">Блоги</a>
-                                </li>
-
-                                <li>
-                                    <a href="/episode/" class="def">Відео</a>
-                                </li>
-
-                                <li>
-                                    <a href="/event/" class="def">Афіша</a>
-                                </li>
-
-                                <li>
-                                    <a href="/contacts.html" class="def">Контакти</a>
-                                </li>
-
-                                <li>
-                                    <a href="/report.html" class="def">Повідомити новину</a>
-                                </li>
-
-
-                                <li class="election">
-                                    <a href="/qwe.html">Вибори 2019</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <section class="bloger-page d-flex flex-row">
-                    <div class="container">
-                        <!-- Posts title -->
-                        <div class="bloge-page-title-block d-flex flex-column flex-sm-row justify-content-between col-12">
-                            <div class="posts-title-block">
-                                <p class="posts-title d-flex justify-content-center justify-content-sm-start">Мої Публікації</p>
-                                <p class="total-posts d-flex justify-content-center">Усього публікацій: <span id="total-posts">515</span></p>
-                            </div>
-                            <div class="write-article justify-content-center">
-                                <a href="1TV-Blogers-Editor-NewArticle.html" class="d-flex justify-content-center">
-                                    <img src="static/img/write-article.svg" alt="Write article"> Написати статтю</a>
-                            </div>
-                        </div>
-                        <!-- Table -->
-                        <div class="posts-table-block">
-                            <!-- Table header -->
-                            <div class="table-header d-flex flex-column flex-md-row">
-                                <div class="col-md-2">Створено <span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
-                                </div>
-                                <div class="col-md-4">Назва статті<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
-                                </div>
-                                <div class="col-md-2">Статус<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
-                                </div>
-                                <div class="col-md-2">Дата публікації<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
-                                </div>
-                                <div class="col-md-2">Дії</div>
-                            </div>
-                            <!-- Table body -->
-                            <div class="table-body-block"></div>
-
-                        </div>
-                        <!-- Navigation -->
-                        <nav class="bloger-page-bottom-nav d-flex justify-content-center">
-                            <a href="#"><span class="prev-arrow"></span></a>
-                            <a href="#" class="page-num active-posts-page">1</a>
-                            <a href="#" class="page-num">2</a>
-                            <a href="#" class="page-num">3</a>
-                            <a href="#" class="page-num">4</a>
-                            <a href="#" class="page-num">5</a>
-                            <a href="#" class="page-num">6</a>
-                            <a href="#" class="page-num">7</a>
-                            <a href="#"><span class="next-arrow"></span></a>
-                        </nav>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <div class="footer-nav">
-                    <div class="wrap flex">
-                        <nav class="nav">
-                            <ul class="flex justify-center">
-
-                                <li>
-                                    <a href="/" class="def" rel="nofollow">Головна</a>
-                                </li>
-
-                                <li>
-                                    <a href="/news/" class="def">Новини</a>
-                                </li>
-
-                                <li>
-                                    <a href="/analytics/" class="def">Аналітика</a>
-                                </li>
-
-                                <li>
-                                    <a href="/blog/" class="def">Блоги</a>
-                                </li>
-
-                                <li>
-                                    <a href="/episode/" class="def">Відео</a>
-                                </li>
-
-                                <li>
-                                    <a href="/event/" class="def">Афіша</a>
-                                </li>
-
-                                <li>
-                                    <a href="/contacts.html" class="def">Контакти</a>
-                                </li>
-
-                                <li>
-                                    <a href="/report.html" class="def">Повідомити новину</a>
-                                </li>
-
-
-
-                                <li class="election">
-                                    <a href="/qwe.html">Вибори 2019</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="footer-info">
-                    <div class="wrap flex justify-between align-center">
-                        <div class="flex">
-                            <a class="logo-footer transition" href="main.html">
-                                <img src="/static/img/logo-footer.svg" />
-                            </a>
-                            <div class="info">
-                                <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
-                                <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
-                            </div>
-                        </div>
-                        <div class="social-network footer flex align-center">
-                            <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
-                            <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
-                            <a class="telegram transition" href="https://t.me/firsttv"></a>
-                            <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
-                            <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <div class="wrap flex justify-between align-center">
-
-                        <div class="flex align-center developer">
-                            <span>Made by</span>
-                            <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+                <ul id="block-exchange-rates" class="block-info flex"></ul>
+            </div>
         </div>
-    </div>
+        <div class="block-logo">
+            <div class="wrap flex align-center justify-end">
+                <div class="toogle transition">
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                    <span class="menu-line transition"></span>
+                </div>
+                <div class="logo">
+                    <a class="logo-big" href="/">
+                        <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                    <a class="logo-mobile" href="/">
+                        <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+                    </a>
+                </div>
+                <div class="broadcast flex align-center justify-center transition">ефір</div>
+                <div id="search-button" class="search flex align-center justify-center">
+                    <span class="icon transition"></span>
+                </div>
+                <div class="block-search">
+                    <div>
+                        <input id="search-str" type="text" placeholder="Пошук" />
+                        <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+                    </div>
+                </div>
+                <!-- user-avatar -->
+                <div id="user-avatar">
+                    <img src="/static/img/icon-user-circle.svg" alt="User avatar">
+                </div>
+                <div class="block-user-options">
+                    <div>
+                        <div class="user-name">Ім’я Прізвище</div>
+                        <div class="user-options">
+                            <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
+                        </div>
+                        <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
+                    </div>
+                </div>
+                <!-- /user-avatar -->
+            </div>
+        </div>
+        <div class="block-nav">
+            <div class="wrap transition-3">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="bloger-page d-flex flex-row">
+            <div class="container">
+                <!-- Posts title -->
+                <div class="bloge-page-title-block d-flex flex-column flex-sm-row justify-content-between col-12">
+                    <div class="posts-title-block">
+                        <p class="posts-title d-flex justify-content-center justify-content-sm-start">Мої Публікації</p>
+                        <p class="total-posts d-flex justify-content-center">Усього публікацій: <span id="total-posts"></span></p>
+                    </div>
+                    <div class="write-article justify-content-center">
+                        <a href="1TV-Blogers-Editor-NewArticle.html" class="d-flex justify-content-center">
+                            <img src="static/img/write-article.svg" alt="Write article"> Написати статтю</a>
+                    </div>
+                </div>
+                <!-- Table -->
+                <div class="posts-table-block">
+                    <!-- Table header -->
+                    <div class="table-header d-flex flex-column flex-md-row">
+                        <div class="col-md-2">Створено <span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
+                        </div>
+                        <div class="col-md-4">Назва статті<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
+                        </div>
+                        <div class="col-md-2">Статус<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
+                        </div>
+                        <div class="col-md-2">Дата публікації<span class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></span>
+                        </div>
+                        <div class="col-md-2">Дії</div>
+                    </div>
+                    <!-- Table body -->
+
+                    <!-- Pagination -->
+                    <!-- <div id="compact-pagination" class="pagination"></div> -->
+                    <!-- Blogs wrapper -->
+                    <div class="table-body-block"></div>
+
+                </div>
+                <!-- Pagination -->
+                <div class="bloger-page-bottom-nav d-flex justify-content-center">
+                    <div id="compact-pagination" class="pagination"></div>
+                </div>
+                <nav class="bloger-page-bottom-nav d-flex justify-content-center">
+                    <a href="#"><span class="prev-arrow"></span></a>
+                    <a href="#" class="page-num active-posts-page">1</a>
+                    <a href="#" class="page-num">2</a>
+                    <a href="#" class="page-num">3</a>
+                    <a href="#" class="page-num">4</a>
+                    <a href="#" class="page-num">5</a>
+                    <a href="#" class="page-num">6</a>
+                    <a href="#" class="page-num">7</a>
+                    <a href="#"><span class="next-arrow"></span></a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <div class="wrap flex">
+                <nav class="nav">
+                    <ul class="flex justify-center">
+
+                        <li>
+                            <a href="/" class="def" rel="nofollow">Головна</a>
+                        </li>
+
+                        <li>
+                            <a href="/news/" class="def">Новини</a>
+                        </li>
+
+                        <li>
+                            <a href="/analytics/" class="def">Аналітика</a>
+                        </li>
+
+                        <li>
+                            <a href="/blog/" class="def">Блоги</a>
+                        </li>
+
+                        <li>
+                            <a href="/episode/" class="def">Відео</a>
+                        </li>
+
+                        <li>
+                            <a href="/event/" class="def">Афіша</a>
+                        </li>
+
+                        <li>
+                            <a href="/contacts.html" class="def">Контакти</a>
+                        </li>
+
+                        <li>
+                            <a href="/report.html" class="def">Повідомити новину</a>
+                        </li>
+
+
+
+                        <li class="election">
+                            <a href="/qwe.html">Вибори 2019</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="wrap flex justify-between align-center">
+                <div class="flex">
+                    <a class="logo-footer transition" href="main.html">
+                        <img src="/static/img/logo-footer.svg" />
+                    </a>
+                    <div class="info">
+                        <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+                        <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+                    </div>
+                </div>
+                <div class="social-network footer flex align-center">
+                    <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+                    <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+                    <a class="telegram transition" href="https://t.me/firsttv"></a>
+                    <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+                    <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="wrap flex justify-between align-center">
+
+                <div class="flex align-center developer">
+                    <span>Made by</span>
+                    <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Publish Modal -->
     <div id="modalPublish" class="modal">
         <!-- Modal content -->
@@ -320,5 +325,7 @@
 <script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
 <!-- bloger-page -->
 <script type="text/javascript" src="static/js/bloger/bloger-page.js"></script>
+<!-- Pagination -->
+<script type="text/javascript" src="static/js/bloger/jquery.simplePagination.js"></script>
 
 </html>

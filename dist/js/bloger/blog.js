@@ -63,7 +63,8 @@ var publishBtn = document.querySelector('.publish-article button');
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
 var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
 var dateValidationMsgWrapper = document.querySelector('.delay-article-post .validation-message-wrapper');
-var draftBtn = document.querySelector('.save-article button')
+var draftBtn = document.querySelector('.save-article button');
+var deleteBtn = document.querySelector('.delete-article button');
 
 // Validation
 function blogValidation() {
@@ -130,7 +131,6 @@ function publishNewBlogHandler() {
 
 // Save blog as draft handler
 function saveBlogAsNewDraft(e) {
-
     // Get content data from ckeditor    
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
@@ -170,6 +170,29 @@ function saveBlogAsNewDraftHandler() {
         saveBlogAsNewDraft();
     }
 };
+
+// Delete blog
+
+// When the user clicks the button, open the modal 
+function deleteModal(e) {
+    document.getElementById('modalDelete').style.display = "block";
+};
+
+// Close the modal
+function closeDeleteModal() {
+    document.getElementById('modalDelete').style.display = "none";
+};
+
+// Delete blog handler
+function backToBP(e) {
+    window.location = "1TV-Blogers-BlogerPage.html";
+};
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('modalDelete')) {
+        document.getElementById('modalDelete').style.display = "none";
+    }
+}
 
 // Tags
 $(document).ready(function() {

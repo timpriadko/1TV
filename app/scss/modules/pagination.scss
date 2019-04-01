@@ -1,0 +1,37 @@
+#compact-pagination {
+    ul {
+        display: flex;
+        li + li {
+            margin-left: 2px;
+        }
+        li {
+            .prev {
+                &:before {
+                    display: none;
+                }
+            }
+            .next {
+                &:before {
+                    display: none;
+                }
+            }
+            span {
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .active {
+            .current {
+                background-color: #3350B2;
+                color: #fff;
+                font-weight: bold
+            }
+        }
+        .ellipse {
+                width: 55px;
+        }
+    }
+}
