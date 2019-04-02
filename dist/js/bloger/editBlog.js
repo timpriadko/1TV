@@ -52,7 +52,6 @@ function publishTimeCheck() {
         mayEdit = true;
     }
 
-    // console.log(mayEdit);
     return mayEdit;
 }
 
@@ -73,7 +72,6 @@ function buttonVisibility() {
         document.getElementById('datetimepicker').disabled = true;
     } else if (currentBlogStatus === "published") {
         document.querySelector(".publish-article").style.display = "none";
-        document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector('#saveBlogBtn').style.display = "none";
         document.querySelector('.saveBlogBtn-block').style.display = "none";
         document.getElementById('datetimepicker').disabled = true;
@@ -194,7 +192,7 @@ function BlogService() {
                     window.location = "1TV-Blogers-BlogerPage.html";
                 }
             };
-            xhr.open('POST', env.apiUrl + 'blog/create/');
+            xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
             xhr.setRequestHeader("Authorization", token);
             xhr.send(JSON.stringify({
                 title,

@@ -132,6 +132,8 @@
                 color: #3B3B46;
                 display: flex;
                 align-items: center;
+                align-items: center;
+                flex-wrap: wrap;
                 span+span {
                     margin-left: 8px;
                 }
@@ -231,6 +233,7 @@
     background-color: #EFF0F5;
     padding: 4px 6px;
     border-radius: 7px;
+    margin-left: 5px;
     .edited-time {
         color: #888;
     }
@@ -267,5 +270,10 @@
         p {
             margin-left: 8px;
         }
+    }
+}
+#modalDeleteNotAllowed {
+    .modal-title {
+        text-align: center;
     }
 }

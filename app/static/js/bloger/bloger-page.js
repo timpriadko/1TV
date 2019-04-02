@@ -13,7 +13,9 @@ function BlodsUI() {
         // Шаблон блога
         _blogRowTemplate: function(blog) {
             var statusImg;
+            var blogStatus;
 
+            // Blog status img
             function statusImgFunc() {
                 if (blog.status == 'published') {
                     statusImg = '<img src="static/img/Icon-notification-filled.svg" alt="Icon-notification-filled"';
@@ -25,11 +27,37 @@ function BlodsUI() {
                 return statusImg;
             };
             statusImgFunc();
+
+            // Published blog edit mark
+            function publishedBlogMark() {
+                    //  Publish time check
+                    currentBlogTime = blog.publish_in;
+                    var blogTimestamp = +Date.parse(currentBlogTime);
+
+                    var mayEdit;
+
+                    var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+                    var nowTime = Date.now();
+
+                    var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
+
+                    
+                    if (blog.status == 'published' && nowTime < blogEditionEndTime) {
+                        mayEdit = true;
+                        blogStatus =  'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>';
+                    } else {
+                        mayEdit = false;
+                        blogStatus = blog.status;
+                    }
+                    return blogStatus;
+            }
+            publishedBlogMark();
+
             return '<div class="post-row d-flex flex-column flex-md-row">' +
                 '<div class="blog-id" style="display: none">' + blog.id + '</div>' +
                 '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
                 '<div class="post-name col-md-4 d-flex justify-content-center justify-content-md-start">' + blog.title + '</div>' +
-                '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.status + '</div>' +
+                '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + blogStatus + '</div>' +
                 '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16) + '</div>' +
                 '<div class="post-actions col-md-2">' +
                 '<a href="#" class="watch">' +
@@ -39,7 +67,7 @@ function BlodsUI() {
                 statusImg +
                 '</a>' +
                 '<a href="#" class="edit">' +
-                '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="currentBlogData(event)">' +
+                '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="editCurrentBlogData(event)">' +
                 '</a>' +
                 '<a href="#" class="delete">' +
                 '<img src="static/img/Icon-delete.svg" alt="Icon-delete" onclick="getDeleteModal(event)">' +
@@ -199,17 +227,40 @@ var editBtn = document.querySelector(".edit");
 var currentBlogId;
 var currentBlog;
 
-function currentBlogData(e) {
+function editCurrentBlogData(e) {
     // Select and set current blog id to session starage
     currentBlogId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     sessionStorage.setItem('currentBlogId', currentBlogId);
 
     // Current blog to session starage
-    currentBlog = blogs.find(item => item.id === +currentBlogId)
-    console.log(blogs.find(item => item.id === +currentBlogId));
-    sessionStorage.setItem('currentBlog', JSON.stringify(currentBlog));
+    currentBlog = blogs.find(item => item.id === +currentBlogId);
 
-    window.location = "1TV-Blogers-Editor-EdtitArticle.html";
+    //  Publish time check
+    currentBlogTime = currentBlog.publish_in;
+    var blogTimestamp = +Date.parse(currentBlogTime);
+
+    var mayEdit;
+
+    var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+    var nowTime = Date.now();
+
+    // Set mayEdit value
+    if (nowTime > blogEditionEndTime) {
+        mayEdit = false;
+    } else {
+        mayEdit = true;
+    };
+
+    // Click on "Edit" icon action
+    if (currentBlog.status === 'published' && mayEdit === false) {
+        deleteNotAllowedModal.style.display = "block";
+        document.querySelector('#modalDeleteNotAllowed .modal-title').innerText = 'опублiкованi бiльше 1 години назад блоги редагувати не можна';
+    } else {
+        console.log(blogs.find(item => item.id === +currentBlogId));
+        sessionStorage.setItem('currentBlog', JSON.stringify(currentBlog));
+
+        window.location = "1TV-Blogers-Editor-EdtitArticle.html";
+    };
 }
 
 
@@ -218,6 +269,7 @@ var deleteModalBtn = document.querySelector('.delete-unpublish-btn');
 
 // Get the modal
 var modal = document.getElementById('modalDelete');
+var deleteNotAllowedModal = document.getElementById('modalDeleteNotAllowed');
 
 // Get the button that opens the modal
 var btn = document.querySelector(".delete");
@@ -227,16 +279,28 @@ var cancel = document.querySelector(".close");
 
 // When the user clicks the button, open the modal 
 function getDeleteModal(e) {
-    modal.style.display = "block";
     var blogToDeleteId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
     deleteBlogId = blogToDeleteId;
+    // Find current blog in the blogs array
+    var blogToDelete = blogs.find(item => item.id === +blogToDeleteId)
     console.log(blogToDeleteId);
+
+    if (blogToDelete.status !== 'published') {
+        modal.style.display = "block";
+    } else {
+        deleteNotAllowedModal.style.display = "block";
+        document.querySelector('#modalDeleteNotAllowed .modal-title').innerText = 'Опублiкованi блоги не можна видаляти';
+    };
 };
 
 // Close the modal
 document.querySelector("#modalDelete .close").addEventListener('click', function() {
     modal.style.display = "none";
 });
+document.querySelector("#modalDeleteNotAllowed .close").addEventListener('click', function() {
+    deleteNotAllowedModal.style.display = "none";
+});
+
 
 // Delete blog handler
 function deleteBlog(e) {
@@ -303,7 +367,7 @@ function publishBlogHandler(e) {
 
 document.querySelector('.publish-btn').addEventListener('click', publishBlogHandler);
 
-// When the user clicks anywhere outside of the modal, close it
+// Close modals
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -311,8 +375,10 @@ window.onclick = function(event) {
     if (event.target == publishModal) {
         publishModal.style.display = "none";
     }
+    if (event.target == deleteNotAllowedModal) {
+        deleteNotAllowedModal.style.display = "none";
+    }
 };
-
 
 
 // Pagination
@@ -360,5 +426,3 @@ paginationBlock.addEventListener('click', function(e) {
     }
 
 });
-
-{/* <span class="prev-arrow"></span> */}

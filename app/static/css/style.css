@@ -571,7 +571,10 @@ table {
       display: flex;
       -webkit-box-align: center;
       -ms-flex-align: center;
-      align-items: center; }
+      align-items: center;
+      align-items: center;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
       .bloger-page .posts-table-block .post-row .post-status span + span {
         margin-left: 8px; }
     .bloger-page .posts-table-block .post-row .unpublished {
@@ -662,7 +665,8 @@ table {
   align-items: center;
   background-color: #EFF0F5;
   padding: 4px 6px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  margin-left: 5px; }
   .edited .edited-time {
     color: #888; }
   .edited img {
@@ -696,6 +700,9 @@ table {
       margin-right: 15px; }
     .explain-section li p {
       margin-left: 8px; }
+
+#modalDeleteNotAllowed .modal-title {
+  text-align: center; }
 
 @media (min-width: 1px) {
   .col-md-012 {
@@ -866,6 +873,12 @@ table {
 
 .delay-article-post-by-admin {
   margin-left: 0; }
+
+.back-to-my-bogs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 30px; }
 
 ul.tagit {
   font-family: 'Source Sans Pro', sans-serif;
