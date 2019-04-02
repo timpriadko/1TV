@@ -613,6 +613,13 @@ table {
     margin-bottom: 56px; }
     .bloger-page .bloger-page-bottom-nav a + a {
       margin-left: 2px; }
+    .bloger-page .bloger-page-bottom-nav .prev-arrow {
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg); }
+    .bloger-page .bloger-page-bottom-nav .next-arrow {
+      left: 13px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg); }
     .bloger-page .bloger-page-bottom-nav a {
       position: relative;
       height: 40px;
@@ -638,13 +645,6 @@ table {
         width: 10px;
         height: 10px;
         left: 16px; }
-      .bloger-page .bloger-page-bottom-nav a .prev-arrow {
-        -webkit-transform: rotate(-135deg);
-        transform: rotate(-135deg); }
-      .bloger-page .bloger-page-bottom-nav a .next-arrow {
-        left: 13px;
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg); }
     .bloger-page .bloger-page-bottom-nav .active-posts-page {
       background-color: #3350B2;
       color: #fff;
@@ -904,10 +904,29 @@ ul.tagit {
   display: flex; }
   #compact-pagination ul li + li {
     margin-left: 2px; }
-  #compact-pagination ul li .prev:before {
-    display: none; }
-  #compact-pagination ul li .next:before {
-    display: none; }
+  #compact-pagination ul li .prev {
+    position: relative; }
+    #compact-pagination ul li .prev .prev-arrow {
+      position: absolute;
+      border-top: 2px solid #888;
+      border-right: 2px solid #888;
+      width: 10px;
+      height: 10px;
+      left: 16px;
+      z-index: -1; }
+    #compact-pagination ul li .prev:before {
+      display: none; }
+  #compact-pagination ul li .next {
+    position: relative; }
+    #compact-pagination ul li .next .next-arrow {
+      position: absolute;
+      border-top: 2px solid #888;
+      border-right: 2px solid #888;
+      width: 10px;
+      height: 10px;
+      z-index: -1; }
+    #compact-pagination ul li .next:before {
+      display: none; }
   #compact-pagination ul li span {
     height: 40px;
     width: 40px;

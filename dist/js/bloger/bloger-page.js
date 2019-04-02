@@ -157,8 +157,36 @@ function BlogerService() {
 var bloger = BlogerService();
 
 // Init "Get blog-list"
-var firstItem = -10;
-window.onload = bloger.blogList(firstItem);
+window.onload = function() {
+
+    var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', env.apiUrl + 'blog/list/');
+    xhr.onload = function() {
+        sessionStorage.setItem('blogs', this.responseText);
+        blogs = JSON.parse(this.responseText);
+        totalBlogs = blogs.length;
+        // Init pagination JQuery plugin
+        $(function($) {
+            $(".pagination").pagination({
+                items: totalBlogs,
+                itemsOnPage: 10,
+                cssStyle: "compact-theme"
+            })
+            // document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+            // document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+        });
+        // get response in UI
+        blogs.slice(-10).forEach(function(blogs) {
+            // Show a number of blogs
+            document.querySelector('#total-posts').innerText = totalBlogs;
+            return blogsUI.addBlogs(blogs);
+        });
+        console.log(blogs);
+    };
+    xhr.setRequestHeader("Authorization", token);
+    xhr.send();
+};
 
 
 // Edit blog
@@ -290,23 +318,17 @@ window.onclick = function(event) {
 // Pagination
 var paginationBlock = document.getElementById('compact-pagination');
 var paginationPages = document.querySelector('#compact-pagination ul');
-// var paginationBlock = document.querySelector('.bloger-page-bottom-nav');
 
-
-// Init pagination JQuery plugin
-$(function($) {
-    $(".pagination").pagination({
-        items: JSON.parse(sessionStorage.getItem('blogs')).length + 1,
-        itemsOnPage: 10,
-        cssStyle: "compact-theme"
-    })
-});
 
 // Display calculated blogs 
 paginationBlock.addEventListener('click', function(e) {
     firstItem = -(+e.target.innerText * 10);
     var lastItem = firstItem + 10;
     console.log(e.target.innerText);
+
+    // Prev, next arrows
+    // document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+    // document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
 
     // Clear container
     blogsUI.clearContainer();
@@ -338,3 +360,5 @@ paginationBlock.addEventListener('click', function(e) {
     }
 
 });
+
+{/* <span class="prev-arrow"></span> */}

@@ -183,6 +183,13 @@
         a+a {
             margin-left: 2px;
         }
+        .prev-arrow {
+            transform: rotate(-135deg);
+        }
+        .next-arrow {
+            left: 13px;
+            transform: rotate(45deg);
+        }
         a {
             position: relative;
             height: 40px;
@@ -203,13 +210,6 @@
                 width: 10px;
                 height: 10px;
                 left: 16px;
-            }
-            .prev-arrow {
-                transform: rotate(-135deg);
-            }
-            .next-arrow {
-                left: 13px;
-                transform: rotate(45deg);
             }
         }
         .active-posts-page {

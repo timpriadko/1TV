@@ -6,11 +6,30 @@
         }
         li {
             .prev {
+                position: relative;
+                .prev-arrow {
+                    position: absolute;
+                    border-top: 2px solid #888;
+                    border-right: 2px solid #888;
+                    width: 10px;
+                    height: 10px;
+                    left: 16px;
+                    z-index: -1;
+                }
                 &:before {
                     display: none;
                 }
             }
             .next {
+                position: relative;
+                .next-arrow {
+                    position: absolute;
+                    border-top: 2px solid #888;
+                    border-right: 2px solid #888;
+                    width: 10px;
+                    height: 10px;
+                    z-index: -1;
+                }
                 &:before {
                     display: none;
                 }
