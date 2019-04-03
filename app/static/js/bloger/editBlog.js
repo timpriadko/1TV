@@ -19,6 +19,9 @@ var unpublisBtn = document.querySelector('.modal-unpublish-btn');
 var publishBtn = document.querySelector('.publish-article button');
 var saveDraftBtn = document.querySelector('#saveBlogBtn');
 var savePublishedBlogChangesBtn = document.querySelector('#savePublishedBlogChangesBtn');
+var editExpireMark = document.querySelector('.edited');
+var editExpireMarkTime = document.querySelector('.edited-time');
+var editExpireMarkContainer = document.querySelector('.expire-edit-container');
 
 // Current blog data
 var currentBlogStatus = JSON.parse(sessionStorage.getItem("currentBlog")).status;
@@ -53,6 +56,19 @@ function publishTimeCheck() {
     }
 
     return mayEdit;
+};
+
+// Edit expire mark
+function expireMarkFunc() {
+    currentBlogTime = JSON.parse(sessionStorage.getItem("currentBlog")).publish_in;;
+    var blogTimestamp = +Date.parse(currentBlogTime);
+
+    var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+    var nowTime = Date.now();
+
+    var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
+
+    editExpireMarkContainer.insertAdjacentHTML('beforeend', '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>')
 }
 
 // Buttons visibility
@@ -64,7 +80,9 @@ function buttonVisibility() {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
+        editExpireMark.style.display = "none";
     } else if (currentBlogStatus === "published" && ableToEdit == true) {
+        expireMarkFunc();
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
@@ -75,22 +93,23 @@ function buttonVisibility() {
         document.querySelector('#saveBlogBtn').style.display = "none";
         document.querySelector('.saveBlogBtn-block').style.display = "none";
         document.getElementById('datetimepicker').disabled = true;
+        editExpireMark.style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
     } else if (currentBlogStatus === "removed_by_author") {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector(".delete-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
-
+        editExpireMark.style.display = "none";
     }
-}
+};
 
 window.onload = function() {
     // init set current blog data to the inputs
     setBlogValue();
     //  Init buttons visibility func
     buttonVisibility();
-}
+};
 
 // Blog service
 function BlogService() {
@@ -204,7 +223,7 @@ function BlogService() {
             }));
         }
     }
-}
+};
 
 // Init Blog service
 var blog = BlogService();
@@ -276,8 +295,7 @@ function blogValidation() {
             contentValidationMsgWrapper.classList.remove('is-invalid');
             break;
     };
-}
-
+};
 
 
 // Unpublish blog modal

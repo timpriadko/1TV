@@ -3,9 +3,6 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
-// Init DateTimepicker
-$('#datetimepicker').datetimepicker();
-
 // Blog service
 function BlogService() {
     return {
@@ -57,7 +54,6 @@ var blog = BlogService();
 // New blog UI
 var newBlogform = document.forms["newBlog"];
 var titleInput = document.querySelector('.article-title input');
-var tagsInput = document.querySelector('.article-tags input');
 var publishDate = document.getElementById('datetimepicker');
 var publishBtn = document.querySelector('.publish-article button');
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
@@ -153,7 +149,7 @@ function saveBlogAsNewDraft(e) {
         description: "create draft",
         content: contentInput,
         tags: tagsArr,
-        publish_in: dateAndTimeNow,
+        publish_in: (!document.getElementById('datetimepicker').value ? dateAndTimeNow : document.getElementById('datetimepicker').value),
         published: false
     }
 
@@ -194,54 +190,75 @@ window.onclick = function(event) {
     }
 }
 
+
 // Tags
-$(document).ready(function() {
+// Get tags from server by typing
     var availableTags = [
-        "#ActionScript",
-        "#AppleScript",
-        "Asp",
-        "#BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "#Java",
-        "#JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme",
-        '#кривий рiг',
-        '#кривбасводоканал',
-        '#криворiжгаз',
-        '#Політика ',
-        '#Воєнний стан',
-        '#Економіка',
+        "криворожанин", 
+        "криминальное", 
+        "криштопа", 
+        "криворожстали"
     ];
+    
+// debounce
+function debounce(f, ms) {
+
+    let timer = null;
+  
+    return function (...args) {
+      const onComplete = () => {
+        f.apply(this, args);
+        timer = null;
+      }
+  
+      if (timer) {
+        clearTimeout(timer);
+      }
+  
+      timer = setTimeout(onComplete, ms);
+    };
+  }
+
+// Get tags from server func
+function getTagsFromServer() {
+    var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onload = function() {
+        availableTags = [JSON.parse(this.responseText)];
+        console.log(availableTags);
+    };
+    xhr.send();
+};
+
+// Init getTagsFromServer() with debounce
+var getTagsHandler = debounce(getTagsFromServer, 1000);
+
+$(document).ready(function() {
     $("#myTags").tagit({
         autocomplete: {
-            delay: 0,
-            minLength: 2
-        },
-        autocomplete: {
-            source: availableTags
+            source: function() {
+                var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onload = function() {
+                    availableTags = JSON.parse(this.responseText);
+                    console.log(availableTags);
+                };
+                xhr.send();
+                return this.responseText;
+            }
         },
         placeholderText: "Почніть кожен новий тег з символу #"
     });
 });
 
-// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+
+
+// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=кри';
 // var xhr = new XMLHttpRequest();
 // xhr.open('GET', url);
-// xhr.onload = function() { console.log(this.responseText) };
+// xhr.onload = function() { console.log(JSON.parse(this.responseText)) };
 // xhr.send();
 
 

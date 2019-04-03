@@ -60,16 +60,16 @@ function BlodsUI() {
                 '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + blogStatus + '</div>' +
                 '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16) + '</div>' +
                 '<div class="post-actions col-md-2">' +
-                '<a href="#" class="watch">' +
+                '<a href="#" class="watch" title="Переглянути опублiкований блог">' +
                 '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
                 '</a>' +
-                '<a href="#" class="notification publish" onclick="getPublishModal(event)">' +
+                '<a href="#" class="notification publish" onclick="getPublishModal(event)" title="Опублiкувати блог">' +
                 statusImg +
                 '</a>' +
-                '<a href="#" class="edit">' +
+                '<a href="#" class="edit" title="Редагувати опублiкований блог">' +
                 '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="editCurrentBlogData(event)">' +
                 '</a>' +
-                '<a href="#" class="delete">' +
+                '<a href="#" class="delete" title="Видалити блог">' +
                 '<img src="static/img/Icon-delete.svg" alt="Icon-delete" onclick="getDeleteModal(event)">' +
                 '</a>' +
                 '</div>' +
@@ -127,7 +127,7 @@ function BlogerService() {
                 totalBlogs = blogs.length;
                 blogs.slice(firstItem, lastItem).forEach(function(blogs) {
                     // Show a number of blogs
-                    document.querySelector('#total-posts').innerText = totalBlogs;
+                    document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
                     return blogsUI.addBlogs(blogs);
                 });
                 console.log(blogs);
@@ -223,7 +223,7 @@ window.onload = function() {
 var editBtn = document.querySelector(".edit");
 
 
-// Blog to reduct handler
+// Blog to edit handler
 var currentBlogId;
 var currentBlog;
 
@@ -261,7 +261,7 @@ function editCurrentBlogData(e) {
 
         window.location = "1TV-Blogers-Editor-EdtitArticle.html";
     };
-}
+};
 
 
 // Delete blog
@@ -426,3 +426,151 @@ paginationBlock.addEventListener('click', function(e) {
     }
 
 });
+
+
+// Sort
+
+// UI
+var createdHeader = document.querySelector('.created-header');
+var titleHeader = document.querySelector('.blog-title-header');
+var statusHeader = document.querySelector('.status-header');
+var publishHeader = document.querySelector('.publish-date-header');
+var createdHeaderArrows = document.querySelector('.created-header .arrows-wrap');
+var titleHeaderArrows = document.querySelector('.blog-title-header .arrows-wrap');
+var statusHeaderArrows = document.querySelector('.status-header .arrows-wrap');
+var publishHeaderArrows = document.querySelector('.publish-date-header .arrows-wrap');
+
+// Sort by created_in
+function sortCreatedHandler() {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
+        totalBlogs = blogs.length;
+        // Init pagination JQuery plugin
+        $(function($) {
+            $(".pagination").pagination({
+                items: totalBlogs,
+                itemsOnPage: 10,
+                cssStyle: "compact-theme"
+            })
+            document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+            document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+        });
+
+        // Clear container
+        blogsUI.clearContainer();
+
+        var sortedBlogs;
+
+        function compare(a,b) {
+            if (new Date(a.created_in) < new Date(b.created_in))
+                return -1;
+            if (new Date(a.created_in) > new Date(b.created_in))
+                return 1;
+            return 0;
+        };
+
+        if (!createdHeader.classList.contains('sorted')) {
+            var sortedBlogs = blogs.sort(compare);
+            createdHeader.classList.add('sorted');
+        } else if (createdHeader.classList.contains('sorted')) {
+            sortedBlogs = blogs.sort(compare).reverse();
+            createdHeader.classList.remove('sorted');
+        };
+
+        // get response in UI
+        sortedBlogs.slice(-10).forEach(function(blogs) {
+            // Show a number of blogs
+            document.querySelector('#total-posts').innerText = totalBlogs;
+            return blogsUI.addBlogs(blogs);
+        });
+    console.log('+');
+};
+
+createdHeaderArrows.addEventListener('click', sortCreatedHandler);
+
+// Sort by publish_in
+function sortPublishDateHandler() {
+    blogs = JSON.parse(sessionStorage.getItem('blogs'));
+    totalBlogs = blogs.length;
+    // Init pagination JQuery plugin
+    $(function($) {
+        $(".pagination").pagination({
+            items: totalBlogs,
+            itemsOnPage: 10,
+            cssStyle: "compact-theme"
+        })
+        document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+        document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+    });
+
+    // Clear container
+    blogsUI.clearContainer();
+
+    function compare(a,b) {
+        if (new Date(a.publish_in) < new Date(b.publish_in))
+            return -1;
+        if (new Date(a.publish_in) > new Date(b.publish_in))
+            return 1;
+        return 0;
+    };
+
+    if (!publishHeader.classList.contains('sorted')) {
+        var sortedBlogs = blogs.sort(compare);
+        publishHeader.classList.add('sorted');
+    } else if (publishHeader.classList.contains('sorted')) {
+        sortedBlogs = blogs.sort(compare).reverse();
+        publishHeader.classList.remove('sorted');
+    };
+
+      // get response in UI
+      sortedBlogs.slice(-10).forEach(function(blogs) {
+          // Show a number of blogs
+          document.querySelector('#total-posts').innerText = totalBlogs;
+          return blogsUI.addBlogs(blogs);
+      });
+};
+
+publishHeaderArrows.addEventListener('click', sortPublishDateHandler);
+
+// Sort by status
+function sortStatusHandler() {
+    blogs = JSON.parse(sessionStorage.getItem('blogs'));
+    totalBlogs = blogs.length;
+    // Init pagination JQuery plugin
+    $(function($) {
+        $(".pagination").pagination({
+            items: totalBlogs,
+            itemsOnPage: 10,
+            cssStyle: "compact-theme"
+        })
+        document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+        document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+    });
+
+    // Clear container
+    blogsUI.clearContainer();
+
+    function compare(a,b) {
+        if (a.status < b.status)
+            return -1;
+        if (a.status > b.status)
+            return 1;
+        return 0;
+    };
+
+    if (!statusHeader.classList.contains('sorted')) {
+        var sortedBlogs = blogs.sort(compare);
+        statusHeader.classList.add('sorted');
+    } else if (statusHeader.classList.contains('sorted')) {
+        sortedBlogs = blogs.sort(compare).reverse();
+        statusHeader.classList.remove('sorted');
+    };
+
+      // get response in UI
+      sortedBlogs.slice(-10).forEach(function(blogs) {
+          // Show a number of blogs
+          document.querySelector('#total-posts').innerText = totalBlogs;
+          return blogsUI.addBlogs(blogs);
+      });
+};
+
+statusHeaderArrows.addEventListener('click', sortStatusHandler);
