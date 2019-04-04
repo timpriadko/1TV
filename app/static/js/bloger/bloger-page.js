@@ -116,14 +116,8 @@ function BlogerService() {
     return {
         // Get blog-list
         blogList: function(firstItem, lastItem) {
-
-            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', env.apiUrl + 'blog/list/');
-            xhr.onload = function() {
-                sessionStorage.setItem('blogs', this.responseText);
                 // get response in UI
-                blogs = JSON.parse(this.responseText);
+                blogs = JSON.parse(sessionStorage.getItem('blogs'));
                 totalBlogs = blogs.length;
                 blogs.slice(firstItem, lastItem).forEach(function(blogs) {
                     // Show a number of blogs
@@ -131,10 +125,27 @@ function BlogerService() {
                     return blogsUI.addBlogs(blogs);
                 });
                 console.log(blogs);
-            };
-            xhr.setRequestHeader("Authorization", token);
-            xhr.send();
         },
+        // blogList: function(firstItem, lastItem) {
+
+        //     var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('POST', env.apiUrl + 'blog/list/');
+        //     xhr.onload = function() {
+        //         sessionStorage.setItem('blogs', this.responseText);
+        //         // get response in UI
+        //         blogs = JSON.parse(this.responseText);
+        //         totalBlogs = blogs.length;
+        //         blogs.slice(firstItem, lastItem).forEach(function(blogs) {
+        //             // Show a number of blogs
+        //             document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
+        //             return blogsUI.addBlogs(blogs);
+        //         });
+        //         console.log(blogs);
+        //     };
+        //     xhr.setRequestHeader("Authorization", token);
+        //     xhr.send();
+        // },
 
         // Publish blog
         publishBlog: function({
@@ -442,7 +453,6 @@ var publishHeaderArrows = document.querySelector('.publish-date-header .arrows-w
 
 // Sort by created_in
 function sortCreatedHandler() {
-        blogs = JSON.parse(sessionStorage.getItem('blogs'));
         totalBlogs = blogs.length;
         // Init pagination JQuery plugin
         $(function($) {
@@ -469,10 +479,14 @@ function sortCreatedHandler() {
         };
 
         if (!createdHeader.classList.contains('sorted')) {
+            blogs = JSON.parse(sessionStorage.getItem('blogs'))
             var sortedBlogs = blogs.sort(compare);
+            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
             createdHeader.classList.add('sorted');
         } else if (createdHeader.classList.contains('sorted')) {
+            blogs = JSON.parse(sessionStorage.getItem('blogs'));
             sortedBlogs = blogs.sort(compare).reverse();
+            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
             createdHeader.classList.remove('sorted');
         };
 
@@ -514,10 +528,14 @@ function sortPublishDateHandler() {
     };
 
     if (!publishHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'))
         var sortedBlogs = blogs.sort(compare);
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
         publishHeader.classList.add('sorted');
     } else if (publishHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
         sortedBlogs = blogs.sort(compare).reverse();
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
         publishHeader.classList.remove('sorted');
     };
 
@@ -558,10 +576,14 @@ function sortStatusHandler() {
     };
 
     if (!statusHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'))
         var sortedBlogs = blogs.sort(compare);
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
         statusHeader.classList.add('sorted');
     } else if (statusHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
         sortedBlogs = blogs.sort(compare).reverse();
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
         statusHeader.classList.remove('sorted');
     };
 
