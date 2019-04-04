@@ -193,12 +193,7 @@ window.onclick = function(event) {
 
 // Tags
 // Get tags from server by typing
-    var availableTags = [
-        "криворожанин", 
-        "криминальное", 
-        "криштопа", 
-        "криворожстали"
-    ];
+    var availableTags = [];
     
 // debounce
 function debounce(f, ms) {
@@ -220,36 +215,52 @@ function debounce(f, ms) {
   }
 
 // Get tags from server func
-function getTagsFromServer() {
-    var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.onload = function() {
-        availableTags = [JSON.parse(this.responseText)];
-        console.log(availableTags);
-    };
-    xhr.send();
-};
+// function getTagsFromServer() {
+//     var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     xhr.onload = function() {
+//         availableTags = JSON.parse(this.responseText);
+//         availableTags.forEach(function(item, index, arr) {
+//             // console.log(item);
+//         console.log(item);
+//             return item;
+//           });
+//     };
+//     xhr.send();
+// };
 
 // Init getTagsFromServer() with debounce
-var getTagsHandler = debounce(getTagsFromServer, 1000);
+// var getTagsHandler = debounce(getTagsFromServer, 2000);
+var getTagsHandler;
 
 $(document).ready(function() {
     $("#myTags").tagit({
+        placeholderText: "Почніть вводити новий тег",
         autocomplete: {
-            source: function() {
-                var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', url);
-                xhr.onload = function() {
-                    availableTags = JSON.parse(this.responseText);
-                    console.log(availableTags);
-                };
-                xhr.send();
-                return this.responseText;
-            }
-        },
-        placeholderText: "Почніть кожен новий тег з символу #"
+            minLength: 3,
+            // source: getTagsHandler = debounce(getTagsFromServer, 2000)
+            source: getTagsHandler = debounce(function(request, response) {
+                $.ajax({
+                    dataType: "json",
+                    type : 'Get',
+                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value,
+                    cache: false,
+                    success: function(data) {
+                        $('#myTags').removeClass('ui-autocomplete-loading');  
+                        // hide loading image
+                        response($.map( data, function(item) {
+                            // console.log(availableTags);
+                            return item;
+                            // your operation on data
+                        }));
+                    },
+                    error: function(data) {
+                        $('#myTags').removeClass('ui-autocomplete-loading');  
+                    }
+                })
+            }, 1000)
+        }
     });
 });
 

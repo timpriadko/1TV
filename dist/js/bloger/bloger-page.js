@@ -116,14 +116,8 @@ function BlogerService() {
     return {
         // Get blog-list
         blogList: function(firstItem, lastItem) {
-
-            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', env.apiUrl + 'blog/list/');
-            xhr.onload = function() {
-                sessionStorage.setItem('blogs', this.responseText);
                 // get response in UI
-                blogs = JSON.parse(this.responseText);
+                blogs = JSON.parse(sessionStorage.getItem('blogs'));
                 totalBlogs = blogs.length;
                 blogs.slice(firstItem, lastItem).forEach(function(blogs) {
                     // Show a number of blogs
@@ -131,10 +125,27 @@ function BlogerService() {
                     return blogsUI.addBlogs(blogs);
                 });
                 console.log(blogs);
-            };
-            xhr.setRequestHeader("Authorization", token);
-            xhr.send();
         },
+        // blogList: function(firstItem, lastItem) {
+
+        //     var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('POST', env.apiUrl + 'blog/list/');
+        //     xhr.onload = function() {
+        //         sessionStorage.setItem('blogs', this.responseText);
+        //         // get response in UI
+        //         blogs = JSON.parse(this.responseText);
+        //         totalBlogs = blogs.length;
+        //         blogs.slice(firstItem, lastItem).forEach(function(blogs) {
+        //             // Show a number of blogs
+        //             document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
+        //             return blogsUI.addBlogs(blogs);
+        //         });
+        //         console.log(blogs);
+        //     };
+        //     xhr.setRequestHeader("Authorization", token);
+        //     xhr.send();
+        // },
 
         // Publish blog
         publishBlog: function({
@@ -431,10 +442,17 @@ paginationBlock.addEventListener('click', function(e) {
 // Sort
 
 // UI
-var createdHeader = document.querySelector('.created-header .arrows-wrap');
+var createdHeader = document.querySelector('.created-header');
+var titleHeader = document.querySelector('.blog-title-header');
+var statusHeader = document.querySelector('.status-header');
+var publishHeader = document.querySelector('.publish-date-header');
+var createdHeaderArrows = document.querySelector('.created-header .arrows-wrap');
+var titleHeaderArrows = document.querySelector('.blog-title-header .arrows-wrap');
+var statusHeaderArrows = document.querySelector('.status-header .arrows-wrap');
+var publishHeaderArrows = document.querySelector('.publish-date-header .arrows-wrap');
 
-function sortCreaterHandler() {
-        blogs = JSON.parse(sessionStorage.getItem('blogs'));
+// Sort by created_in
+function sortCreatedHandler() {
         totalBlogs = blogs.length;
         // Init pagination JQuery plugin
         $(function($) {
@@ -447,13 +465,33 @@ function sortCreaterHandler() {
             document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
         });
 
-        console.log(blogs);
-
         // Clear container
         blogsUI.clearContainer();
-        
+
+        var sortedBlogs;
+
+        function compare(a,b) {
+            if (new Date(a.created_in) < new Date(b.created_in))
+                return -1;
+            if (new Date(a.created_in) > new Date(b.created_in))
+                return 1;
+            return 0;
+        };
+
+        if (!createdHeader.classList.contains('sorted')) {
+            blogs = JSON.parse(sessionStorage.getItem('blogs'))
+            var sortedBlogs = blogs.sort(compare);
+            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+            createdHeader.classList.add('sorted');
+        } else if (createdHeader.classList.contains('sorted')) {
+            blogs = JSON.parse(sessionStorage.getItem('blogs'));
+            sortedBlogs = blogs.sort(compare).reverse();
+            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+            createdHeader.classList.remove('sorted');
+        };
+
         // get response in UI
-        blogs.slice(-5).forEach(function(blogs) {
+        sortedBlogs.slice(-10).forEach(function(blogs) {
             // Show a number of blogs
             document.querySelector('#total-posts').innerText = totalBlogs;
             return blogsUI.addBlogs(blogs);
@@ -461,8 +499,100 @@ function sortCreaterHandler() {
     console.log('+');
 };
 
+createdHeaderArrows.addEventListener('click', sortCreatedHandler);
 
-createdHeader.addEventListener('click', function() {
+// Sort by publish_in
+function sortPublishDateHandler() {
+    blogs = JSON.parse(sessionStorage.getItem('blogs'));
+    totalBlogs = blogs.length;
+    // Init pagination JQuery plugin
+    $(function($) {
+        $(".pagination").pagination({
+            items: totalBlogs,
+            itemsOnPage: 10,
+            cssStyle: "compact-theme"
+        })
+        document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+        document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+    });
 
-    sortCreaterHandler();
-})
+    // Clear container
+    blogsUI.clearContainer();
+
+    function compare(a,b) {
+        if (new Date(a.publish_in) < new Date(b.publish_in))
+            return -1;
+        if (new Date(a.publish_in) > new Date(b.publish_in))
+            return 1;
+        return 0;
+    };
+
+    if (!publishHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'))
+        var sortedBlogs = blogs.sort(compare);
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        publishHeader.classList.add('sorted');
+    } else if (publishHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
+        sortedBlogs = blogs.sort(compare).reverse();
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        publishHeader.classList.remove('sorted');
+    };
+
+      // get response in UI
+      sortedBlogs.slice(-10).forEach(function(blogs) {
+          // Show a number of blogs
+          document.querySelector('#total-posts').innerText = totalBlogs;
+          return blogsUI.addBlogs(blogs);
+      });
+};
+
+publishHeaderArrows.addEventListener('click', sortPublishDateHandler);
+
+// Sort by status
+function sortStatusHandler() {
+    blogs = JSON.parse(sessionStorage.getItem('blogs'));
+    totalBlogs = blogs.length;
+    // Init pagination JQuery plugin
+    $(function($) {
+        $(".pagination").pagination({
+            items: totalBlogs,
+            itemsOnPage: 10,
+            cssStyle: "compact-theme"
+        })
+        document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+        document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+    });
+
+    // Clear container
+    blogsUI.clearContainer();
+
+    function compare(a,b) {
+        if (a.status < b.status)
+            return -1;
+        if (a.status > b.status)
+            return 1;
+        return 0;
+    };
+
+    if (!statusHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'))
+        var sortedBlogs = blogs.sort(compare);
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        statusHeader.classList.add('sorted');
+    } else if (statusHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
+        sortedBlogs = blogs.sort(compare).reverse();
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        statusHeader.classList.remove('sorted');
+    };
+
+      // get response in UI
+      sortedBlogs.slice(-10).forEach(function(blogs) {
+          // Show a number of blogs
+          document.querySelector('#total-posts').innerText = totalBlogs;
+          return blogsUI.addBlogs(blogs);
+      });
+};
+
+statusHeaderArrows.addEventListener('click', sortStatusHandler);
