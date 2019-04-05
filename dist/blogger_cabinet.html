@@ -27,12 +27,8 @@
     <link rel="stylesheet" href="/static/style/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <!-- Bloger styles -->
-    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
-    <!-- Modal -->
-    <link rel="stylesheet" href="static/css/modal.css">
-    <!-- Datetimepicker -->
-    <link rel="stylesheet" href="static/css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -77,6 +73,15 @@
                 <!-- user-avatar -->
                 <div id="user-avatar">
                     <img src="/static/img/icon-user-circle.svg" alt="User avatar">
+                </div>
+                <div class="block-user-options">
+                    <div>
+                        <div class="user-name">Ім’я Прізвище</div>
+                        <div class="user-options">
+                            <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
+                        </div>
+                        <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
+                    </div>
                 </div>
                 <!-- /user-avatar -->
             </div>
@@ -129,17 +134,91 @@
         </div>
     </header>
     <main>
-        <section class="article">
+
+
+
+
+        <section class="auth-bloger" id="blogger_auth" style="display: none;">
             <div class="container">
-                <a href="1TV-Blogers-BlogerPage.html" class="back-to-my-bogs">Мої Публікації</a>
+                <div class="bloger-page-title d-flex flex-wrap flex-column justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="static/img/copywriting 2.svg" alt="Resume icon">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h2>Авторизація блогера</h2>
+                    </div>
+                </div>
+                <!-- Auth form -->
+                <form name="loginForm" class="col-sm-8 col-md-6 col-lg-4">
+                    <div class="flex-wrap flex-column d-flex justify-content-center">
+                        <div class="d-flex flex-wrap flex-column">
+                            <input type="tel" name="phoneInput" placeholder="Телефон: +38(0ХХ)-ХХХ-ХХ-ХХ">
+                            <input type="password" name="passwordInput" placeholder="Пароль">
+                            <button type="button" id="sendOtpBtn" class="white-btn">Надіслати Код</button>
+                            <input type="number" name="otpInput" class="otp" placeholder="Код з SMS">
+                            <div id="informer" class="b-toggle">
+                                <p class="otp-sent">На вказаний телефон: <span class="tel-num"></span> було відправлено одноразовий код підтвердження</p>
+                                <p class="no-match">Номер телефону, або пароль, введенi невiрно</p>
+                                <p class="try-later">Спробуйте, будь-ласка, пiзнiше</p>
+                            </div>
+                            <button type="submit" class="blue-btn send-btn">Увійти</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="bloger-page d-flex flex-row" id="blogger_list" style="display: none;">
+            <div class="container">
+                <!-- Posts title -->
+                <div class="bloge-page-title-block d-flex flex-column flex-sm-row justify-content-between col-12">
+                    <div class="posts-title-block">
+                        <p class="posts-title d-flex justify-content-center justify-content-sm-start">Мої Публікації</p>
+                        <p class="total-posts d-flex justify-content-center">Усього публікацій: &nbsp; <span id="total-posts"></span></p>
+                    </div>
+                    <div class="write-article justify-content-center">
+                        <a  href="#" onclick="showPage('blogger_edit')"  class="d-flex justify-content-center">
+                            <img src="static/img/write-article.svg" alt="Write article"> Написати статтю</a>
+                    </div>
+                </div>
+                <!-- Table -->
+                <div class="posts-table-block">
+                    <!-- Table header -->
+                    <div class="table-header d-flex flex-column flex-md-row">
+                        <div class="col-md-2 created-header">Створено <div class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></div>
+                        </div>
+                        <div class="col-md-4 blog-title-header">Назва статті
+                        </div>
+                        <div class="col-md-2 status-header">Статус<div class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></div>
+                        </div>
+                        <div class="col-md-2 publish-date-header">Дата публікації<div class="arrows-wrap"><span class="arrow-up"></span><span class="down-up"></span></div>
+                        </div>
+                        <div class="col-md-2 actions-header">Дії</div>
+                    </div>
+                    <!-- Table body -->
+
+                    <!-- Blogs wrapper -->
+                    <div class="table-body-block"></div>
+
+                </div>
+                <!-- Pagination -->
+                <div class="bloger-page-bottom-nav d-flex justify-content-center">
+                    <div id="compact-pagination" class="pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="article" id="blogger_edit" style="display: none;">
+            <div class="container">
+                <a href="#" onclick="showPage('blogger_list')" class="back-to-my-bogs">Мої Публікації</a>
                 <!-- New posts title -->
                 <div class="d-flex flex-row align-items-center ">
                     <p class="article-page-title d-flex justify-content-start">Редагування статті
                     </p>
                     <div class="expire-edit-container">
+                        <!-- <span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">0:15</span></span> -->
                     </div>
                 </div>
-                <div class="current-blog-status"></div>
                 <!-- <div class="unpublished-alert-message-block">
                     <p class="unpublish-status">Знято з публікації редакцією</p>
                     <p class="unpublish-summary">Порушення правил. Стаття має ознаки політичної агітаціі.</p>
@@ -197,6 +276,7 @@
                 </form>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
@@ -277,82 +357,17 @@
             </div>
         </div>
     </footer>
-
-    <!-- Unpublish Modal -->
-    <div id="modalUnpublish" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content col-md-4">
-
-            <div class="modal-header">
-                <div class="modal-title">Зняти з публікації</div>
-            </div>
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <div class="d-flex flex-column flex-sm-row justify-content-between">
-                    <div class="col-md-5">
-                        <button class="modal-cancel-btn close" type="button">Відмінити</button>
-                    </div>
-                    <div class="col-md-5">
-                        <button class="modal-unpublish-btn" class="d-flex align-items-center justify-content-center">Зняти з публікації</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Delete Modal -->
-    <div id="modalDelete" class="modal delete-modal">
-        <!-- Modal content -->
-        <div class="modal-content col-md-4">
-
-            <div class="modal-header">
-                <div class="modal-title">Ви впевненi, що хочете видалити публікацію</div>
-            </div>
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <div class="d-flex flex-column flex-sm-row justify-content-between">
-                    <div class="col-md-5">
-                        <button class="modal-cancel-btn close" type="button">Нi</button>
-                    </div>
-                    <div class="col-md-5">
-                        <button class="delete-unpublish-btn modal-unpublish-btn" class="d-flex align-items-center justify-content-center">Так</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- User Options Modal -->
-    <div id="block-user-options" class="modal"  style="display: none; background-color: transparent;">
-        <!-- Modal content -->
-        <div class="modal-content col-md-4">
-            <div>
-                <div class="user-name">Ім’я Прізвище</div>
-                <div class="user-options">
-                    <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
-                </div>
-                <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
-            </div>
-        </div>
-     </div>
 </body>
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>
-<script type="text/javascript" src="static/js/perfect-scrollbar.jquery.min.js"></script>
-<script type="text/javascript" src="static/js/slick.min.js"></script>
-<script type="text/javascript" src="static/js/jquery.nice-select.js"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
 <script type="text/javascript" src="/static/js/loader.js"></script>
-<!-- Datetimepicker -->
-<script type="text/javascript" src="static/js/jquery.datetimepicker.full.min.js"></script>
-<script>
-    $('#datetimepicker').datetimepicker();
-</script>
-<!-- ckeditor -->
-<script type="text/javascript" src="static/js/ckeditor/ckeditor.js"></script>
+<!-- login/logout -->
+<script type="text/javascript" src="static/js/bloger/login.js"></script>
 <!-- user-avatar -->
 <script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
-<!-- blog -->
-<script type="text/javascript" src="static/js/bloger/editBlog.js"></script>
 
 
 </html>

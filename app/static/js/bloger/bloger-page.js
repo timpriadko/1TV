@@ -87,10 +87,10 @@ function BlodsUI() {
                 statusImgFunc() +
                 '</a>' +
                 '<a href="#" class="edit" title="Редагувати блог">' +
-                '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="editCurrentBlogData(event)">' +
+                '<img src="static/img/Icon-edit.svg" alt="Icon-edit"' + (blog.status == 'published' && publishedBlogTimeCheck() == false ? 'style="opacity: 0.3"' : '') +  'onclick="editCurrentBlogData(event)">' +
                 '</a>' +
                 '<a href="#" class="delete" title="Видалити блог">' +
-                '<img src="static/img/Icon-delete.svg" alt="Icon-delete" onclick="getDeleteModal(event)">' +
+                '<img src="static/img/Icon-delete.svg" alt="Icon-delete"' + (blog.status == 'published' ? 'style="opacity: 0.3"' : '') +  'onclick="getDeleteModal(event)">' +
                 '</a>' +
                 '</div>' +
                 '</div>';
@@ -205,7 +205,7 @@ function BlogerService() {
             xhr.setRequestHeader("Authorization", token);
             xhr.onload = function() {
                 if (JSON.parse(this.status) < 300) {
-                    window.location = "1TV-Blogers-BlogerPage.html";
+                    window.location.reload();
                 }
             };
             xhr.send(JSON.stringify({
@@ -417,12 +417,15 @@ window.onclick = function(event) {
     if (event.target == deleteNotAllowedModal) {
         deleteNotAllowedModal.style.display = "none";
     }
+    if (event.target == unpublishModal) {
+        unpublishModal.style.display = "none";
+    }
 };
 
 
 // Unpublish blog handler
 
-// Get publish modal
+// Get unpublish modal
 var unpublishModal = document.getElementById('modalUnpublish');
 
 // When the user clicks the button, open the modal
@@ -440,18 +443,35 @@ function getUnpublishModal(e) {
 
 // Close the modal
 document.querySelector("#modalUnpublish .close").addEventListener('click', function() {
-    publishModal.style.display = "none";
+    unpublishModal.style.display = "none";
 });
 
 function unpublishBlogHandler(e) {
     e.preventDefault();
 
+    currentBlog = JSON.parse(sessionStorage.getItem('currentBlog'));
+
     // time now
     var date = new Date();
     var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
 
+    // Unpublish blog data to send
+    var unpublishData = {
+        title: currentBlog.title,
+        description: "unpublish blog",
+        content: currentBlog.content,
+        tags: [],
+        publish_in: dateAndTimeNow,
+        published: false
+    };
 
+    console.log(unpublishData);
+    bloger.unpublishBlog(unpublishData);
+
+    console.log('+')
 }
+
+document.querySelector('#modalUnpublish .modal-unpublish-btn').addEventListener('click', unpublishBlogHandler);
 
 
 // Pagination

@@ -64,7 +64,7 @@ var deleteBtn = document.querySelector('.delete-article button');
 
 // Validation
 function blogValidation() {
-    // title error message
+    // no title error message
     switch (document.querySelector('.article-title input').value) {
         case '':
             document.querySelector('.article-title .validation-message-wrapper').classList.add('is-invalid');
@@ -73,13 +73,29 @@ function blogValidation() {
             document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-invalid');
             break;
     };
-    // content error message
+    // no content error message
     switch (CKEDITOR.instances.ckeditor.getData()) {
         case '':
             document.querySelector('.article-content .validation-message-wrapper').classList.add('is-invalid');
             break;
         case CKEDITOR.instances.ckeditor.getData():
             document.querySelector('.article-content .validation-message-wrapper').classList.remove('is-invalid');
+            break;
+    };
+    // to long title error message
+    function titleInputLength() {
+        if (titleInput.value.length >= 50) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    switch (titleInputLength()) {
+        case true:
+            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
+            break;
+        case false :
+            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
             break;
     };
 }
@@ -119,8 +135,9 @@ function publishNewBlog(e) {
 
 function publishNewBlogHandler() {
     blogValidation();
-    if ((!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-            (!document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')))) {
+    if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')) {
         publishNewBlog();
     }
 };
@@ -161,7 +178,8 @@ function saveBlogAsNewDraft(e) {
 function saveBlogAsNewDraftHandler() {
     blogValidation();
     if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
     ) {
         saveBlogAsNewDraft();
     }
@@ -198,10 +216,10 @@ window.onclick = function(event) {
 // debounce
 function debounce(f, ms) {
 
-    let timer = null;
+    var timer = null;
   
     return function (...args) {
-      const onComplete = () => {
+      var onComplete = function() {
         f.apply(this, args);
         timer = null;
       }
@@ -215,51 +233,33 @@ function debounce(f, ms) {
   }
 
 // Get tags from server func
-// function getTagsFromServer() {
-//     var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('GET', url);
-//     xhr.onload = function() {
-//         availableTags = JSON.parse(this.responseText);
-//         availableTags.forEach(function(item, index, arr) {
-//             // console.log(item);
-//         console.log(item);
-//             return item;
-//           });
-//     };
-//     xhr.send();
-// };
-
-// Init getTagsFromServer() with debounce
-// var getTagsHandler = debounce(getTagsFromServer, 2000);
 var getTagsHandler;
 
 $(document).ready(function() {
     $("#myTags").tagit({
         placeholderText: "Почніть вводити новий тег",
         autocomplete: {
-            minLength: 3,
-            // source: getTagsHandler = debounce(getTagsFromServer, 2000)
             source: getTagsHandler = debounce(function(request, response) {
                 $.ajax({
                     dataType: "json",
                     type : 'Get',
-                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value,
+                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value,
                     cache: false,
                     success: function(data) {
-                        $('#myTags').removeClass('ui-autocomplete-loading');  
-                        // hide loading image
-                        response($.map( data, function(item) {
-                            // console.log(availableTags);
-                            return item;
-                            // your operation on data
-                        }));
+                        if (!data.length) {
+                            var newTag = prompt('На даннирй момент такого тега не існує. Додати новий тег?');
+                            console.log(newTag);
+                        } else {
+                            response($.map( data, function(item) {
+                                return item;
+                            }));
+                        }
                     },
                     error: function(data) {
-                        $('#myTags').removeClass('ui-autocomplete-loading');  
+                        console.log(data)
                     }
                 })
-            }, 1000)
+            }, 2000)
         }
     });
 });

@@ -80,7 +80,6 @@ function buttonVisibility() {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
-        editExpireMark.style.display = "none";
     } else if (currentBlogStatus === "published" && ableToEdit == true) {
         expireMarkFunc();
         document.querySelector(".unpublish-article").style.display = "none";
@@ -93,14 +92,12 @@ function buttonVisibility() {
         document.querySelector('#saveBlogBtn').style.display = "none";
         document.querySelector('.saveBlogBtn-block').style.display = "none";
         document.getElementById('datetimepicker').disabled = true;
-        editExpireMark.style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
     } else if (currentBlogStatus === "removed_by_author") {
         document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector(".delete-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
-        editExpireMark.style.display = "none";
     }
 };
 
@@ -273,6 +270,7 @@ window.onclick = function(event) {
 
 
 // Validation
+var titleInput = document.querySelector('.article-title input');
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
 var contentValidationMsgWrapper = document.querySelector('.article-content .validation-message-wrapper');
 
@@ -293,6 +291,22 @@ function blogValidation() {
             break;
         case CKEDITOR.instances.ckeditor.getData():
             contentValidationMsgWrapper.classList.remove('is-invalid');
+            break;
+    };
+    // to long title error message
+    function titleInputLength() {
+        if (titleInput.value.length >= 50) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    switch (titleInputLength()) {
+        case true:
+            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
+            break;
+        case false :
+            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
             break;
     };
 };
@@ -319,7 +333,8 @@ unpublishPreModalBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
         !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !dateValidationMsgWrapper.classList.contains('is-invalid')
+        !dateValidationMsgWrapper.classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
     ) {
         modal.style.display = "block";
     }
@@ -383,7 +398,8 @@ function publishDraft(e) {
 publishBtn.addEventListener("click", function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid')
+        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
     ) {
         publishDraft();
     }
@@ -415,7 +431,8 @@ function saveDraftHndler(e) {
 saveDraftBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        (!contentValidationMsgWrapper.classList.contains('is-invalid'))
+        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
     ) {
         saveDraftHndler();
     }
@@ -442,7 +459,8 @@ function saveChangesInPublishedBlog(e) {
 savePublishedBlogChangesBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        (!contentValidationMsgWrapper.classList.contains('is-invalid'))
+        (!contentValidationMsgWrapper.classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long'))
     ) {
         saveChangesInPublishedBlog();
     }
@@ -453,3 +471,6 @@ savePublishedBlogChangesBtn.addEventListener('click', function() {
 var userName = document.querySelector('.user-name').innerText;
 var authorName = document.querySelector('.article-author input')
 authorName.value = userName;
+
+// Status in Edit Page
+document.querySelector('.current-blog-status').innerText = currentBlogStatus;

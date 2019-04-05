@@ -3,9 +3,6 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
-// Init DateTimepicker
-$('#datetimepicker').datetimepicker();
-
 // Blog service
 function BlogService() {
     return {
@@ -57,7 +54,6 @@ var blog = BlogService();
 // New blog UI
 var newBlogform = document.forms["newBlog"];
 var titleInput = document.querySelector('.article-title input');
-var tagsInput = document.querySelector('.article-tags input');
 var publishDate = document.getElementById('datetimepicker');
 var publishBtn = document.querySelector('.publish-article button');
 var titleValidationMsgWrapper = document.querySelector('.article-title .validation-message-wrapper');
@@ -68,7 +64,7 @@ var deleteBtn = document.querySelector('.delete-article button');
 
 // Validation
 function blogValidation() {
-    // title error message
+    // no title error message
     switch (document.querySelector('.article-title input').value) {
         case '':
             document.querySelector('.article-title .validation-message-wrapper').classList.add('is-invalid');
@@ -77,13 +73,29 @@ function blogValidation() {
             document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-invalid');
             break;
     };
-    // content error message
+    // no content error message
     switch (CKEDITOR.instances.ckeditor.getData()) {
         case '':
             document.querySelector('.article-content .validation-message-wrapper').classList.add('is-invalid');
             break;
         case CKEDITOR.instances.ckeditor.getData():
             document.querySelector('.article-content .validation-message-wrapper').classList.remove('is-invalid');
+            break;
+    };
+    // to long title error message
+    function titleInputLength() {
+        if (titleInput.value.length >= 50) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    switch (titleInputLength()) {
+        case true:
+            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
+            break;
+        case false :
+            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
             break;
     };
 }
@@ -123,8 +135,9 @@ function publishNewBlog(e) {
 
 function publishNewBlogHandler() {
     blogValidation();
-    if ((!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-            (!document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')))) {
+    if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')) {
         publishNewBlog();
     }
 };
@@ -153,7 +166,7 @@ function saveBlogAsNewDraft(e) {
         description: "create draft",
         content: contentInput,
         tags: tagsArr,
-        publish_in: dateAndTimeNow,
+        publish_in: (!document.getElementById('datetimepicker').value ? dateAndTimeNow : document.getElementById('datetimepicker').value),
         published: false
     }
 
@@ -165,7 +178,8 @@ function saveBlogAsNewDraft(e) {
 function saveBlogAsNewDraftHandler() {
     blogValidation();
     if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
+        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
     ) {
         saveBlogAsNewDraft();
     }
@@ -194,54 +208,86 @@ window.onclick = function(event) {
     }
 }
 
+
 // Tags
+// Get tags from server by typing
+    var availableTags = [];
+    
+// debounce
+function debounce(f, ms) {
+
+    let timer = null;
+  
+    return function (...args) {
+      const onComplete = () => {
+        f.apply(this, args);
+        timer = null;
+      }
+  
+      if (timer) {
+        clearTimeout(timer);
+      }
+  
+      timer = setTimeout(onComplete, ms);
+    };
+  }
+
+// Get tags from server func
+// function getTagsFromServer() {
+//     var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value;
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     xhr.onload = function() {
+//         availableTags = JSON.parse(this.responseText);
+//         availableTags.forEach(function(item, index, arr) {
+//             // console.log(item);
+//         console.log(item);
+//             return item;
+//           });
+//     };
+//     xhr.send();
+// };
+
+// Init getTagsFromServer() with debounce
+// var getTagsHandler = debounce(getTagsFromServer, 2000);
+var getTagsHandler;
+
 $(document).ready(function() {
-    var availableTags = [
-        "#ActionScript",
-        "#AppleScript",
-        "Asp",
-        "#BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "#Java",
-        "#JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme",
-        '#кривий рiг',
-        '#кривбасводоканал',
-        '#криворiжгаз',
-        '#Політика ',
-        '#Воєнний стан',
-        '#Економіка',
-    ];
     $("#myTags").tagit({
+        placeholderText: "Почніть вводити новий тег",
         autocomplete: {
-            delay: 0,
-            minLength: 2
-        },
-        autocomplete: {
-            source: availableTags
-        },
-        placeholderText: "Почніть кожен новий тег з символу #"
+            minLength: 3,
+            // source: getTagsHandler = debounce(getTagsFromServer, 2000)
+            source: getTagsHandler = debounce(function(request, response) {
+                $.ajax({
+                    dataType: "json",
+                    type : 'Get',
+                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('#myTags input').value,
+                    cache: false,
+                    success: function(data) {
+                        $('#myTags').removeClass('ui-autocomplete-loading');  
+                        // hide loading image
+                        response($.map( data, function(item) {
+                            // console.log(availableTags);
+                            return item;
+                            // your operation on data
+                        }));
+                    },
+                    error: function(data) {
+                        $('#myTags').removeClass('ui-autocomplete-loading');  
+                    }
+                })
+            }, 1000)
+        }
     });
 });
 
-// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+
+
+// var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=кри';
 // var xhr = new XMLHttpRequest();
 // xhr.open('GET', url);
-// xhr.onload = function() { console.log(this.responseText) };
+// xhr.onload = function() { console.log(JSON.parse(this.responseText)) };
 // xhr.send();
 
 

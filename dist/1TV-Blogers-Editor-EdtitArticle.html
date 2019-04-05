@@ -78,15 +78,6 @@
                 <div id="user-avatar">
                     <img src="/static/img/icon-user-circle.svg" alt="User avatar">
                 </div>
-                <div class="block-user-options">
-                    <div>
-                        <div class="user-name">Ім’я Прізвище</div>
-                        <div class="user-options">
-                            <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
-                        </div>
-                        <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
-                    </div>
-                </div>
                 <!-- /user-avatar -->
             </div>
         </div>
@@ -146,9 +137,9 @@
                     <p class="article-page-title d-flex justify-content-start">Редагування статті
                     </p>
                     <div class="expire-edit-container">
-                        <!-- <span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">0:15</span></span> -->
                     </div>
                 </div>
+                <div class="current-blog-status"></div>
                 <!-- <div class="unpublished-alert-message-block">
                     <p class="unpublish-status">Знято з публікації редакцією</p>
                     <p class="unpublish-summary">Порушення правил. Стаття має ознаки політичної агітаціі.</p>
@@ -331,6 +322,19 @@
             </div>
         </div>
     </div>
+    <!-- User Options Modal -->
+    <div id="block-user-options" class="modal"  style="display: none; background-color: transparent;">
+        <!-- Modal content -->
+        <div class="modal-content col-md-4">
+            <div>
+                <div class="user-name">Ім’я Прізвище</div>
+                <div class="user-options">
+                    <a href="#" class="d-flex"><img src="/static/img/ic_settings.svg" alt="Settings">Налаштування</a>
+                </div>
+                <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
+            </div>
+        </div>
+     </div>
 </body>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>

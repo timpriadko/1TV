@@ -1,6 +1,20 @@
+// UI
+var userAvatar = document.querySelector('#user-avatar');
+var userOptionsBlock = document.querySelector('#block-user-options');
+
 // Show user options on click
-$('#user-avatar').on('click', function() {
-    $('.block-user-options').fadeToggle(150);
+userAvatar.addEventListener('click', function() {
+    if (userOptionsBlock.style.display == "none") {
+        userOptionsBlock.style.display = "block";
+    } else {
+        userOptionsBlock.style.display = "none";
+    }
+});
+
+window.addEventListener('click', function(e) {
+    if (e.target == userOptionsBlock) {
+        userOptionsBlock.style.display = "none";
+    }
 });
 
 // Logout
@@ -21,7 +35,6 @@ function Logout() {
         logout: function() {
             var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
             var xhr = new XMLHttpRequest();
-            // xhr.setRequestHeader("Authorization", token);
             xhr.open('GET', env.apiUrl + 'logout/');
             return xhr.send();
         }
@@ -43,6 +56,6 @@ function logoutHandler(e) {
     if (!sessionStorage.getItem("token")) {
         window.location = "index.html";
     };
-}
+};
 
 logoutBtn.addEventListener("click", logoutHandler);

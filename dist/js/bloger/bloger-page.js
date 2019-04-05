@@ -6,14 +6,32 @@ var env = {
 // Контейнер блогов
 var _blogsContainer = document.querySelector('.table-body-block');
 
+
 // Класс для работы с шаблонами
 function BlodsUI() {
     return {
+
 
         // Шаблон блога
         _blogRowTemplate: function(blog) {
             var statusImg;
             var blogStatus;
+
+
+            //  Publish time check
+            function publishedBlogTimeCheck() {
+                var currentBlogTime = blog.publish_in;
+                var blogTimestamp = +Date.parse(currentBlogTime);
+
+                var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+                var nowTime = Date.now();
+
+                if (blog.status == 'published' && nowTime < blogEditionEndTime) {
+                    return true;
+                } else {
+                    return false;
+                }            
+            }
 
             // Blog status img
             function statusImgFunc() {
@@ -26,51 +44,53 @@ function BlodsUI() {
                 };
                 return statusImg;
             };
-            statusImgFunc();
 
             // Published blog edit mark
             function publishedBlogMark() {
-                    //  Publish time check
-                    currentBlogTime = blog.publish_in;
-                    var blogTimestamp = +Date.parse(currentBlogTime);
+                //  Publish time check
+                var currentBlogTime = blog.publish_in;
+                var blogTimestamp = +Date.parse(currentBlogTime);
 
-                    var mayEdit;
+                var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
+                var nowTime = Date.now();
 
-                    var blogEditionEndTime = new Date(+blogTimestamp + 3600000);
-                    var nowTime = Date.now();
-
-                    var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
-
+                var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
                     
-                    if (blog.status == 'published' && nowTime < blogEditionEndTime) {
-                        mayEdit = true;
-                        blogStatus =  'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>';
-                    } else {
-                        mayEdit = false;
-                        blogStatus = blog.status;
-                    }
-                    return blogStatus;
-            }
-            publishedBlogMark();
+                if (blog.status == 'published' && nowTime < blogEditionEndTime) {
+                    blogStatus =  'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>';
+                } else {
+                    blogStatus = blog.status;
+                }
+                return blogStatus;
+            };
 
+            // Draft publish date
+            function draftPublishDate() {
+                if (blog.status == 'draft') {
+                    return '-';
+                } else {
+                    return blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16);
+                }
+            }
+            
             return '<div class="post-row d-flex flex-column flex-md-row">' +
                 '<div class="blog-id" style="display: none">' + blog.id + '</div>' +
                 '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
                 '<div class="post-name col-md-4 d-flex justify-content-center justify-content-md-start">' + blog.title + '</div>' +
-                '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + blogStatus + '</div>' +
-                '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16) + '</div>' +
+                '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + publishedBlogMark() + '</div>' +
+                '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + draftPublishDate() + '</div>' +
                 '<div class="post-actions col-md-2">' +
                 '<a href="#" class="watch" title="Переглянути опублiкований блог">' +
                 '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
                 '</a>' +
-                '<a href="#" class="notification publish" onclick="getPublishModal(event)" title="Опублiкувати блог">' +
-                statusImg +
+                '<a href="#" class="notification publish"' + (blog.status == 'published' ? 'title="Зняти блог з публiкацiї" onclick="getUnpublishModal(event)"' : 'title="Опублiкувати блог" onclick="getPublishModal(event)"') + '>' +
+                statusImgFunc() +
                 '</a>' +
-                '<a href="#" class="edit" title="Редагувати опублiкований блог">' +
-                '<img src="static/img/Icon-edit.svg" alt="Icon-edit" onclick="editCurrentBlogData(event)">' +
+                '<a href="#" class="edit" title="Редагувати блог">' +
+                '<img src="static/img/Icon-edit.svg" alt="Icon-edit"' + (blog.status == 'published' && publishedBlogTimeCheck() == false ? 'style="opacity: 0.3"' : '') +  'onclick="editCurrentBlogData(event)">' +
                 '</a>' +
                 '<a href="#" class="delete" title="Видалити блог">' +
-                '<img src="static/img/Icon-delete.svg" alt="Icon-delete" onclick="getDeleteModal(event)">' +
+                '<img src="static/img/Icon-delete.svg" alt="Icon-delete"' + (blog.status == 'published' ? 'style="opacity: 0.3"' : '') +  'onclick="getDeleteModal(event)">' +
                 '</a>' +
                 '</div>' +
                 '</div>';
@@ -126,26 +146,6 @@ function BlogerService() {
                 });
                 console.log(blogs);
         },
-        // blogList: function(firstItem, lastItem) {
-
-        //     var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.open('POST', env.apiUrl + 'blog/list/');
-        //     xhr.onload = function() {
-        //         sessionStorage.setItem('blogs', this.responseText);
-        //         // get response in UI
-        //         blogs = JSON.parse(this.responseText);
-        //         totalBlogs = blogs.length;
-        //         blogs.slice(firstItem, lastItem).forEach(function(blogs) {
-        //             // Show a number of blogs
-        //             document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
-        //             return blogsUI.addBlogs(blogs);
-        //         });
-        //         console.log(blogs);
-        //     };
-        //     xhr.setRequestHeader("Authorization", token);
-        //     xhr.send();
-        // },
 
         // Publish blog
         publishBlog: function({
@@ -188,6 +188,34 @@ function BlogerService() {
             }
             xhr.setRequestHeader("Authorization", token);
             xhr.send();
+        },
+
+        // Unpublish blog
+        unpublishBlog: function({
+            title,
+            description,
+            content,
+            tags,
+            publish_in,
+            published
+        }) {
+            var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
+            xhr.setRequestHeader("Authorization", token);
+            xhr.onload = function() {
+                if (JSON.parse(this.status) < 300) {
+                    window.location.reload();
+                }
+            };
+            xhr.send(JSON.stringify({
+                title,
+                description,
+                content,
+                tags,
+                publish_in,
+                published
+            }));            
         }
     };
 }
@@ -389,7 +417,61 @@ window.onclick = function(event) {
     if (event.target == deleteNotAllowedModal) {
         deleteNotAllowedModal.style.display = "none";
     }
+    if (event.target == unpublishModal) {
+        unpublishModal.style.display = "none";
+    }
 };
+
+
+// Unpublish blog handler
+
+// Get unpublish modal
+var unpublishModal = document.getElementById('modalUnpublish');
+
+// When the user clicks the button, open the modal
+function getUnpublishModal(e) {
+    // Select and set current blog id to session starage
+    currentBlogId = e.target.parentElement.parentElement.parentElement.firstElementChild.textContent;
+    sessionStorage.setItem('currentBlogId', currentBlogId);
+
+    // Current blog to session starage
+    currentBlog = blogs.find(item => item.id === +currentBlogId)
+    sessionStorage.setItem('currentBlog', JSON.stringify(currentBlog));
+
+    unpublishModal.style.display = "block";
+};
+
+// Close the modal
+document.querySelector("#modalUnpublish .close").addEventListener('click', function() {
+    unpublishModal.style.display = "none";
+});
+
+function unpublishBlogHandler(e) {
+    e.preventDefault();
+
+    currentBlog = JSON.parse(sessionStorage.getItem('currentBlog'));
+
+    // time now
+    var date = new Date();
+    var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+
+    // Unpublish blog data to send
+    var unpublishData = {
+        title: currentBlog.title,
+        description: "unpublish blog",
+        content: currentBlog.content,
+        tags: [],
+        publish_in: dateAndTimeNow,
+        published: false
+    };
+
+    console.log(unpublishData);
+    bloger.unpublishBlog(unpublishData);
+
+    console.log('+')
+}
+
+document.querySelector('#modalUnpublish .modal-unpublish-btn').addEventListener('click', unpublishBlogHandler);
 
 
 // Pagination
