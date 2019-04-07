@@ -33,11 +33,22 @@ var blogData;
 
 function setBlogValue() {
     blogData = JSON.parse(sessionStorage.getItem('currentBlog'));
-    console.log(blogData);
     titleInput.value = blogData.title;
     contentInput.value = blogData.content;
     publishDate.value = blogData.publish_in;
-}
+    // Set tags
+    console.log(blogData.tags);
+
+
+    // <li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable">
+    //     <span class="tagit-label">криввбас</span>
+    //     <a class="tagit-close">
+    //         <span class="text-icon">×</span>
+    //         <span class="ui-icon ui-icon-close"></span>
+    //     </a>
+    //     <input type="hidden" value="криввбас" name="tags" class="tagit-hidden-field">
+    // </li>
+};
 
 //  Publish time check
 function publishTimeCheck() {
@@ -68,7 +79,7 @@ function expireMarkFunc() {
 
     var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
 
-    editExpireMarkContainer.insertAdjacentHTML('beforeend', '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>')
+    editExpireMarkContainer.insertAdjacentHTML('beforeend', '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">' + '0.' + timeToExpireEdit.getMinutes() + '</span></span>')
 }
 
 // Buttons visibility
@@ -305,7 +316,7 @@ function blogValidation() {
         case true:
             document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
             break;
-        case false :
+        case false:
             document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
             break;
     };
@@ -460,7 +471,7 @@ savePublishedBlogChangesBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
         (!contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long'))
+            !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long'))
     ) {
         saveChangesInPublishedBlog();
     }
@@ -474,3 +485,71 @@ authorName.value = userName;
 
 // Status in Edit Page
 document.querySelector('.current-blog-status').innerText = currentBlogStatus;
+
+// Tags
+// Get tags from server by typing
+
+// debounce
+function debounce(f, ms) {
+
+    var timer = null;
+
+    return function(...args) {
+        var onComplete = function() {
+            f.apply(this, args);
+            timer = null;
+        }
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(onComplete, ms);
+    };
+}
+
+// Get tags from server func
+var getTagsHandler;
+var newTag;
+
+$(document).ready(function() {
+    $("#myTags").tagit({
+        placeholderText: "Почніть вводити новий тег",
+        autocomplete: {
+            source: getTagsHandler = debounce(function(request, response) {
+                $.ajax({
+                    dataType: "json",
+                    type: 'Get',
+                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value,
+                    cache: false,
+                    success: function(data) {
+                        if (document.querySelector('.tagit-new input').value.length && !data.length) {
+                            newTag = prompt('На даний момент такого тега не існує. Додати новий тег?');
+                            setTimeout(function() {
+                                // Set new tag from prompt to UI
+                                document.querySelector('#myTags').lastChild.previousSibling.firstElementChild.innerText = newTag;
+                                // Send new tag
+                                if (document.querySelector('.tagit-new input').value.length) {
+                                    var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open('POST', url);
+                                    xhr.send(JSON.stringify({
+                                        add: newTag
+                                    }));
+                                };
+                            }, 100)
+                            console.log(newTag);
+                        } else {
+                            response($.map(data, function(item) {
+                                return item;
+                            }));
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data)
+                    }
+                });
+            }, 1000)
+        }
+    });
+});

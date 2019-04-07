@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="static/css/modal.css">
     <!-- Datetimepicker -->
     <link rel="stylesheet" href="static/css/jquery.datetimepicker.css">
+    <!-- Tag-it -->
+    <link rel="stylesheet" href="static/css/jquery-ui.css">
+    <link rel="stylesheet" href="static/css/jquery.tagit.css">
 </head>
 
 <body>
@@ -159,9 +162,10 @@
                         <div class="validation-message-wrapper"></div>
                     </div>
                     <!-- Tags -->
-                    <div class="article-tags d-flex flex-column">
-                        <label for="article-tags">Теги:</label>
-                        <input type="text" name="article-tags" placeholder="Почніть кожен новий тег з символу #" value="#Політика #Воєнний стан #Економіка">
+                    <div class="article-tags d-flex flex-column ui-widget">
+                        <label>Теги:</label>
+                        <ul id="myTags">
+                        </ul>
                     </div>
                     <!-- Form bottom -->
                     <div class="article-form-bottom d-flex justify-content-between flex-column flex-lg-row">
@@ -323,7 +327,7 @@
         </div>
     </div>
     <!-- User Options Modal -->
-    <div id="block-user-options" class="modal"  style="display: none; background-color: transparent;">
+    <div id="block-user-options" class="modal" style="display: none; background-color: transparent;">
         <!-- Modal content -->
         <div class="modal-content col-md-4">
             <div>
@@ -334,7 +338,7 @@
                 <button id="logout" class="d-flex align-items-center"><img src="/static/img/signout.svg" alt="logout">Вийти</button>
             </div>
         </div>
-     </div>
+    </div>
 </body>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/jquery-migrate.min.js"></script>
@@ -353,6 +357,9 @@
 <script type="text/javascript" src="static/js/bloger/user-avatar.js"></script>
 <!-- blog -->
 <script type="text/javascript" src="static/js/bloger/editBlog.js"></script>
+<!-- Tag -->
+<script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="static/js/tag-it.min.js"></script>
 
 
 </html>
