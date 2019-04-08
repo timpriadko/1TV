@@ -240,38 +240,79 @@ $(document).ready(function() {
         placeholderText: "Почніть вводити новий тег",
         autocomplete: {
             source: getTagsHandler = debounce(function(request, response) {
-                $.ajax({
-                    dataType: "json",
-                    type: 'Get',
-                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value,
-                    cache: false,
-                    success: function(data) {
-                        if (document.querySelector('.tagit-new input').value.length && !data.length) {
-                            newTag = prompt('На даний момент такого тега не існує. Додати новий тег?');
-                            setTimeout(function() {
-                                // Set new tag from prompt to UI
-                                document.querySelector('#myTags').lastChild.previousSibling.firstElementChild.innerText = newTag;
-                                // Send new tag
-                                if (document.querySelector('.tagit-new input').value.length) {
-                                    var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
-                                    var xhr = new XMLHttpRequest();
-                                    xhr.open('POST', url);
-                                    xhr.send(JSON.stringify({
-                                        add: newTag
+                if (document.querySelector('.tagit-new input').value.length && document.querySelector('.tagit-new input').value[0] === "#") {
+                    if (document.querySelector('.tagit-new input').value.length < 2) {
+                    } else {
+                        $.ajax({
+                            dataType: "json",
+                            type: 'Get',
+                            url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value.substring(1),
+                            cache: false,
+                            success: function(data) {
+                                if (document.querySelector('.tagit-new input').value.length === 1 && data.length) {
+                                    newTag = prompt('На даний момент такого тега не існує. Додати новий тег?');
+                                    setTimeout(function() {
+                                        // Set new tag from prompt to UI
+                                        document.querySelector('#myTags').lastChild.previousSibling.firstElementChild.innerText = newTag;
+                                        document.querySelector('#myTags').lastChild.previousSibling.lastElementChild.value = newTag;
+                                        // Send new tag
+                                        if (document.querySelector('.tagit-new input').value.length) {
+                                            var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open('POST', url);
+                                            xhr.send(JSON.stringify({
+                                                add: newTag
+                                            }));
+                                        };
+                                    }, 100)
+                                    console.log(newTag);
+                                } else {
+                                    response($.map(data, function(item) {
+                                        return item;
                                     }));
-                                };
-                            }, 100)
-                            console.log(newTag);
-                        } else {
-                            response($.map(data, function(item) {
-                                return item;
-                            }));
-                        }
-                    },
-                    error: function(data) {
-                        console.log(data)
+                                }
+                            },
+                            error: function(data) {
+                                console.log(data)
+                            }
+                        });
                     }
-                });
+                } else {
+                    $.ajax({
+                        dataType: "json",
+                        type: 'Get',
+                        url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value,
+                        cache: false,
+                        success: function(data) {
+                            if (document.querySelector('.tagit-new input').value.length && !data.length) {
+                                newTag = prompt('На даний момент такого тега не існує. Додати новий тег?');
+                                setTimeout(function() {
+                                    // Set new tag from prompt to UI
+                                    document.querySelector('#myTags').lastChild.previousSibling.firstElementChild.innerText = newTag;
+                                    document.querySelector('#myTags').lastChild.previousSibling.lastElementChild.value = newTag;
+                                    // Send new tag
+                                    if (document.querySelector('.tagit-new input').value.length) {
+                                        var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open('POST', url);
+                                        xhr.send(JSON.stringify({
+                                            add: newTag
+                                        }));
+                                    };
+                                }, 100)
+                                console.log(newTag);
+                            } else {
+                                response($.map(data, function(item) {
+                                    return item;
+                                }));
+                            }
+                        },
+                        error: function(data) {
+                            console.log(data)
+                        }
+                    });
+                }
+                
             }, 1000)
         }
     });
