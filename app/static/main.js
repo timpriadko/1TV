@@ -111,9 +111,6 @@ $(document).ready(function() {
                     main_pages_compare_h[ item.slug ] = {'in': item};
                 });
 
-                // Удаляем вписанные в html элементы списка
-                $('footer nav ul li').remove();
-
                 $('footer nav ul li').each(function () {
                     var key = $(this).children('a').attr('href');
                     if ($(this).hasClass('def') || noClass($(this).attr('class'))) {
@@ -164,54 +161,27 @@ $(document).ready(function() {
 
             try {
                 var sections = data.sections;
-                var sections_compare_h = {};
-                var sections_compare_f = {};
-
+                var sections_compare = {};
                 sections.map(function (item, idx) {
-                    sections_compare_h['/' + item.slug + '.html'] = {'in': item};
-                    sections_compare_f['/' + item.slug + '.html'] = {'in': item};
-
+                    sections_compare['/' + item.slug + '.html'] = {'in': item};
                 });
-
                 $('header nav ul li.election').each(function () {
                     var key = $(this).children('a').attr('href');
-                    if (sections_compare_h[key] === undefined) {
-                        sections_compare_h[key] = {'out': this};
+                    if (sections_compare[key] === undefined) {
+                        sections_compare[key] = {'out': this};
                     } else {
-                        sections_compare_h[key]['out'] = this;
+                        sections_compare[key]['out'] = this;
                     }
                 });
 
-                for (var j in sections_compare_h) {
-                    if (sections_compare_h[j]['in'] === undefined && sections_compare_h[j]['out'] !== undefined) {
-                        $(sections_compare_h[j]['out']).remove();
+                for (var j in sections_compare) {
+                    if (sections_compare[j]['in'] === undefined && sections_compare[j]['out'] !== undefined) {
+                        $(sections_compare[j]['out']).remove();
                     }
-                    if (sections_compare_h[j]['out'] === undefined && sections_compare_h[j]['in'] !== undefined) {
+                    if (sections_compare[j]['out'] === undefined && sections_compare[j]['in'] !== undefined) {
                         $('header nav ul').append(
                             $('<li class="election"></li>').append(
-                                $('<a href="' + j + '">' + sections_compare_h[j]['in']['name'] + '</a>')
-                            )
-                        );
-                    }
-                }
-
-                $('footer nav ul li.election').each(function () {
-                    var key = $(this).children('a').attr('href');
-                    if (sections_compare_f[key] === undefined) {
-                        sections_compare_f[key] = {'out': this};
-                    } else {
-                        sections_compare_f[key]['out'] = this;
-                    }
-                });
-
-                for (var j in sections_compare_f) {
-                    if (sections_compare_f[j]['in'] === undefined && sections_compare_f[j]['out'] !== undefined) {
-                        $(sections_compare_f[j]['out']).remove();
-                    }
-                    if (sections_compare_f[j]['out'] === undefined && sections_compare_f[j]['in'] !== undefined) {
-                        $('footer nav ul').append(
-                            $('<li class="election"></li>').append(
-                                $('<a href="' + j + '">' + sections_compare_f[j]['in']['name'] + '</a>')
+                                $('<a href="' + j + '">' + sections_compare[j]['in']['name'] + '</a>')
                             )
                         );
                     }

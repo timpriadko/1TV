@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style/perfect-scrollbar.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/nice-select.css" />
+  <link rel="stylesheet" href="/static/style/style.css">
+  <!--link href="http://1tv.kr.ua/news.rss" rel="alternate" title="RSS" type="application/rss+xml" /-->
+  <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/static/img/apple-touch-icon-144.png">
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <link rel="icon" href="/static/img/favicon.png">
+
+  <meta property="fb:app_id" content="204387270490071" />
+  <meta property="fb:pages" content="1056583734365790" />
+  <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
+  <link rel="stylesheet" href="/static/style/nice-select.css">
+  
+  <title>Аналiтика | Перший мiський</title>
+
+</head>
+<body>
+
+  <!-- preloader -->
+  <div class="preloader">
+    <img src="data:image/gif;base64,R0lGODlhGwHUALMKACF3qi5/r4Ozz8jd6VeYvmKew9vo8N7q8pO91f///////wAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAKACwAAAAAGwHUAAAE/zDJSau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6NIDBAAABAPpSwjt9AAI8UgD9fXw+EXs+9oR8FckYD2CRAzSQzgEYMCBDIPoM9gvogwDBdoVMIBh3r57Fv8vBqgXgOOFdQIrWhAQIICAkCYy7itgQkC9lzBHKDQxkl6AnDoN8iQJVITMejRL2KSHs+iHAz3bBThwgqVLpyIOyCxAFavXr2DDih1L1ozVpjDOkl3aDm0LtgDceo0K4CcMunbD4o2xVyxcuSv+rm0JmIXasogTK17MuLHjx28JpzjsWHDNm4/7ltDMmPMIz4otK8X8mHJNyZBTAzGtuirp1idAwxYhezYI0bZJsM7Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOAKgAQWaOCBCJIRAQAh+QQFCgAKACx9AFMAJgARAAAEZjDJSau9OGdTACiGJmpG4HlBOK5Ud3oFKyfvO7P1ea/uG++ig+kUOFwGBA9hsDu4CkYLIoeYCAIBAXAyyHmYgpd2m/QSEkPUlub1oF+BddsdPo2B5dw5cc2uE11eTH9SVIQYSEqDEQAh+QQFCgAKACyMAFQAHAAdAAAEbjDJSau9UoQgsLcCIALdZwYjEJhnurJeOJYwpnF1jhmFWBi6igE1CgCDkl4KUEBKliNnAiqSKlNN54EoChykiYOy8AWbz+j0eUAQEQZgBBThHFAB8GCbSkDeq0F/AEh7UH1BdlR5QXJLdFJsbnkRACH5BAUKAAoALJkAWwAPACMAAARoMMlJ6xQhCEsF+MDGJQEIBCNpoqMHim0Gp3Rt33iuS0bxFYaRoQQKBC0+E6DAUYKaTgAnaWJaDsRP4DA6JAvcnXicGhA+hMEI4URYBlGAmnKOEirxDz5fqTvvFHBRcxRsSm4cZmiEFBEAIfkEBQoACgAsiwBoABwAHQAABGwwyUmrvThXEYLQoCQAJPCFWVACAZqurXuN5SlbnHfvfO//wKDQYiiQCoafQVUKJHvGFaDgk5aqVoAvuqJaBgQSYXA5MEmBgwVhRZSjBXVlkAWQd+EsgVcn8fs8eVZ7O3RZdztsUm4+YGKIOxEAIfkEBQoACgAsfAB0ACYAEQAABGowpUEAIEPqzbvfiCUCyGee0jCOGXoKQSBI1WoRrimMsz3mn8AokPCJgB6hiFiz4ZCcnWim8rWgG5hME1qVPIaCpWDAUm5XjkFpCZSxLvGqAHcZ66g73iQf0fcfB2wAAQeAJgdyBYaHjRwRACH5BAUKAAoALHcAZwAdAB0AAARsMKVBACBD6s27RFYIIF7JDaKYmWaVWgRrvqJc0qHtuW+sn7jVbwNKkYYdCkyIbDqf0Ki0ZChYCgapISAKZKHWVCGKI9OiYdEYeuCGAgfpIVyIT4eCQEBwF4j4Um4WAVOCAIRSfiGAiXqMdxsRACH5BAUKAAoALHcAWgAPACMAAARkMMmZBgGADEoR/gDCVSC4UVeJEZwKti7GpSpLDfHZqeJYpRqfcEgsGn2GAqZgEBoCoEBzpCwVfDGsy1cFXUcH6CdwEB6qhfJxzW6730VBICAgCkB1oRgTGO4BfUJ3H3mCc4VsEQA7" alt="" />
+  </div>
+  <style type="text/css">
+    .preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #fff;
+      color: #fff;
+      z-index: 9999;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+  </style>
+  <!-- /preloader -->
+
+  <header>
+    <div class="top-header">
+      <div class="wrap flex justify-between align-center">
+        <div class="social-network header flex align-center transition-3">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+        <ul id="block-exchange-rates" class="block-info flex"></ul>
+      </div>
+    </div>
+    <div class="block-logo">
+      <div class="wrap flex align-center justify-end">
+        <div class="toogle transition">
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+        </div>
+        <div class="logo">
+          <a class="logo-big" href="/">
+            <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+          <a class="logo-mobile" href="/">
+            <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+        </div>
+        <div class="broadcast flex align-center justify-center transition">ефір</div>
+        <div id="search-button" class="search flex align-center justify-center">
+          <span class="icon transition"></span>
+        </div>
+        <div class="block-search">
+          <div>
+            <input id="search-str" type="text" placeholder="Пошук" />
+            <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-nav">
+      <div class="wrap transition-3">
+        <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <!-- <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li> -->
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="go-top transition">
+    <span>Вгору</span>
+  </div>
+  <section class="section-broadcast">
+    <div class="block-broadcast hide">
+      <div class="close-broadcast"></div>
+      <div class="wrap flex justify-between">
+        <div class="tabs-wrap">
+          <div class="tabs flex transition-3">
+            <div class="tab-item active transition" data-content="tab-content-1">Онлайн трансляція</div>
+            <div class="tab-item transition" data-content="tab-content-2">Програма передач</div>
+            <div class="content-2-video-name flex align-center">
+              <div class="back transition flex align-center justify-center"></div>
+              <span id="program-name"></span>
+            </div>
+          </div>
+        </div>
+        <div id="tab-content-1" class="tab-content flex justify-between transition active">
+          <div class="block-video">
+            <iframe id="video" src="" frameborder="0"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <p class="block-preview-title">Останні відео</p>
+          <ul class="block-preview scroll">
+            
+          </ul>
+        </div>
+        <div id="tab-content-2" class="tab-content flex transition">
+          <div class="days-list"></div>
+          <div class="day-name flex align-center">
+            <div class="back transition flex align-center justify-center"></div>
+            <span id="day-name">Назад до програми передач</span>
+          </div>
+          <div class="block-schedule flex justify-end">
+            <div class="block-video-schedule transition-3">
+              <iframe id="video-schedule" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="schedule-list-wrapper transition scroll">
+              <ul class="schedule-list transition">
+              
+              </ul>
+            </div>
+            <div class="schedule-info scroll transition-3">
+              <h2 class="block-title transition"></h2>
+              <p class="description transition"></p>
+              <p class="all-release">Попередні випуски</p>
+              <div id="schedule-block-preview" class="block-preview flex"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-result hide">
+    <div class="close-search-result"></div>
+    <div class="wrap flex justify-between">
+      <div class="section-title no-line">
+        <span>Результати пошуку</span>
+      </div>
+      <ul class="result-videos-list flex"></ul>
+      <ul class="result-news-list"></ul>
+    </div>
+  </section>
+
+  
+<main>
+    <div class="wrap">
+
+        <div class="main flex justify-between">
+            <section id="analytics-page-scroll-wrap" class="column-4">
+                <div id="analytics-page-scroll" class="column-4-news scroll">
+                    <div class="new-inner">
+                        <ul class="news-list analytics flex">
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="7"
+                                data-date="48">
+                                <a href="/analytics/7.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="5"
+                                data-date="48">
+                                <a href="/analytics/5.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="6"
+                                data-date="48">
+                                <a href="/analytics/6.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="1"
+                                data-date="48">
+                                <a href="/analytics/1.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="3"
+                                data-date="48">
+                                <a href="/analytics/3.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="первый_городской воровство кривой_рог" data-id="4"
+                                data-date="48">
+                                <a href="/analytics/4.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/ftvkr.JPG">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Что изменит госбюджет Украины на 2019 год
+                                        </h2>
+                                        <p class="description">
+                                            Верховная Рада Украины приняла госбюджет на 2019 год. За него проголосовали 240 парламентариев. Главные изменения после первого чтения – рост доходов и расходов, поправки в Налоговый кодекс и легализация автомобилей на еврономерах. Именно она должна принести в казну миллиард гривен.
+                                        </p>
+                                        <p class="date">30 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="14"
+                                data-date="48">
+                                <a href="/analytics/14.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="15"
+                                data-date="48">
+                                <a href="/analytics/15.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="16"
+                                data-date="48">
+                                <a href="/analytics/16.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="17"
+                                data-date="48">
+                                <a href="/analytics/17.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="18"
+                                data-date="48">
+                                <a href="/analytics/18.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li class="new-item common" data-tags="выставка кошки активисты" data-id="19"
+                                data-date="48">
+                                <a href="/analytics/19.html" class="flex">
+                                    <div class="img">
+                                        <img class="transition" src="/images/16x9/analytics1tvkr.jpg">
+                                    </div>
+                                    <div class="info">
+                                        <h2 class="new-title transition">
+                                            Светофоры в центре Кривого Рога: кому выгодна их установка и демонтаж
+                                        </h2>
+                                        <p class="description">
+                                            Летом 2015-го года во всех криворожских СМИ начинают рекламировать так называемую «зеленую волну». Якобы в рамках городской программы установят светофоры и сделают проезд по городу более комфортным для водителей. Восемь электронных регулировщиков устанавливают и на кольце 95-го квартала. Место выбирают неслучайно, ведь здесь самый большой автотрафик и лучшая картинка, чтобы сделать на этом пиар.
+                                        </p>
+                                        <p class="date">29 Листопада 2018</p>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="button mobile transition flex justify-center align-center">
+                        Публікації раніше
+                    </div>
+                </div>
+            </section>
+            <div class="column-5">
+                <div id="analytics-page-right-block">
+                    <section>
+                        <div class="section-title flex justify-between">
+                            <span>Теги</span>
+                        </div>
+                        <ul id="tags-analytics-page" class="tags-list flex">
+                            
+                            <li data-tag-name="воровство" class="tag-item transition">#воровство</li>
+                            
+                            <li data-tag-name="кривой_рог" class="tag-item transition">#кривой_рог</li>
+                            
+                            <li data-tag-name="первый_городской" class="tag-item transition">#первый_городской</li>
+                            
+                            <li data-tag-name="активисты" class="tag-item transition">#активисты</li>
+                            
+                            <li data-tag-name="выставка" class="tag-item transition">#выставка</li>
+                            
+                            <li data-tag-name="кошки" class="tag-item transition">#кошки</li>
+                            
+                        </ul>
+                    </section>
+
+                    
+
+<section>
+  <div class="section-title flex justify-between">
+    <span>Блоги</span>
+    <a class="transition" href="/blog/">ВСІ ПУБЛІКАЦІЇ</a>
+  </div>
+  <ul class="blog-list">
+    
+    
+    <li class="blog-item">
+      <a class="flex" href="/blog/2.html">
+        <div class="blog-logo">
+          <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+        </div>
+        <div class="blog-info">
+          <p class="name"> </p>
+          <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+          <p class="date">30 Листопада 2018</p>
+        </div>
+      </a>
+    </li>
+    
+    <li class="blog-item">
+      <a class="flex" href="/blog/3.html">
+        <div class="blog-logo">
+          <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+        </div>
+        <div class="blog-info">
+          <p class="name"> </p>
+          <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+          <p class="date">30 Листопада 2018</p>
+        </div>
+      </a>
+    </li>
+    
+    <li class="blog-item">
+      <a class="flex" href="/blog/1.html">
+        <div class="blog-logo">
+          <img class="transition" src="/avatars/16x9/heisenberg.jpeg">
+        </div>
+        <div class="blog-info">
+          <p class="name"> </p>
+          <h4 class="title">В Кривом Роге мужчина продавал более 20 килограммов рыбы без надлежащих документов</h4>
+          <p class="date">30 Листопада 2018</p>
+        </div>
+      </a>
+    </li>
+    
+  </ul>
+</section>
+                    
+<section class="home-video-block">
+  <div class="section-title flex justify-between">
+    <span>Відео</span>
+    <a class="transition" href="/episode/">всі відео</a>
+  </div>
+  <ul class="video-list">
+    
+    <li class="video-item">
+      <a href="/episode/8204.html">
+        <div class="img">
+          <img src="/releases/cover_images/000/008/204/medium/_новости.jpg" alt="" />
+        </div>
+        <div>
+          <h4 class="title transition">Новини Кривбасу</h4>
+          <p class="date">19 Лютня 2019</p>
+        </div>
+      </a>
+    </li>
+    
+    <li class="video-item">
+      <a href="/episode/8203.html">
+        <div class="img">
+          <img src="/releases/cover_images/000/008/203/medium/_новости_с.jpg" alt="" />
+        </div>
+        <div>
+          <h4 class="title transition">Новини Кривбасу з сурдоперекладом</h4>
+          <p class="date">19 Лютня 2019</p>
+        </div>
+      </a>
+    </li>
+    
+    <li class="video-item">
+      <a href="/episode/8207.html">
+        <div class="img">
+          <img src="/releases/cover_images/000/008/207/medium/_героин1.jpg" alt="" />
+        </div>
+        <div>
+          <h4 class="title transition">Спецрепортаж</h4>
+          <p class="date">19 Лютня 2019</p>
+        </div>
+      </a>
+    </li>
+    
+  </ul>
+  <a href="/episode/" class="button transition flex justify-center align-center">
+    Більше відео
+  </a>
+</section>
+
+                    <section>
+                        <div class="section-title flex justify-between">
+                            <span>Facebook</span>
+                        </div>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1tv.kr.ua%2F&tabs=event&width=284&height=197&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="284" height="197" style="border:none;overflow:hidden" scrolling="no"
+                                frameborder="0" allowTransparency="true" allow="encrypted-media">
+                        </iframe>
+                    </section>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+  <footer class="footer">
+    <div class="footer-nav">
+      <div class="wrap flex">
+          <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+            
+              <li>
+                <a href="/event/" class="def" >Афіша</a>
+              </li>
+            
+              <li>
+                <a href="/contacts.html" class="def" >Контакти</a>
+              </li>
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li>
+                <a href="/contacts.html">Контакти</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="wrap flex justify-between align-center">
+        <div class="flex">
+          <a class="logo-footer transition" href="main.html">
+            <img src="/static/img/logo-footer.svg" />
+          </a>
+          <div class="info">
+            <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+            <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+          </div>
+        </div>
+        <div class="social-network footer flex align-center">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="wrap flex justify-between align-center">
+        
+        <div class="flex align-center developer">
+          <span>Made by</span>
+          <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/slick.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
+  
+  
+  <script type="text/javascript" src="/static/js/loader.js"></script>
+
+  <!-- Scroll fix -->
+  <script type="text/javascript" src="static/js/bloger/scroll-fix.js"></script>
+
+ 
+
+</html>
