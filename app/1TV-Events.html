@@ -1,0 +1,595 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style/perfect-scrollbar.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="/static/style/nice-select.css" />
+  <link rel="stylesheet" href="/static/style/style.css">
+  <!--link href="http://1tv.kr.ua/news.rss" rel="alternate" title="RSS" type="application/rss+xml" /-->
+  <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/static/img/apple-touch-icon-144.png">
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <link rel="icon" href="/static/img/favicon.png">
+
+  <meta property="fb:app_id" content="204387270490071" />
+  <meta property="fb:pages" content="1056583734365790" />
+  <meta name="google-site-verification" content="s1E5F8GIqQar-okbs3kE1GO8M1SE4jVY-PNnkdJUwDY" />
+  <link rel="stylesheet" href="/static/style/nice-select.css">
+  
+  <title>Афiша | Перший мiський</title>
+
+</head>
+<body>
+
+  <!-- preloader -->
+  <div class="preloader">
+    <img src="data:image/gif;base64,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" alt="" />
+  </div>
+  <style type="text/css">
+    .preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #fff;
+      color: #fff;
+      z-index: 9999;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+  </style>
+  <!-- /preloader -->
+
+  <header>
+    <div class="top-header">
+      <div class="wrap flex justify-between align-center">
+        <div class="social-network header flex align-center transition-3">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+        <ul id="block-exchange-rates" class="block-info flex"></ul>
+      </div>
+    </div>
+    <div class="block-logo">
+      <div class="wrap flex align-center justify-end">
+        <div class="toogle transition">
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+          <span class="menu-line transition"></span>
+        </div>
+        <div class="logo">
+          <a class="logo-big" href="/">
+            <img src="/static/img/logo.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+          <a class="logo-mobile" href="/">
+            <img src="/static/img/logo-horizontal-black.svg" alt="Перший міський телеканал - Кривий Ріг" />
+          </a>
+        </div>
+        <div class="broadcast flex align-center justify-center transition">ефір</div>
+        <div id="search-button" class="search flex align-center justify-center">
+          <span class="icon transition"></span>
+        </div>
+        <div class="block-search">
+          <div>
+            <input id="search-str" type="text" placeholder="Пошук" />
+            <button type="button" class="header-search-button flex align-center justify-center transition"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-nav">
+      <div class="wrap transition-3">
+        <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+            
+              <li>
+                <a href="/event/" class="def" >Афіша</a>
+              </li>
+            
+              <li>
+                <a href="/contacts.html" class="def" >Контакти</a>
+              </li>
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="go-top transition">
+    <span>Вгору</span>
+  </div>
+  <section class="section-broadcast">
+    <div class="block-broadcast hide">
+      <div class="close-broadcast"></div>
+      <div class="wrap flex justify-between">
+        <div class="tabs-wrap">
+          <div class="tabs flex transition-3">
+            <div class="tab-item active transition" data-content="tab-content-1">Онлайн трансляція</div>
+            <div class="tab-item transition" data-content="tab-content-2">Програма передач</div>
+            <div class="content-2-video-name flex align-center">
+              <div class="back transition flex align-center justify-center"></div>
+              <span id="program-name"></span>
+            </div>
+          </div>
+        </div>
+        <div id="tab-content-1" class="tab-content flex justify-between transition active">
+          <div class="block-video">
+            <iframe id="video" src="" frameborder="0"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+          </div>
+          <p class="block-preview-title">Останні відео</p>
+          <ul class="block-preview scroll">
+            
+          </ul>
+        </div>
+        <div id="tab-content-2" class="tab-content flex transition">
+          <div class="days-list"></div>
+          <div class="day-name flex align-center">
+            <div class="back transition flex align-center justify-center"></div>
+            <span id="day-name">Назад до програми передач</span>
+          </div>
+          <div class="block-schedule flex justify-end">
+            <div class="block-video-schedule transition-3">
+              <iframe id="video-schedule" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="schedule-list-wrapper transition scroll">
+              <ul class="schedule-list transition">
+              
+              </ul>
+            </div>
+            <div class="schedule-info scroll transition-3">
+              <h2 class="block-title transition"></h2>
+              <p class="description transition"></p>
+              <p class="all-release">Попередні випуски</p>
+              <div id="schedule-block-preview" class="block-preview flex"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-result hide">
+    <div class="close-search-result"></div>
+    <div class="wrap flex justify-between">
+      <div class="section-title no-line">
+        <span>Результати пошуку</span>
+      </div>
+      <ul class="result-videos-list flex"></ul>
+      <ul class="result-news-list"></ul>
+    </div>
+  </section>
+
+  
+   <div class="show-filter">
+      <div class="wrap">
+         <span class="show-filter-button show">Показати фільтри</span>
+      </div>
+   </div>
+   <div class="filters-bar">
+      <div class="wrap flex justify-between">
+         <ul class="filters-event flex">
+            <li data-event-type="all" id="all-event-type" class="transition active">Всі події</li>
+            
+               <li data-event-type="spektakl" class="transition">Спектакль</li>
+            
+               <li data-event-type="kontsert" class="transition">Концерт</li>
+            
+         </ul>
+         <ul class="filters-date flex">
+            <li data-event-date="today" class="transition">Сьогодні</li>
+            <li data-event-date="tomorrow" class="transition">Завтра</li>
+            <li data-event-date="weekend" class="transition">Вихідні</li>
+            <li data-event-date="week" class="transition">Тиждень</li>
+            <li data-event-date="month" class="transition active">Місяць</li>
+         </ul>
+      </div>
+   </div>
+   <div class="wrap">
+
+      <div class="main flex justify-between">
+         <div class="column-4 page-event">
+            <div class="events-list flex">
+              
+              <div class="event-item show" data-event-start="2019/03/27"
+                  data-event-end="2019/06/10" data-event-time="09:05, 11:20, 13:40, 18:20, 10:05, 12:20, 14:40, 19:20"
+                  data-event-type="kontsert"
+                  data-event-odeum="teatr-im-tgshevchenko, gostinitsa-avrora, multipleks-gagarina-30g, multipleks-lermontova-35, "
+              >
+                  <a href="/event/8.html" class="event-img">
+                     <img class="transition" src="/images/events/16x9/bright-spring-wallpapers-61054-2453157.jpg">
+                  </a>
+                  <div class="event-info" data-event-type="kontsert">
+                     <h2 class="event-title transition">
+                        <a href="#">Дамбо</a>
+                     </h2>
+                     <p class="event-date">Дата початку: <span> 27 Березня 2019</span></p>
+                     
+                       <p class="event-date">Кінцева дата: <span>10 Червня 2019</span></p>
+                     
+                     <p class="event-date">Час початку: <span>09:05, 11:20, 13:40, 18:20, 10:05, 12:20, 14:40, 19:20</span></p>
+                     <p class="event-type transition">Концерт</p>
+                     <p class="event-odeum transition">
+                     
+                        <span data-name="teatr-im-tgshevchenko" class="transition">Театр им. Т.Г.Шевченко</span>
+                     
+                        <span data-name="gostinitsa-avrora" class="transition">Гостиница Аврора</span>
+                     
+                        <span data-name="multipleks-gagarina-30g" class="transition">Мультиплекс (Гагарина 30Г)</span>
+                     
+                        <span data-name="multipleks-lermontova-35" class="transition">Мультиплекс (Лермонтова 35)</span>
+                     
+                     </p>
+                  </div>
+              </div>
+              
+              <div class="event-item show" data-event-start="2019/05/01"
+                  data-event-end="2019/05/01" data-event-time="19:00, 21:00"
+                  data-event-type="spektakl"
+                  data-event-odeum="teatr-im-tgshevchenko, "
+              >
+                  <a href="/event/7.html" class="event-img">
+                     <img class="transition" src="/images/events/16x9/8985-podarok-rozhdestvo-vechnozelenyj-venok-girlyanda-1280x1024.jpg">
+                  </a>
+                  <div class="event-info">
+                     <h2 class="event-title transition">
+                        <a href="#">Как  я сьел собаку</a>
+                     </h2>
+                     <p class="event-date">Дата початку: <span> 1 Травня 2019</span></p>
+                     
+                       <p class="event-date">Кінцева дата: <span>1 Травня 2019</span></p>
+                     
+                     <p class="event-date">Час початку: <span>19:00, 21:00</span></p>
+                     <p class="event-type transition">Спектакль</p>
+                     <p class="event-odeum transition">
+                     
+                        <span data-name="teatr-im-tgshevchenko" class="transition">Театр им. Т.Г.Шевченко</span>
+                     
+                     </p>
+                  </div>
+              </div>
+              
+              <div class="event-item show" data-event-start="2019/04/04"
+                  data-event-end="2019/03/08" data-event-time="10:30, 10:40"
+                  data-event-type="kontsert"
+                  data-event-odeum="multipleks-gagarina-30g, "
+              >
+                  <a href="/event/5.html" class="event-img">
+                     <img class="transition" src="/images/events/16x9/event-img.jpg">
+                  </a>
+                  <div class="event-info">
+                     <h2 class="event-title transition">
+                        <a href="#">1Дзюдоисты из Кривого Рога завоевали медали на Международном турнире в Одессе.</a>
+                     </h2>
+                     <p class="event-date">Дата початку: <span> 4 Квітня 2019</span></p>
+                     
+                       <p class="event-date">Кінцева дата: <span>8 Березня 2019</span></p>
+                     
+                     <p class="event-date">Час початку: <span>10:30, 10:40</span></p>
+                     <p class="event-type transition">Концерт</p>
+                     <p class="event-odeum transition">
+                     
+                        <span data-name="multipleks-gagarina-30g" class="transition">Мультиплекс (Гагарина 30Г)</span>
+                     
+                     </p>
+                  </div>
+              </div>
+              
+              <div class="event-item show" data-event-start="2019/04/01"
+                  data-event-end="2019/03/03" data-event-time="10:30, 10:40"
+                  data-event-type="kontsert"
+                  data-event-odeum=""
+              >
+                  <a href="/event/4.html" class="event-img">
+                     <img class="transition" src="/images/events/16x9/event-img.jpg">
+                  </a>
+                  <div class="event-info">
+                     <h2 class="event-title transition">
+                        <a href="#">Дзюдоисты из Кривого Рога завоевали медали на Международном турнире в Одессе.</a>
+                     </h2>
+                     <p class="event-date">Дата початку: <span> 1 Квітня 2019</span></p>
+                     
+                       <p class="event-date">Кінцева дата: <span>3 Березня 2019</span></p>
+                     
+                     <p class="event-date">Час початку: <span>10:30, 10:40</span></p>
+                     <p class="event-type transition">Концерт</p>
+                     <p class="event-odeum transition">
+                     
+                     </p>
+                  </div>
+              </div>
+              
+            </div>
+         </div>
+         <div class="column-5 page-event">
+            <section>
+               <table id="calendar-events">
+                  <thead>
+                  <tr>
+                     <td class="title" colspan="5" />
+                     <td class="prev"></td>
+                     <td class="next"></td>
+                  </tr>
+                  <tr class="indent"></tr>
+                  <tr>
+                     <td>Пн</td>
+                     <td>Вт</td>
+                     <td>Ср</td>
+                     <td>Чт</td>
+                     <td>Пт</td>
+                     <td>Сб</td>
+                     <td>Нд</td>
+                  </tr>
+                  </thead>
+                  <tbody id="calendar-event-tbody" />
+               </table>
+            </section>
+
+            <section>
+               <div class="section-title no-line">
+                  <span>Час початку</span>
+               </div>
+               <div class="flex align-center block-select-time">
+                  <select class="time-start time-list select">
+                     <option selected value="00:00" class="transition">00:00</option>
+                     <option value="01:00" class="transition">01:00</option>
+                     <option value="02:00" class="transition">02:00</option>
+                     <option value="03:00" class="transition">03:00</option>
+                     <option value="04:00" class="transition">04:00</option>
+                     <option value="05:00" class="transition">05:00</option>
+                     <option value="06:00" class="transition">06:00</option>
+                     <option value="07:00" class="transition">07:00</option>
+                     <option value="08:00" class="transition">08:00</option>
+                     <option value="09:00" class="transition">09:00</option>
+                     <option value="10:00" class="transition">10:00</option>
+                     <option value="11:00" class="transition">11:00</option>
+                     <option value="12:00" class="transition">12:00</option>
+                     <option value="13:00" class="transition">13:00</option>
+                     <option value="14:00" class="transition">14:00</option>
+                     <option value="15:00" class="transition">15:00</option>
+                     <option value="16:00" class="transition">16:00</option>
+                     <option value="17:00" class="transition">17:00</option>
+                     <option value="18:00" class="transition">18:00</option>
+                     <option value="19:00" class="transition">19:00</option>
+                     <option value="20:00" class="transition">20:00</option>
+                     <option value="21:00" class="transition">21:00</option>
+                     <option value="22:00" class="transition">22:00</option>
+                     <option value="23:00" class="transition">23:00</option>
+                  </select>
+                  <span class="separator">&#8211;</span>
+                  <select class="time-end time-list select">
+                     <option value="01:00" class="transition">01:00</option>
+                     <option value="02:00" class="transition">02:00</option>
+                     <option value="03:00" class="transition">03:00</option>
+                     <option value="04:00" class="transition">04:00</option>
+                     <option value="05:00" class="transition">05:00</option>
+                     <option value="06:00" class="transition">06:00</option>
+                     <option value="07:00" class="transition">07:00</option>
+                     <option value="08:00" class="transition">08:00</option>
+                     <option value="09:00" class="transition">09:00</option>
+                     <option value="10:00" class="transition">10:00</option>
+                     <option value="11:00" class="transition">11:00</option>
+                     <option value="12:00" class="transition">12:00</option>
+                     <option value="13:00" class="transition">13:00</option>
+                     <option value="14:00" class="transition">14:00</option>
+                     <option value="15:00" class="transition">15:00</option>
+                     <option value="16:00" class="transition">16:00</option>
+                     <option value="17:00" class="transition">17:00</option>
+                     <option value="18:00" class="transition">18:00</option>
+                     <option value="19:00" class="transition">19:00</option>
+                     <option value="20:00" class="transition">20:00</option>
+                     <option value="21:00" class="transition">21:00</option>
+                     <option value="22:00" class="transition">22:00</option>
+                     <option value="23:00" class="transition">23:00</option>
+                     <option selected value="24:00" class="transition">24:00</option>
+                  </select>
+                  <span class="all-time transition">Весь день</span>
+               </div>
+            </section>
+
+            <section class="odeum-filter">
+               <div class="section-title">
+                  <span>Зали</span>
+               </div>
+               <ul class="odeum-list checkbox-list">
+                  <li>
+                     <span data-name="all" class="odeum-name all transition">Всі</span>
+                     <span>4</span>
+                  </li>
+                 
+                  <li>
+                    <span data-name="gostinitsa-avrora" class="odeum-name transition">Гостиница Аврора</span>
+                    <span>1</span>
+                  </li>
+                 
+                  <li>
+                    <span data-name="teatr-im-tgshevchenko" class="odeum-name transition">Театр им. Т.Г.Шевченко</span>
+                    <span>2</span>
+                  </li>
+                 
+                  <li>
+                    <span data-name="multipleks-lermontova-35" class="odeum-name transition">Мультиплекс (Лермонтова 35)</span>
+                    <span>2</span>
+                  </li>
+                 
+                  <li>
+                    <span data-name="multipleks-gagarina-30g" class="odeum-name transition">Мультиплекс (Гагарина 30Г)</span>
+                    <span>3</span>
+                  </li>
+                 
+               </ul>
+               <span id="reset-odeum" class="button transition flex justify-center align-center">
+                  Скинути
+               </span>
+               <span id="apply-filters" class="button transition flex justify-center align-center inverted">
+                  Застосувати фільтри
+               </span>
+            </section>
+
+            <section class="mobile-hide">
+               <div class="section-title flex justify-between">
+                  <span>Facebook</span>
+               </div>
+               <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1tv.kr.ua%2F&tabs=event&width=284&height=197&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                       width="284" height="197" style="border:none;overflow:hidden" scrolling="no"
+                       frameborder="0" allowTransparency="true" allow="encrypted-media">
+               </iframe>
+            </section>
+         </div>
+      </div>
+
+   </div>
+
+
+  <footer class="footer">
+    <div class="footer-nav">
+      <div class="wrap flex">
+          <nav class="nav">
+          <ul class="flex justify-center">
+            
+              <li>
+                <a href="/" class="def"  rel="nofollow">Головна</a>
+              </li>
+            
+              <li>
+                <a href="/news/" class="def" >Новини</a>
+              </li>
+            
+              <li>
+                <a href="/analytics/" class="def" >Аналітика</a>
+              </li>
+            
+              <li>
+                <a href="/blog/" class="def" >Блоги</a>
+              </li>
+            
+              <li>
+                <a href="/episode/" class="def" >Відео</a>
+              </li>
+            
+              <li>
+                <a href="/event/" class="def" >Афіша</a>
+              </li>
+            
+              <li>
+                <a href="/contacts.html" class="def" >Контакти</a>
+              </li>
+            
+              <li>
+                <a href="/report.html" class="def" >Повідомити новину</a>
+              </li>
+            
+            
+              <li>
+                <a href="/contacts.html">Контакти</a>
+              </li>
+            
+            
+              <li class="election">
+                <a href="/qwe.html">Вибори 2019</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="wrap flex justify-between align-center">
+        <div class="flex">
+          <a class="logo-footer transition" href="main.html">
+            <img src="/static/img/logo-footer.svg" />
+          </a>
+          <div class="info">
+            <p class="company">&#169; ТОВ «ПЕРШИЙ МІСЬКИЙ», 2018</p>
+            <p class="text">Будь-яка перепублікація матеріалів тільки з дозволу редакції.</p>
+          </div>
+        </div>
+        <div class="social-network footer flex align-center">
+          <a class="youtube transition" href="https://www.youtube.com/channel/UCEI-r5HjcCadRihgW9AL1Yw"></a>
+          <a class="facebook transition" href="https://www.facebook.com/1tv.kr.ua"></a>
+          <a class="telegram transition" href="https://t.me/firsttv"></a>
+          <a class="instagram transition" href="https://www.instagram.com/1tv.kr.ua"></a>
+          <a class="rss transition" href="http://1tv.kr.ua/news.rss"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="wrap flex justify-between align-center">
+        
+        <div class="flex align-center developer">
+          <span>Made by</span>
+          <a class="logo-dev transition" href="http://syntech.software/" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="/static/js/perfect-scrollbar.jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/slick.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.nice-select.js"></script>
+  
+   <script type="text/javascript" src="/static/js/calendar-event.js"></script>
+
+  <script type="text/javascript" src="/static/js/loader.js"></script>
+
+</html>

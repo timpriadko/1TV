@@ -1,0 +1,19 @@
+.blog-page-list .blog-page-item {
+    position: relative;
+    padding-left: 160px;
+    min-height: 148px;
+}
+
+
+.blog-page-item .img{
+    position: absolute;
+    left: 0px;
+}
+
+.blog-page-item .description {
+    color: #444444;
+}
+
+.blog-page-item .name {
+    font-size: 14px;
+}

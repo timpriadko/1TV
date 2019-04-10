@@ -1232,6 +1232,9 @@ $(document).ready(function() {
 
     // checked filters
     $('.filters-event li').on('click', function() {
+
+        
+
         var filterEvent = $(this).attr('data-event-type');
         $('.filters-event li').removeClass('active');
         $(this).addClass('active');
@@ -1240,7 +1243,7 @@ $(document).ready(function() {
     });
 
     $('.event-item .event-type').on('click', function() {
-        var eventType = $(this).parent().attr('data-event-type');
+        var eventType = $(this).parent().parent().attr('data-event-type');
         event_type = eventType;
         $('.filters-event li').removeClass('active');
         $('.filters-event li').map( function () {
@@ -1331,6 +1334,10 @@ $(document).ready(function() {
                         event_odeum.push(odeum);
                     }
                 });
+            } 
+            else if ($(this).hasClass("checked")) {
+                $('.odeum-list .odeum-name').removeClass("checked");
+                event_odeum = [];
             }
         } else {
             $('.odeum-list .odeum-name.all').removeClass('checked');
