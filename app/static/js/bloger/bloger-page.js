@@ -11,12 +11,10 @@ var _blogsContainer = document.querySelector('.table-body-block');
 function BlodsUI() {
     return {
 
-
         // Шаблон блога
         _blogRowTemplate: function(blog) {
             var statusImg;
             var blogStatus;
-
 
             //  Publish time check
             function publishedBlogTimeCheck() {
@@ -30,8 +28,8 @@ function BlodsUI() {
                     return true;
                 } else {
                     return false;
-                }            
-            }
+                }
+            };
 
             // Blog status img
             function statusImgFunc() {
@@ -55,9 +53,9 @@ function BlodsUI() {
                 var nowTime = Date.now();
 
                 var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
-                    
+
                 if (blog.status == 'published' && nowTime < blogEditionEndTime) {
-                    blogStatus =  'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>';
+                    blogStatus = 'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">' + '0.' + timeToExpireEdit.getMinutes() + '</span></span>';
                 } else {
                     blogStatus = blog.status;
                 }
@@ -71,8 +69,8 @@ function BlodsUI() {
                 } else {
                     return blog.publish_in.substring(8, 10) + "." + blog.publish_in.substring(5, 7) + "." + blog.publish_in.substring(0, 4) + "," + " " + blog.publish_in.substring(11, 16);
                 }
-            }
-            
+            };
+
             return '<div class="post-row d-flex flex-column flex-md-row">' +
                 '<div class="blog-id" style="display: none">' + blog.id + '</div>' +
                 '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
@@ -80,17 +78,17 @@ function BlodsUI() {
                 '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + publishedBlogMark() + '</div>' +
                 '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + draftPublishDate() + '</div>' +
                 '<div class="post-actions col-md-2">' +
-                '<a href="#" class="watch" title="Переглянути опублiкований блог">' +
-                '<img src="static/img/Icon-watch.svg" alt="Icon-watch">' +
+                '<a href="#" class="watch">' +
+                '<img alt="Icon-watch"' + (blog.status !== 'published' ? 'style="opacity: 0.3" title="Данний блог не опублiковано"' : ' title="Переглянути опублiкований блог"') + 'src="static/img/Icon-watch.svg">' +
                 '</a>' +
                 '<a href="#" class="notification publish"' + (blog.status == 'published' ? 'title="Зняти блог з публiкацiї" onclick="getUnpublishModal(event)"' : 'title="Опублiкувати блог" onclick="getPublishModal(event)"') + '>' +
                 statusImgFunc() +
                 '</a>' +
                 '<a href="#" class="edit" title="Редагувати блог">' +
-                '<img src="static/img/Icon-edit.svg" alt="Icon-edit"' + (blog.status == 'published' && publishedBlogTimeCheck() == false ? 'style="opacity: 0.3"' : '') +  'onclick="editCurrentBlogData(event)">' +
+                '<img src="static/img/Icon-edit.svg" alt="Icon-edit"' + (blog.status == 'published' && publishedBlogTimeCheck() == false ? 'style="opacity: 0.3"' : '') + 'onclick="editCurrentBlogData(event)">' +
                 '</a>' +
                 '<a href="#" class="delete" title="Видалити блог">' +
-                '<img src="static/img/Icon-delete.svg" alt="Icon-delete"' + (blog.status == 'published' ? 'style="opacity: 0.3"' : '') +  'onclick="getDeleteModal(event)">' +
+                '<img src="static/img/Icon-delete.svg" alt="Icon-delete"' + (blog.status == 'published' ? 'style="opacity: 0.3"' : '') + 'onclick="getDeleteModal(event)">' +
                 '</a>' +
                 '</div>' +
                 '</div>';
@@ -136,15 +134,15 @@ function BlogerService() {
     return {
         // Get blog-list
         blogList: function(firstItem, lastItem) {
-                // get response in UI
-                blogs = JSON.parse(sessionStorage.getItem('blogs'));
-                totalBlogs = blogs.length;
-                blogs.slice(firstItem, lastItem).forEach(function(blogs) {
-                    // Show a number of blogs
-                    document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
-                    return blogsUI.addBlogs(blogs);
-                });
-                console.log(blogs);
+            // get response in UI
+            blogs = JSON.parse(sessionStorage.getItem('blogs'));
+            totalBlogs = blogs.length;
+            blogs.slice(firstItem, lastItem).forEach(function(blogs) {
+                // Show a number of blogs
+                document.querySelector('#total-posts').innerText = ' ' + totalBlogs;
+                return blogsUI.addBlogs(blogs);
+            });
+            console.log(blogs);
         },
 
         // Publish blog
@@ -215,7 +213,7 @@ function BlogerService() {
                 tags,
                 publish_in,
                 published
-            }));            
+            }));
         }
     };
 }
@@ -535,49 +533,49 @@ var publishHeaderArrows = document.querySelector('.publish-date-header .arrows-w
 
 // Sort by created_in
 function sortCreatedHandler() {
-        totalBlogs = blogs.length;
-        // Init pagination JQuery plugin
-        $(function($) {
-            $(".pagination").pagination({
-                items: totalBlogs,
-                itemsOnPage: 10,
-                cssStyle: "compact-theme"
-            })
-            document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
-            document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
-        });
+    totalBlogs = blogs.length;
+    // Init pagination JQuery plugin
+    $(function($) {
+        $(".pagination").pagination({
+            items: totalBlogs,
+            itemsOnPage: 10,
+            cssStyle: "compact-theme"
+        })
+        document.querySelector('#compact-pagination .prev').innerHTML = '<span class="prev-arrow"></span>';
+        document.querySelector('#compact-pagination .next').innerHTML = '<span class="next-arrow"></span>';
+    });
 
-        // Clear container
-        blogsUI.clearContainer();
+    // Clear container
+    blogsUI.clearContainer();
 
-        var sortedBlogs;
+    var sortedBlogs;
 
-        function compare(a,b) {
-            if (new Date(a.created_in) < new Date(b.created_in))
-                return -1;
-            if (new Date(a.created_in) > new Date(b.created_in))
-                return 1;
-            return 0;
-        };
+    function compare(a, b) {
+        if (new Date(a.created_in) < new Date(b.created_in))
+            return -1;
+        if (new Date(a.created_in) > new Date(b.created_in))
+            return 1;
+        return 0;
+    };
 
-        if (!createdHeader.classList.contains('sorted')) {
-            blogs = JSON.parse(sessionStorage.getItem('blogs'))
-            var sortedBlogs = blogs.sort(compare);
-            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
-            createdHeader.classList.add('sorted');
-        } else if (createdHeader.classList.contains('sorted')) {
-            blogs = JSON.parse(sessionStorage.getItem('blogs'));
-            sortedBlogs = blogs.sort(compare).reverse();
-            sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
-            createdHeader.classList.remove('sorted');
-        };
+    if (!createdHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'))
+        var sortedBlogs = blogs.sort(compare);
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        createdHeader.classList.add('sorted');
+    } else if (createdHeader.classList.contains('sorted')) {
+        blogs = JSON.parse(sessionStorage.getItem('blogs'));
+        sortedBlogs = blogs.sort(compare).reverse();
+        sessionStorage.setItem('blogs', JSON.stringify(sortedBlogs));
+        createdHeader.classList.remove('sorted');
+    };
 
-        // get response in UI
-        sortedBlogs.slice(-10).forEach(function(blogs) {
-            // Show a number of blogs
-            document.querySelector('#total-posts').innerText = totalBlogs;
-            return blogsUI.addBlogs(blogs);
-        });
+    // get response in UI
+    sortedBlogs.slice(-10).forEach(function(blogs) {
+        // Show a number of blogs
+        document.querySelector('#total-posts').innerText = totalBlogs;
+        return blogsUI.addBlogs(blogs);
+    });
     console.log('+');
 };
 
@@ -601,7 +599,7 @@ function sortPublishDateHandler() {
     // Clear container
     blogsUI.clearContainer();
 
-    function compare(a,b) {
+    function compare(a, b) {
         if (new Date(a.publish_in) < new Date(b.publish_in))
             return -1;
         if (new Date(a.publish_in) > new Date(b.publish_in))
@@ -621,12 +619,12 @@ function sortPublishDateHandler() {
         publishHeader.classList.remove('sorted');
     };
 
-      // get response in UI
-      sortedBlogs.slice(-10).forEach(function(blogs) {
-          // Show a number of blogs
-          document.querySelector('#total-posts').innerText = totalBlogs;
-          return blogsUI.addBlogs(blogs);
-      });
+    // get response in UI
+    sortedBlogs.slice(-10).forEach(function(blogs) {
+        // Show a number of blogs
+        document.querySelector('#total-posts').innerText = totalBlogs;
+        return blogsUI.addBlogs(blogs);
+    });
 };
 
 publishHeaderArrows.addEventListener('click', sortPublishDateHandler);
@@ -649,7 +647,7 @@ function sortStatusHandler() {
     // Clear container
     blogsUI.clearContainer();
 
-    function compare(a,b) {
+    function compare(a, b) {
         if (a.status < b.status)
             return -1;
         if (a.status > b.status)
@@ -669,12 +667,12 @@ function sortStatusHandler() {
         statusHeader.classList.remove('sorted');
     };
 
-      // get response in UI
-      sortedBlogs.slice(-10).forEach(function(blogs) {
-          // Show a number of blogs
-          document.querySelector('#total-posts').innerText = totalBlogs;
-          return blogsUI.addBlogs(blogs);
-      });
+    // get response in UI
+    sortedBlogs.slice(-10).forEach(function(blogs) {
+        // Show a number of blogs
+        document.querySelector('#total-posts').innerText = totalBlogs;
+        return blogsUI.addBlogs(blogs);
+    });
 };
 
 statusHeaderArrows.addEventListener('click', sortStatusHandler);

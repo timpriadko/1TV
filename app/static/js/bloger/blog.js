@@ -82,22 +82,22 @@ function blogValidation() {
             document.querySelector('.article-content .validation-message-wrapper').classList.remove('is-invalid');
             break;
     };
-    // to long title error message
-    function titleInputLength() {
-        if (titleInput.value.length >= 50) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    switch (titleInputLength()) {
-        case true:
-            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
-            break;
-        case false:
-            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
-            break;
-    };
+    // // to long title error message
+    // function titleInputLength() {
+    //     if (titleInput.value.length >= 50) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // };
+    // switch (titleInputLength()) {
+    //     case true:
+    //         document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
+    //         break;
+    //     case false:
+    //         document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
+    //         break;
+    // };
 }
 
 // Publish new blog handler
@@ -106,14 +106,16 @@ function publishNewBlog(e) {
     // Get content data from ckeditor    
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
-    // // Make 'tags' string to array
-    // var tagsArr;
+    // Make 'tags' string to array
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
 
-    // function tagsToArr() {
-    //     tagsArr = tagsInput.value.split('#').slice(1);
-    //     return tagsArr;
-    // }
-    // tagsToArr();
+    function tagsToArr() {
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
+        return tagsArr;
+    };
 
     // time now
     var date = new Date();
@@ -124,20 +126,20 @@ function publishNewBlog(e) {
             title: document.querySelector('.article-title input').value,
             description: "create",
             content: contentInput,
-            tags: [],
+            tags: tagsToArr(),
             publish_in: (!document.getElementById('datetimepicker').value ? dateAndTimeNow : document.getElementById('datetimepicker').value),
             published: true
         }
         // Init Blog service
     var blog = BlogService();
     blog.newBlog(newBlogData);
+    // console.log(newBlogData);
 }
 
 function publishNewBlogHandler() {
     blogValidation();
     if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')) {
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')) {
         publishNewBlog();
     }
 };
@@ -148,13 +150,15 @@ function saveBlogAsNewDraft(e) {
     var contentInput = CKEDITOR.instances.ckeditor.getData();
 
     // Make 'tags' string to array
-    var tagsArr;
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
 
     function tagsToArr() {
-        tagsArr = document.querySelector('#myTags').innerText.split('#').slice(1);
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
         return tagsArr;
-    }
-    tagsToArr();
+    };
 
     // time now
     var date = new Date();
@@ -165,7 +169,7 @@ function saveBlogAsNewDraft(e) {
         title: document.querySelector('.article-title input').value,
         description: "create draft",
         content: contentInput,
-        tags: tagsArr,
+        tags: tagsToArr(),
         publish_in: (!document.getElementById('datetimepicker').value ? dateAndTimeNow : document.getElementById('datetimepicker').value),
         published: false
     }
@@ -173,13 +177,13 @@ function saveBlogAsNewDraft(e) {
     // Init Blog service
     var blog = BlogService();
     blog.newBlog(saveBlogAsDraft);
+    // console.log(saveBlogAsDraft);
 }
 
 function saveBlogAsNewDraftHandler() {
     blogValidation();
     if (!document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
+        !document.querySelector('.article-content .validation-message-wrapper').classList.contains('is-invalid')
     ) {
         saveBlogAsNewDraft();
     }
