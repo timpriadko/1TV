@@ -28,6 +28,60 @@
     }
 }
 
+@media (max-width: 576px) {
+    .mobile-blog-data {
+        display: none!important;
+    }
+    .table-header {
+        display: none!important;
+    }
+    .bloger-page {
+        .posts-table-block {
+            .table-body-block {
+                .post-row {
+                    div {
+                        padding: 0px 7px 5px 15px;
+                    }
+                    .post-name {
+                        order: -1;
+                        padding-bottom: 15px;
+                        padding-top: 20px;
+                        &:after {
+                            padding-left: 15px;
+                            content: url(../../static/img/mobile-show-icon.svg);
+                            cursor: pointer;
+                        }
+                    }
+                    .post-actions {
+                        // display: none;
+                        padding-top: 15px;
+                        justify-content: flex-end;
+                        a {
+                            margin-left: 15px;
+                        }
+                    }
+                    .post-create-date {
+                        &:before {
+                            color: #888888;
+                            content: "\00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 Створено: \00a0 \00a0 \00a0";
+                        }
+                    }
+                    .post-publish-date {
+                        &:before {
+                            content: "Дата публікації: \00a0 \00a0 \00a0";
+                        }
+                    }
+                    .post-status {
+                        &:before {
+                            content: "\00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 Статус: \00a0 \00a0 \00a0";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .bloger-page {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
@@ -157,7 +211,6 @@
             }
             .post-actions {
                 display: flex;
-                justify-content: space-around;
                 a {
                     text-decoration: none;
                     img {

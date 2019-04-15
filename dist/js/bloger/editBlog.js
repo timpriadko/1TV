@@ -28,16 +28,50 @@ var currentBlogStatus = JSON.parse(sessionStorage.getItem("currentBlog")).status
 var currentBlogId = sessionStorage.getItem('currentBlogId');
 var currentBlogTime;
 
+// Set user name
+function setUserData() {
+    var token = 'Bearer' + ' ' + sessionStorage.getItem("token");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', env.apiUrl + 'blog/me/');
+    xhr.setRequestHeader("Authorization", token);
+    xhr.onload = function() {
+        var userName = JSON.parse(this.response).first_name;
+        var userLastName = JSON.parse(this.response).last_name;
+        document.querySelector('#block-user-options .user-name').innerText = userName + ' ' + userLastName;
+        document.querySelector('.article-form-bottom .article-author input').value = userName + ' ' + userLastName;
+    };
+    xhr.send();
+}
+
+// Set tags func
+function oneTagTamplate(tag) {
+    return '<li class="tagit-choice ui-widget-content ui-state-default ui-corner-all tagit-choice-editable">' +
+        '<span class="tagit-label">' + tag + '</span>' +
+        '<a class="tagit-close">' +
+        '<span class="text-icon"></span>' +
+        '<span class="ui-icon ui-icon-close"></span>' +
+        '</a>' +
+        '<input type="hidden" value="криввбас" name="tags" class="tagit-hidden-field">' +
+        '</li>';
+};
+
 // Set current blog data to the inputs
 var blogData;
 
 function setBlogValue() {
     blogData = JSON.parse(sessionStorage.getItem('currentBlog'));
-    console.log(blogData);
     titleInput.value = blogData.title;
     contentInput.value = blogData.content;
-    publishDate.value = blogData.publish_in;
-}
+    // set data & time
+    if (currentBlogStatus !== "draft") {
+        publishDate.value = blogData.publish_in.substring(0, 4) + "-" + blogData.publish_in.substring(5, 7) + "-" + blogData.publish_in.substring(8, 10) + " " + blogData.publish_in.substring(11, 16);
+    }
+
+    // Set tags
+    for (var i = 0; i < blogData.tags.length; i++) {
+        document.querySelector('#myTags').insertAdjacentHTML("afterbegin", oneTagTamplate(blogData.tags[i]));
+    };
+};
 
 //  Publish time check
 function publishTimeCheck() {
@@ -68,7 +102,7 @@ function expireMarkFunc() {
 
     var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
 
-    editExpireMarkContainer.insertAdjacentHTML('beforeend', '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">'+ '0.' + timeToExpireEdit.getMinutes() +'</span></span>')
+    editExpireMarkContainer.insertAdjacentHTML('beforeend', '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">' + '0.' + timeToExpireEdit.getMinutes() + '</span></span>')
 }
 
 // Buttons visibility
@@ -78,16 +112,17 @@ function buttonVisibility() {
 
     if (currentBlogStatus === "draft") {
         document.querySelector(".unpublish-article").style.display = "none";
-        document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
     } else if (currentBlogStatus === "published" && ableToEdit == true) {
         expireMarkFunc();
-        document.querySelector(".unpublish-article").style.display = "none";
-        document.querySelector(".unpublish-article").style.display = "none";
+        // document.querySelector(".unpublish-article").style.display = "none";
+        // document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector('#saveBlogBtn').style.display = "none";
         document.getElementById('datetimepicker').disabled = true;
-    } else if (currentBlogStatus === "published") {
+    } else if (currentBlogStatus === "published" && ableToEdit == false) {
+        document.querySelector(".delete-article").style.display = "none";
+        document.querySelector(".unpublish-article").style.display = "none";
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector('#saveBlogBtn').style.display = "none";
         document.querySelector('.saveBlogBtn-block').style.display = "none";
@@ -98,10 +133,16 @@ function buttonVisibility() {
         document.querySelector(".publish-article").style.display = "none";
         document.querySelector(".delete-article").style.display = "none";
         document.querySelector('.savePublishedBlogChangesBtn-block').style.display = "none";
+    } else if (currentBlogStatus === "wait") {
+        document.querySelector(".unpublish-article").style.display = "none";
+        document.querySelector('.saveBlogBtn-block').style.display = "none";
+
     }
 };
 
 window.onload = function() {
+    // Set user name
+    setUserData();
     // init set current blog data to the inputs
     setBlogValue();
     //  Init buttons visibility func
@@ -208,7 +249,7 @@ function BlogService() {
                     window.location = "1TV-Blogers-BlogerPage.html";
                 }
             };
-            xhr.open('POST', env.apiUrl + 'blog/update/' + currentBlogId + '/');
+            xhr.open('POST', env.apiUrl + 'blog/create/' + currentBlogId + '/');
             xhr.setRequestHeader("Authorization", token);
             xhr.send(JSON.stringify({
                 title,
@@ -293,22 +334,22 @@ function blogValidation() {
             contentValidationMsgWrapper.classList.remove('is-invalid');
             break;
     };
-    // to long title error message
-    function titleInputLength() {
-        if (titleInput.value.length >= 50) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    switch (titleInputLength()) {
-        case true:
-            document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
-            break;
-        case false :
-            document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
-            break;
-    };
+    // // to long title error message
+    // function titleInputLength() {
+    //     if (titleInput.value.length >= 50) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // };
+    // switch (titleInputLength()) {
+    //     case true:
+    //         document.querySelector('.article-title .validation-message-wrapper').classList.add('is-to-long');
+    //         break;
+    //     case false:
+    //         document.querySelector('.article-title .validation-message-wrapper').classList.remove('is-to-long');
+    //         break;
+    // };
 };
 
 
@@ -333,8 +374,7 @@ unpublishPreModalBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
         !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !dateValidationMsgWrapper.classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
+        !dateValidationMsgWrapper.classList.contains('is-invalid')
     ) {
         modal.style.display = "block";
     }
@@ -348,20 +388,22 @@ function unpublishBlog(e) {
     console.log(contentData);
 
     // Make 'tags' string to array
-    var tagsArr;
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
 
     function tagsToArr() {
-        tagsArr = tagsInput.value.split('#').slice(1);
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
         return tagsArr;
-    }
-    tagsToArr();
+    };
 
     // Unpublish blog data to send
     var unpublishBlog = {
         title: titleInput.value,
         description: "update",
         content: contentData,
-        tags: [],
+        tags: tagsToArr(),
         publish_in: publishDate.value,
         published: 'false'
     };
@@ -378,6 +420,17 @@ function publishDraft(e) {
     // Get content data from ckeditor    
     var contentData = CKEDITOR.instances.ckeditor.getData();
 
+    // Make 'tags' string to array
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
+
+    function tagsToArr() {
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
+        return tagsArr;
+    };
+
     // time now
     var date = new Date();
     var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
@@ -387,7 +440,7 @@ function publishDraft(e) {
         title: titleInput.value,
         description: "update",
         content: contentData,
-        tags: [],
+        tags: tagsToArr(),
         publish_in: dateAndTimeNow,
         published: 'true'
     };
@@ -398,8 +451,7 @@ function publishDraft(e) {
 publishBtn.addEventListener("click", function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {
         publishDraft();
     }
@@ -411,6 +463,17 @@ function saveDraftHndler(e) {
     // Get content data from ckeditor    
     var contentData = CKEDITOR.instances.ckeditor.getData();
 
+    // Make 'tags' string to array
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
+
+    function tagsToArr() {
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
+        return tagsArr;
+    };
+
     // time now
     var date = new Date();
     var dateAndTimeNow = date.getFullYear() + "-" + (((+date.getMonth() + 1) < 10) ? "0" + (+date.getMonth() + 1) : (+date.getMonth() + 1)) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
@@ -420,7 +483,7 @@ function saveDraftHndler(e) {
         title: titleInput.value,
         description: "draft",
         content: contentData,
-        tags: [],
+        tags: tagsToArr(),
         publish_in: (!publishDate.value ? dateAndTimeNow : publishDate.value),
         published: false
     };
@@ -431,8 +494,7 @@ function saveDraftHndler(e) {
 saveDraftBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        !contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long')
+        !contentValidationMsgWrapper.classList.contains('is-invalid')
     ) {
         saveDraftHndler();
     }
@@ -443,12 +505,23 @@ function saveChangesInPublishedBlog(e) {
     // Get content data from ckeditor    
     var contentData = CKEDITOR.instances.ckeditor.getData();
 
+    // Make 'tags' string to array
+    var tagsArr = [];
+    var tagsList = document.querySelectorAll('#myTags li .tagit-label');
+
+    function tagsToArr() {
+        for (var i = 0; i < tagsList.length; i++) {
+            tagsArr.push(tagsList[i].innerText)
+        };
+        return tagsArr;
+    };
+
     // Publish changes data to send
     var publishChangesData = {
         title: titleInput.value,
         description: "updete published",
         content: contentData,
-        tags: [],
+        tags: tagsToArr(),
         publish_in: publishDate.value,
         published: true
     };
@@ -459,18 +532,78 @@ function saveChangesInPublishedBlog(e) {
 savePublishedBlogChangesBtn.addEventListener('click', function() {
     blogValidation();
     if (!titleValidationMsgWrapper.classList.contains('is-invalid') &&
-        (!contentValidationMsgWrapper.classList.contains('is-invalid') &&
-        !document.querySelector('.article-title .validation-message-wrapper').classList.contains('is-to-long'))
-    ) {
+        !contentValidationMsgWrapper.classList.contains('is-invalid')) {
         saveChangesInPublishedBlog();
     }
 });
 
-// User name
-
-var userName = document.querySelector('.user-name').innerText;
-var authorName = document.querySelector('.article-author input')
-authorName.value = userName;
-
 // Status in Edit Page
 document.querySelector('.current-blog-status').innerText = currentBlogStatus;
+
+// Tags
+// Get tags from server by typing
+
+// debounce
+function debounce(f, ms) {
+
+    var timer = null;
+
+    return function(...args) {
+        var onComplete = function() {
+            f.apply(this, args);
+            timer = null;
+        }
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(onComplete, ms);
+    };
+}
+
+// Get tags from server func
+var getTagsHandler;
+var newTag;
+
+$(document).ready(function() {
+    $("#myTags").tagit({
+        placeholderText: "Почніть вводити новий тег",
+        autocomplete: {
+            source: getTagsHandler = debounce(function(request, response) {
+                $.ajax({
+                    dataType: "json",
+                    type: 'Get',
+                    url: 'https://api.1tvkr-demo.syntech.info/api/blog-tags/?search=' + document.querySelector('.tagit-new input').value,
+                    cache: false,
+                    success: function(data) {
+                        if (document.querySelector('.tagit-new input').value.length && !data.length) {
+                            newTag = prompt('На даний момент такого тега не існує. Додати новий тег?');
+                            setTimeout(function() {
+                                // Set new tag from prompt to UI
+                                document.querySelector('#myTags').lastChild.previousSibling.firstElementChild.innerText = newTag;
+                                // Send new tag
+                                if (document.querySelector('.tagit-new input').value.length) {
+                                    var url = 'https://api.1tvkr-demo.syntech.info/api/blog-tags/';
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open('POST', url);
+                                    xhr.send(JSON.stringify({
+                                        add: newTag
+                                    }));
+                                };
+                            }, 100)
+                            console.log(newTag);
+                        } else {
+                            response($.map(data, function(item) {
+                                return item;
+                            }));
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data)
+                    }
+                });
+            }, 1000)
+        }
+    });
+});

@@ -66,7 +66,18 @@ function AuthService() {
                 sessionStorage.setItem('token', response.token);
                 if (this.status === 202) {
                     window.location = "1TV-Blogers-BlogerPage.html";
-                }
+                } else if (JSON.parse(this.status) == 401) {
+                    if (document.querySelector(".auth-bloger form .otp-sent").classList.contains('expanded')) {
+                        document.querySelector(".auth-bloger form .otp-sent").classList.remove('expanded');
+                        document.querySelector(".auth-bloger form .no-match").classList.add('expanded');
+                        document.querySelector(".auth-bloger form .no-match").innerText = "Неправильно введено одноразовий код";
+                    } else {
+                        document.querySelector(".auth-bloger form .no-match").classList.add('expanded');
+                        document.querySelector(".auth-bloger form .no-match").innerText = "Неправильно введено одноразовий код";
+                    }
+                } else if (JSON.parse(this.status) == 503) {
+                    document.querySelector(".auth-bloger form .try-later").classList.add('expanded');
+                };
                 console.log(response);
             };
             xhr.send(JSON.stringify({ tel, password, otp }));
@@ -82,9 +93,8 @@ function AuthService() {
             xhr.open('GET', env.apiUrl + 'logout/');
             return xhr.send();
         }
-    }
-
-}
+    };
+};
 
 // InitAuthService
 const loginService = AuthService();
@@ -94,7 +104,7 @@ function sendOtpHandler(e) {
     e.preventDefault();
 
     loginService.sendOtp(phoneInput.value, passwordInput.value);
-}
+};
 
 sendOtpBtn.addEventListener("click", sendOtpHandler);
 
@@ -103,6 +113,6 @@ function loginHandler(e) {
     e.preventDefault();
 
     loginService.login(phoneInput.value, passwordInput.value, otpInput.value);
-}
+};
 
 form.addEventListener("submit", loginHandler);

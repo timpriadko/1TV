@@ -55,9 +55,19 @@ function BlodsUI() {
                 var timeToExpireEdit = new Date(blogEditionEndTime - nowTime);
 
                 if (blog.status == 'published' && nowTime < blogEditionEndTime) {
-                    blogStatus = 'published' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">' + '0.' + timeToExpireEdit.getMinutes() + '</span></span>';
+                    blogStatus = 'Опублiковано' + '<span class="edited"><a href="#"><img src="static/img/Icon-edit.svg" alt="Edit icon"></a><span class="edited-time">' + '0.' + timeToExpireEdit.getMinutes() + '</span></span>';
                 } else {
-                    blogStatus = blog.status;
+                    if (blog.status === 'published') {
+                        blogStatus = 'Опублiковано';
+                    } else if (blog.status === 'published') {
+                        blogStatus = 'Опублiковано';
+                    } else if (blog.status === 'draft') {
+                        blogStatus = 'Чернетка';
+                    } else if (blog.status === 'removed_by_author') {
+                        blogStatus = 'Видалено автором'
+                    } else if (blog.status === 'wait') {
+                        blogStatus = 'Очiкує на публiкацiю';
+                    }
                 }
                 return blogStatus;
             };
@@ -73,11 +83,11 @@ function BlodsUI() {
 
             return '<div class="post-row d-flex flex-column flex-md-row">' +
                 '<div class="blog-id" style="display: none">' + blog.id + '</div>' +
-                '<div class="post-create-date col-md-2 d-flex justify-content-center justify-content-md-start">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
-                '<div class="post-name col-md-4 d-flex justify-content-center justify-content-md-start">' + blog.title + '</div>' +
-                '<div class="post-status unpublished col-md-2 d-flex justify-content-center justify-content-md-start">' + publishedBlogMark() + '</div>' +
-                '<div class="post-publish-date col-md-2 d-flex justify-content-center justify-content-md-start">' + draftPublishDate() + '</div>' +
-                '<div class="post-actions col-md-2">' +
+                '<div class="post-create-date col-md-2 mobile-blog-data">' + blog.created_in.substring(8, 10) + "." + blog.created_in.substring(5, 7) + "." + blog.created_in.substring(0, 4) + '</div>' +
+                '<div class="post-name col-md-4 d-flex justify-content-between">' + blog.title +'</div>' +
+                '<div class="post-status unpublished col-md-2 mobile-blog-data">' + publishedBlogMark() + '</div>' +
+                '<div class="post-publish-date col-md-2 mobile-blog-data">' + draftPublishDate() + '</div>' +
+                '<div class="post-actions col-md-2 justify-content-sm-around mobile-blog-data">' +
                 '<a href="#" class="watch">' +
                 '<img alt="Icon-watch"' + (blog.status !== 'published' ? 'style="opacity: 0.3" title="Данний блог не опублiковано"' : ' title="Переглянути опублiкований блог"') + 'src="static/img/Icon-watch.svg">' +
                 '</a>' +
@@ -676,3 +686,7 @@ function sortStatusHandler() {
 };
 
 statusHeaderArrows.addEventListener('click', sortStatusHandler);
+
+
+// Mobile style
+console.log($('.post-name:after'))
