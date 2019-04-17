@@ -3,6 +3,8 @@ var env = {
     apiUrl: "https://api.1tvkr-demo.syntech.info/api/"
 };
 
+console.log("name test")
+
 // Контейнер блогов
 var _blogsContainer = document.querySelector('.table-body-block');
 
